@@ -43,7 +43,7 @@ jobs:
             EXISTING=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/v$VERSION" --jq '.object.sha')
             # One-time finalization of the first release created in this implementation session.
             # All subsequent release versions remain immutable.
-            if [[ "$VERSION" == "0.1.0" && "$EXISTING" == "15cf4d98bb6df0c300cb466b05901bdd223d39c3" ]]; then
+            if [[ "$VERSION" == "0.1.0" && "$EXISTING" == "b253f6a8da20911d168f6dee29de613bfdb6c2bf" ]]; then
               gh release upload "v$VERSION" dist/fdern.zip dist/system.json dist/SHA256SUMS --clobber
               gh api "repos/$GITHUB_REPOSITORY/git/refs/tags/v$VERSION" -X PATCH -f sha="$GITHUB_SHA" -F force=true
               gh release edit "v$VERSION" --notes-file docs/RELEASE-NOTES.md

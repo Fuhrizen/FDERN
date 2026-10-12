@@ -24,5 +24,5 @@ export function setup(){
   return {gm,player};
 }
 export function token(actor,x=0,y=0,disposition=1){const t=new BaseDoc({_id:randomID(),x,y,width:1,height:1,actor,elevation:0,disposition,level:'ground',name:actor.name});t.documentName='Token';t.uuid=`Scene.scene.Token.${t.id}`;docs.set(t.uuid,t);t.toObject=()=>({x:t.x,y:t.y,width:1,height:1,disposition,elevation:0,level:'ground'});actor.token=t;canvas.tokens.placeables.push({actor,document:t,center:{x:x+50,y:y+50},w:100,name:actor.name,id:t.id});return t;}
-export function combatant(actor,side='A'){const c=new BaseDoc({name:actor.name,actor,token:actor.token,initiative:1000,defeated:false});c.flags={fdern:{side,activated:false}};return c;}
+export function combatant(actor,side='A'){const c=new BaseDoc({name:actor.name,img:actor.img??'systems/fdern/assets/fdern.svg',actor,token:actor.token,initiative:1000,defeated:false});c.flags={fdern:{side,activated:false}};return c;}
 export function hooksFor(name){return hooks.get(name)??[];}

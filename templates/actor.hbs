@@ -1,6 +1,6 @@
 <div class="sheet-layout">
   <aside class="sheet-rail">
-    <img class="portrait" src="{{actor.img}}" data-edit="img" alt="Character portrait">
+    <img class="portrait" src="{{actor.img}}" data-action="dispatch" data-command="portrait" alt="Character portrait" role="button" tabindex="0">
     <input class="actor-name" type="text" name="name" value="{{actor.name}}" aria-label="Character name">
     <p class="eyebrow">Level {{system.tactical.level}} · FDERN</p>
     <div class="resource"><label>Wounds <input name="system.combat.wounds" type="number" min="0" max="3" value="{{system.combat.wounds}}"></label><meter min="0" max="3" value="{{system.combat.wounds}}"></meter></div>

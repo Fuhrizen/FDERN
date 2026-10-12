@@ -6,7 +6,7 @@ import {pressure,damage} from './damage.mjs';
 import {confirmGeometry,distanceBetween} from './terrain.mjs';
 import {chat,escapeHTML,tokenFor,has,learned,readied,controllerInput} from './utils.mjs';
 export async function attack(actor,id,item,target,{reaction=false,modifier=0}={}) {
-  if(!target?.actor)throw Error('Target one token with an Actor.');const a=ACTIONS[id];const ranged=a.kind==='ranged'||a.kind==='suppress';const suppression=a.kind==='suppress';const c=actor.system.combat;const s=item?.system??{accuracy:0,harm:1,penetration:0,strain:1,reach:5,traits:['non-lethal'],hands:0};
+  if(target?.documentName!=='Token'||!target.actor)throw Error('Target one token with an Actor.');const a=ACTIONS[id];const ranged=a.kind==='ranged'||a.kind==='suppress';const suppression=a.kind==='suppress';const c=actor.system.combat;const s=item?.system??{accuracy:0,harm:1,penetration:0,strain:1,reach:5,traits:['non-lethal'],hands:0};
   const geometry=await confirmGeometry(actor,target,item,{suppression});if(!geometry)return;
   if(!Number.isFinite(geometry.distance)||geometry.distance<0)throw Error('Invalid distance.');if(geometry.cover===3)throw Error('Complete Cover blocks this attack.');
   if(!ranged&&geometry.distance>s.reach)throw Error('Target is outside Reach.');if(id==='close-blast'&&geometry.distance>20)throw Error('Close Blast requires a target within 20 ft.');

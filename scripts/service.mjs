@@ -20,7 +20,7 @@ export async function execute(request,user){
   if(request.type==='advance')return advance(actor,request.purchase??{});
   if(request.type==='award'){if(!user.isGM)throw Error('Only the GM awards VP.');const vp=clamp(request.vp,0,100);await actor.update({'system.advancement.lifetimeVP':actor.system.advancement.lifetimeVP+vp});return;}
   if(request.type==='recover'){if(!user.isGM)throw Error('The GM approves substantial recovery.');if(actor.system.combat.wounds>=3||actor.system.combat.dead)throw Error('Patient must first receive successful care and be below 3 Wounds.');await actor.update({'system.combat.recoveryPending':false});return;}
-  if(request.type==='release'){const other=await fromUuid(actor.system.combat.grappling);if(other)await other.update({'system.combat.grappledBy':''});await actor.update({'system.combat.grappling':''});return;}
+  if(request.type==='release'){if(game.combat?.started&&combatantFor(actor)&&!isActive(actor))throw Error('Release a hold during your own activation.');const other=await fromUuid(actor.system.combat.grappling);if(other)await other.update({'system.combat.grappledBy':''});await actor.update({'system.combat.grappling':''});return;}
   if(request.type==='movement-interrupt'){const {resolveMovementInterrupt}=await import('./movement.mjs');return resolveMovementInterrupt(actor,request,execute);}
   if(request.type==='reaction-shot'){
     const target=await fromUuid(request.target);const state=actor.system.combat.overwatch;const item=actor.items.get(state.weapon);
@@ -67,6 +67,7 @@ async function opposed(actor,id,item,target){
   const c=actor.system.combat;if(id==='escape'){const holder=await fromUuid(c.grappledBy);if(!holder)throw Error('No grapple to escape.');target=tokenFor(holder);}if(!target?.actor)throw Error('Choose an opposing token.');const defender=target.actor;
   if(id==='lunge'){await spend(actor,2);await actor.update({'system.combat.moveRemaining':15,'system.combat.moveMode':'lunge'});await controllerInput(actor,'Lunge approach','<p>Move up to 15 ft on a credible approach using the native ruler, then continue to the +2 Disarm Test.</p>');await actor.update({'system.combat.moveRemaining':0,'system.combat.moveMode':''});}
   const own=tokenFor(actor);if(!own||distanceBetween(own,target)>(id==='grapple'||id==='takedown'?5:item?.system.reach??5))throw Error('Target is outside Reach.');
+  if(id==='grapple'&&(actor.system.combat.grappling||defender.system.combat.grappledBy))throw Error('Release the existing hold first.');
   if(id==='grapple'&&readied(actor).reduce((n,i)=>n+i.system.hands,0)>=2)throw Error('Grapple requires a usable hand.');if(id==='takedown'&&defender.system.combat.grappledBy!==actor.uuid)throw Error('Takedown requires an established hold.');
   let heldItem=null;if(['disarm','lunge'].includes(id)){const items=readied(defender);if(!items.length)throw Error('Target has no held item.');const selected=await choose('Disarm which item?',items.map(i=>({value:i.id,label:i.name})));if(!selected)return;heldItem=defender.items.get(selected);}
   if(id!=='lunge')await spend(actor,ACTIONS[id].cost);

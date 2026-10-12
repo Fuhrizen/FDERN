@@ -1,0 +1,13 @@
+{
+  "name": "Field Dressing",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "field-dressing",
+    "hands": 0,
+    "description": "2 Action(s). Required Skill rank 1. Equipment must supply this action when applicable."
+  },
+  "_id": "5ec778d8c03bae21",
+  "_key": "!items!5ec778d8c03bae21",
+  "folder": "541f1cb084f4e5d1"
+}

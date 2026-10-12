@@ -1,0 +1,15 @@
+{
+  "_id": "6b3d02691cbce1e8",
+  "_key": "!items!6b3d02691cbce1e8",
+  "name": "battle-rifle · 4 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "7.62x51",
+    "compatibility": "battle-rifle",
+    "currentLoad": 4,
+    "maxLoad": 4,
+    "hands": 0
+  }
+}

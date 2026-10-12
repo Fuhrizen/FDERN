@@ -1,0 +1,15 @@
+{
+  "_id": "69b67c4d56932ecb",
+  "_key": "!items!69b67c4d56932ecb",
+  "name": "smg · 5 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "9x19",
+    "compatibility": "smg",
+    "currentLoad": 5,
+    "maxLoad": 5,
+    "hands": 0
+  }
+}

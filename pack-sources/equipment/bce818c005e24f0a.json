@@ -1,0 +1,33 @@
+{
+  "name": "Service pistol",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "pistol",
+    "cartridge": "9x19",
+    "accuracy": 1,
+    "recoil": 1,
+    "effective": 40,
+    "maximum": 90,
+    "maxLoad": 4,
+    "currentLoad": 0,
+    "hands": 1,
+    "traits": [
+      "assault"
+    ],
+    "harm": 1,
+    "penetration": 0,
+    "compatibility": "service-pistol",
+    "reloadCost": 1,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "quick"
+    ],
+    "description": "Service pistol. 40/90 ft. Actions: fire, reload, overwatch, quick. Training prerequisites are checked when used."
+  },
+  "_id": "bce818c005e24f0a",
+  "_key": "!items!bce818c005e24f0a",
+  "folder": "12a70b78db9fd5a7"
+}

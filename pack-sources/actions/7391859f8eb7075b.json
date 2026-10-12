@@ -1,0 +1,13 @@
+{
+  "name": "Quick Presentation",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "quick",
+    "hands": 0,
+    "description": "1 Action(s), 1 Load. Required Skill rank 2. Discipline: pistolcraft. Equipment must supply this action when applicable."
+  },
+  "_id": "7391859f8eb7075b",
+  "_key": "!items!7391859f8eb7075b",
+  "folder": "f03aa311c8a6abb0"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Aim",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "aim",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "8d2e6beaa65d7eb1",
+  "_key": "!items!8d2e6beaa65d7eb1",
+  "folder": "17e7950d2b11ef5a"
+}

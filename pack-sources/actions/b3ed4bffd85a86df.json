@@ -1,0 +1,13 @@
+{
+  "name": "Pickup",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "pickup",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "b3ed4bffd85a86df",
+  "_key": "!items!b3ed4bffd85a86df",
+  "folder": "17e7950d2b11ef5a"
+}

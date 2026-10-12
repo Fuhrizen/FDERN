@@ -1,0 +1,19 @@
+{
+  "name": "Smoke grenade",
+  "type": "grenade",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "payload": "smoke",
+    "radius": 15,
+    "duration": 2,
+    "quantity": 1,
+    "hands": 0,
+    "actions": [
+      "throw"
+    ],
+    "description": "Throw 2 A, 45 ft maximum. One delivery Test at DC 7/9/11 by range. Full or half effect at declared centre, no scatter."
+  },
+  "_id": "a85fa0c654e679b2",
+  "_key": "!items!a85fa0c654e679b2",
+  "folder": "702c73314e9bb97b"
+}

@@ -1,0 +1,11 @@
+{
+  "_id": "920f478620103038",
+  "name": "Stabilise",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"stabilise\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!920f478620103038"
+}

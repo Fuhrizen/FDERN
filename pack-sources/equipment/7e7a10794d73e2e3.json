@@ -1,0 +1,36 @@
+{
+  "name": "Machine pistol",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "machine-pistol",
+    "cartridge": "9x19",
+    "accuracy": 0,
+    "recoil": 2,
+    "effective": 50,
+    "maximum": 120,
+    "maxLoad": 5,
+    "currentLoad": 0,
+    "hands": 1,
+    "traits": [
+      "assault",
+      "automatic"
+    ],
+    "harm": 1,
+    "penetration": 0,
+    "compatibility": "machine-pistol",
+    "reloadCost": 1,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "burst",
+      "suppress",
+      "quick"
+    ],
+    "description": "Machine pistol. 50/120 ft. Actions: fire, reload, overwatch, burst, suppress, quick. Training prerequisites are checked when used."
+  },
+  "_id": "7e7a10794d73e2e3",
+  "_key": "!items!7e7a10794d73e2e3",
+  "folder": "7f5b5a2c336b14f1"
+}

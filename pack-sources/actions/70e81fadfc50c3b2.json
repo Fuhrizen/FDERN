@@ -1,0 +1,13 @@
+{
+  "name": "Setup",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "setup",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "70e81fadfc50c3b2",
+  "_key": "!items!70e81fadfc50c3b2",
+  "folder": "17e7950d2b11ef5a"
+}

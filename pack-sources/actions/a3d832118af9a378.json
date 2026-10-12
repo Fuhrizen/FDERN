@@ -1,0 +1,13 @@
+{
+  "name": "Interact",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "interact",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "a3d832118af9a378",
+  "_key": "!items!a3d832118af9a378",
+  "folder": "17e7950d2b11ef5a"
+}

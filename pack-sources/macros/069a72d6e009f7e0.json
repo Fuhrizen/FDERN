@@ -1,0 +1,11 @@
+{
+  "_id": "069a72d6e009f7e0",
+  "name": "Encounter Manager",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "game.fdern.encounter.render({force:true});",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!069a72d6e009f7e0"
+}

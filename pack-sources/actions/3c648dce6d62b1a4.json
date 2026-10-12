@@ -1,0 +1,13 @@
+{
+  "name": "Heavy Strike",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "heavy-strike",
+    "hands": 0,
+    "description": "2 Action(s). Required Skill rank 2. Discipline: impact-fighting. Equipment must supply this action when applicable."
+  },
+  "_id": "3c648dce6d62b1a4",
+  "_key": "!items!3c648dce6d62b1a4",
+  "folder": "1609705f82b01fbb"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "SMG Handling",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "smg-handling",
+    "advanced": false,
+    "hands": 0,
+    "description": "Requires marksmanship 2. Basic Discipline."
+  },
+  "_id": "03f7f17397be43c3",
+  "_key": "!items!03f7f17397be43c3",
+  "folder": "2b3400206435884a"
+}

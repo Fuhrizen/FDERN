@@ -1,0 +1,15 @@
+{
+  "_id": "2fc67760800dcd7d",
+  "_key": "!items!2fc67760800dcd7d",
+  "name": "service-pistol · 4 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "9x19",
+    "compatibility": "service-pistol",
+    "currentLoad": 4,
+    "maxLoad": 4,
+    "hands": 0
+  }
+}

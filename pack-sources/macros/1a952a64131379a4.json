@@ -1,0 +1,11 @@
+{
+  "_id": "1a952a64131379a4",
+  "name": "Move",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"move\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!1a952a64131379a4"
+}

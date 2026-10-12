@@ -1,0 +1,11 @@
+{
+  "_id": "806cee3a47b2b0f3",
+  "name": "Repack Magazines",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "await game.fdern.request({type:\"repack\", actor:game.fdern.selectedActor().uuid});",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!806cee3a47b2b0f3"
+}

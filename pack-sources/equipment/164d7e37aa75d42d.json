@@ -1,0 +1,19 @@
+{
+  "name": "Fragmentation grenade",
+  "type": "grenade",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "payload": "fragmentation",
+    "radius": 10,
+    "duration": 2,
+    "quantity": 1,
+    "hands": 0,
+    "actions": [
+      "throw"
+    ],
+    "description": "Throw 2 A, 45 ft maximum. One delivery Test at DC 7/9/11 by range. Full or half effect at declared centre, no scatter."
+  },
+  "_id": "164d7e37aa75d42d",
+  "_key": "!items!164d7e37aa75d42d",
+  "folder": "702c73314e9bb97b"
+}

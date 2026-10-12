@@ -1,0 +1,14 @@
+{
+  "name": "Shotgunner",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "shotgunner",
+    "advanced": false,
+    "hands": 0,
+    "description": "Requires marksmanship 2. Basic Discipline."
+  },
+  "_id": "00d33d76af7d22ce",
+  "_key": "!items!00d33d76af7d22ce",
+  "folder": "2b3400206435884a"
+}

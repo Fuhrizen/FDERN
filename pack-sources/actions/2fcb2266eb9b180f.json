@@ -1,0 +1,13 @@
+{
+  "name": "Escape",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "escape",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "2fcb2266eb9b180f",
+  "_key": "!items!2fcb2266eb9b180f",
+  "folder": "81cbe98296d4a02e"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Advanced Dressing",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "advanced-dressing",
+    "hands": 0,
+    "description": "2 Action(s). Required Skill rank 2. Discipline: combat-medicine. Equipment must supply this action when applicable."
+  },
+  "_id": "3a49436f58250ba3",
+  "_key": "!items!3a49436f58250ba3",
+  "folder": "541f1cb084f4e5d1"
+}

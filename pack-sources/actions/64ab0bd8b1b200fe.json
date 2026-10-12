@@ -1,0 +1,13 @@
+{
+  "name": "Emergency Patch",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "patch",
+    "hands": 0,
+    "description": "1 Action(s). Required Skill rank 2. Discipline: field-technician. Equipment must supply this action when applicable."
+  },
+  "_id": "64ab0bd8b1b200fe",
+  "_key": "!items!64ab0bd8b1b200fe",
+  "folder": "6d3aa424269a1203"
+}

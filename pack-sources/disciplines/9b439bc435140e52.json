@@ -1,0 +1,14 @@
+{
+  "name": "Precision Shooting",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "precision-shooting",
+    "advanced": true,
+    "hands": 0,
+    "description": "Requires marksmanship 3 and riflecraft or pistolcraft. Advanced Discipline."
+  },
+  "_id": "9b439bc435140e52",
+  "_key": "!items!9b439bc435140e52",
+  "folder": "a16e3ad797303726"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Bolt-action precision",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "precision",
+    "cartridge": "7.62x51",
+    "accuracy": 2,
+    "recoil": 2,
+    "effective": 200,
+    "maximum": 450,
+    "maxLoad": 2,
+    "currentLoad": 0,
+    "hands": 2,
+    "traits": [
+      "manual",
+      "optic"
+    ],
+    "harm": 4,
+    "penetration": 2,
+    "compatibility": "bolt-precision",
+    "reloadCost": 1,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "precision",
+      "observe",
+      "cycle"
+    ],
+    "description": "Bolt-action precision. 200/450 ft. Actions: fire, reload, overwatch, precision, observe, cycle. Training prerequisites are checked when used."
+  },
+  "_id": "0cfd6b5f090ac383",
+  "_key": "!items!0cfd6b5f090ac383",
+  "folder": "c30901e50b46798b"
+}

@@ -1,0 +1,11 @@
+{
+  "_id": "917ffe819fd1d4b7",
+  "name": "Aim",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"aim\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!917ffe819fd1d4b7"
+}

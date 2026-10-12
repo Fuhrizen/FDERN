@@ -1,0 +1,15 @@
+{
+  "_id": "ea780698ff4d30da",
+  "_key": "!items!ea780698ff4d30da",
+  "name": "bolt-precision · 2 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "7.62x51",
+    "compatibility": "bolt-precision",
+    "currentLoad": 2,
+    "maxLoad": 2,
+    "hands": 0
+  }
+}

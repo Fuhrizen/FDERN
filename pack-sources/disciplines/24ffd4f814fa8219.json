@@ -1,0 +1,14 @@
+{
+  "name": "Combat Medicine",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "combat-medicine",
+    "advanced": false,
+    "hands": 0,
+    "description": "Requires medicine 2. Basic Discipline."
+  },
+  "_id": "24ffd4f814fa8219",
+  "_key": "!items!24ffd4f814fa8219",
+  "folder": "2b3400206435884a"
+}

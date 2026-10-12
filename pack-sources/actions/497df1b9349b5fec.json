@@ -1,0 +1,13 @@
+{
+  "name": "Suppress",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "suppress",
+    "hands": 0,
+    "description": "2 Action(s), 3 Load. Required Skill rank 2. Discipline: automatic-fire. Equipment must supply this action when applicable."
+  },
+  "_id": "497df1b9349b5fec",
+  "_key": "!items!497df1b9349b5fec",
+  "folder": "e031e9716493f081"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Semi-auto combat shotgun",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "shotgun",
+    "cartridge": "12-gauge",
+    "accuracy": 1,
+    "recoil": 2,
+    "effective": 30,
+    "maximum": 80,
+    "maxLoad": 3,
+    "currentLoad": 3,
+    "hands": 2,
+    "traits": [
+      "semi-automatic"
+    ],
+    "harm": 3,
+    "penetration": 0,
+    "compatibility": "loose-12-gauge",
+    "reloadCost": 1,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "close-blast"
+    ],
+    "description": "Semi-auto combat shotgun. 30/80 ft. Actions: fire, reload, overwatch, close-blast. Training prerequisites are checked when used."
+  },
+  "_id": "7a0500630a2b61f8",
+  "_key": "!items!7a0500630a2b61f8",
+  "folder": "e79d647caa21c399"
+}

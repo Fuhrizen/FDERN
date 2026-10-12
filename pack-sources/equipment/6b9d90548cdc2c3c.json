@@ -1,0 +1,14 @@
+{
+  "name": "Riot protection",
+  "type": "armour",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "ballistic": 1,
+    "meleeArmour": 3,
+    "hands": 0,
+    "description": "Use the best applicable worn rating. Armour ratings do not stack."
+  },
+  "_id": "6b9d90548cdc2c3c",
+  "_key": "!items!6b9d90548cdc2c3c",
+  "folder": "f5c7d6c622778f7b"
+}

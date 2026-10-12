@@ -1,0 +1,13 @@
+{
+  "name": "Throw",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "throw",
+    "hands": 0,
+    "description": "2 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "bb905796406617d8",
+  "_key": "!items!bb905796406617d8",
+  "folder": "b1b2f1ac5043a90e"
+}

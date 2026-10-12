@@ -1,0 +1,15 @@
+{
+  "_id": "12adec909b0f7e4c",
+  "_key": "!items!12adec909b0f7e4c",
+  "name": "grenade-40mm · 1 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "grenade-40mm",
+    "compatibility": "grenade-40mm",
+    "currentLoad": 1,
+    "maxLoad": 1,
+    "hands": 0
+  }
+}

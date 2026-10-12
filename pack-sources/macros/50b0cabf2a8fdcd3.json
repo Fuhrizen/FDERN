@@ -1,0 +1,11 @@
+{
+  "_id": "50b0cabf2a8fdcd3",
+  "name": "Precision Shot",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"precision\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!50b0cabf2a8fdcd3"
+}

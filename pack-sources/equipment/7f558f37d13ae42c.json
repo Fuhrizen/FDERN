@@ -1,0 +1,15 @@
+{
+  "_id": "7f558f37d13ae42c",
+  "_key": "!items!7f558f37d13ae42c",
+  "name": "light-mg · 6 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "5.56",
+    "compatibility": "light-mg",
+    "currentLoad": 6,
+    "maxLoad": 6,
+    "hands": 0
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Move",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "move",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "012eec750d7a7503",
+  "_key": "!items!012eec750d7a7503",
+  "folder": "e0db2043003e5cc0"
+}

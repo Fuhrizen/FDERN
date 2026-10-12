@@ -1,0 +1,13 @@
+{
+  "name": "Intercept",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "intercept",
+    "hands": 0,
+    "description": "1 Action(s). Required Skill rank 2. Discipline: polearm-training. Equipment must supply this action when applicable."
+  },
+  "_id": "f44cb25144fa0465",
+  "_key": "!items!f44cb25144fa0465",
+  "folder": "17e7950d2b11ef5a"
+}

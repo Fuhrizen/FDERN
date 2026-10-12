@@ -1,0 +1,13 @@
+{
+  "name": "Disarm",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "disarm",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "ca6a263dbe7bc5fc",
+  "_key": "!items!ca6a263dbe7bc5fc",
+  "folder": "81cbe98296d4a02e"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Single-shot grenade launcher",
+  "type": "launcher",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "launcher",
+    "cartridge": "grenade-40mm",
+    "compatibility": "grenade-40mm",
+    "accuracy": 0,
+    "recoil": 2,
+    "harm": 3,
+    "penetration": 0,
+    "effective": 100,
+    "maximum": 250,
+    "fireCost": 1,
+    "reloadCost": 2,
+    "maxLoad": 1,
+    "currentLoad": 0,
+    "hands": 2,
+    "payload": "fragmentation",
+    "radius": 10,
+    "traits": [],
+    "actions": [
+      "launch",
+      "reload"
+    ]
+  },
+  "_id": "561684c2910447ab",
+  "_key": "!items!561684c2910447ab",
+  "folder": "2dfe8e892f739b85"
+}

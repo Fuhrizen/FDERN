@@ -1,0 +1,19 @@
+{
+  "name": "Incendiary grenade",
+  "type": "grenade",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "payload": "incendiary",
+    "radius": 10,
+    "duration": 2,
+    "quantity": 1,
+    "hands": 0,
+    "actions": [
+      "throw"
+    ],
+    "description": "Throw 2 A, 45 ft maximum. One delivery Test at DC 7/9/11 by range. Full or half effect at declared centre, no scatter."
+  },
+  "_id": "49f6498f4ad062e2",
+  "_key": "!items!49f6498f4ad062e2",
+  "folder": "702c73314e9bb97b"
+}

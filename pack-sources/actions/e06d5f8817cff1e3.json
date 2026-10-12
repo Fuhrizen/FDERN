@@ -1,0 +1,13 @@
+{
+  "name": "Stagger",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "stagger",
+    "hands": 0,
+    "description": "2 Action(s). Required Skill rank 2. Discipline: impact-fighting. Equipment must supply this action when applicable."
+  },
+  "_id": "e06d5f8817cff1e3",
+  "_key": "!items!e06d5f8817cff1e3",
+  "folder": "1609705f82b01fbb"
+}

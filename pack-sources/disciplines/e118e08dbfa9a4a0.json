@@ -1,0 +1,14 @@
+{
+  "name": "Impact Fighting",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "impact-fighting",
+    "advanced": false,
+    "hands": 0,
+    "description": "Requires melee 2. Basic Discipline."
+  },
+  "_id": "e118e08dbfa9a4a0",
+  "_key": "!items!e118e08dbfa9a4a0",
+  "folder": "2b3400206435884a"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "War hammer",
+  "type": "melee",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "war-hammer",
+    "harm": 4,
+    "penetration": 1,
+    "reach": 5,
+    "strain": 2,
+    "hands": 2,
+    "traits": [],
+    "accuracy": 0,
+    "actions": [
+      "strike",
+      "grapple",
+      "shove",
+      "disarm",
+      "takedown",
+      "heavy-strike",
+      "stagger"
+    ]
+  },
+  "_id": "150347ea0729f701",
+  "_key": "!items!150347ea0729f701",
+  "folder": "c561b8b997de892c"
+}

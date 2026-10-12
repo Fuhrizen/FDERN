@@ -1,0 +1,17 @@
+{
+  "name": "Medical kit",
+  "type": "gear",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "hands": 0,
+    "actions": [
+      "field-dressing",
+      "advanced-dressing",
+      "stabilise"
+    ],
+    "description": "Field Dressing: Medicine 1+, 2 A, DC 9, removes 1 Wound and 1 Pressure, twice successfully per patient per encounter. Stabilise: 2 A, DC 9 + repeat Down episodes."
+  },
+  "_id": "2329703bb99ae512",
+  "_key": "!items!2329703bb99ae512",
+  "folder": "c022b514bd4e08e3"
+}

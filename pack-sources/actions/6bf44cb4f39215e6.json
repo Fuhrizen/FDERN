@@ -1,0 +1,13 @@
+{
+  "name": "Close Blast",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "close-blast",
+    "hands": 0,
+    "description": "1 Action(s), 1 Load. Required Skill rank 2. Discipline: shotgunner. Equipment must supply this action when applicable."
+  },
+  "_id": "6bf44cb4f39215e6",
+  "_key": "!items!6bf44cb4f39215e6",
+  "folder": "f03aa311c8a6abb0"
+}

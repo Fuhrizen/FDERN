@@ -1,0 +1,11 @@
+{
+  "_id": "d48d37b123cef68e",
+  "name": "Strike",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"strike\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!d48d37b123cef68e"
+}

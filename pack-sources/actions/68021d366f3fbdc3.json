@@ -1,0 +1,13 @@
+{
+  "name": "Step into Cover",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "step",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "68021d366f3fbdc3",
+  "_key": "!items!68021d366f3fbdc3",
+  "folder": "e0db2043003e5cc0"
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Baton",
+  "type": "melee",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "baton",
+    "harm": 2,
+    "penetration": 0,
+    "reach": 5,
+    "strain": 1,
+    "hands": 1,
+    "traits": [
+      "non-lethal"
+    ],
+    "accuracy": 0,
+    "actions": [
+      "strike",
+      "grapple",
+      "shove",
+      "disarm",
+      "takedown",
+      "stagger"
+    ]
+  },
+  "_id": "09cfaf44cfa017a4",
+  "_key": "!items!09cfaf44cfa017a4",
+  "folder": "c561b8b997de892c"
+}

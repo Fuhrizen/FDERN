@@ -1,0 +1,35 @@
+{
+  "name": "Submachine gun",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "smg",
+    "cartridge": "9x19",
+    "accuracy": 1,
+    "recoil": 1,
+    "effective": 60,
+    "maximum": 150,
+    "maxLoad": 5,
+    "currentLoad": 0,
+    "hands": 2,
+    "traits": [
+      "assault",
+      "automatic"
+    ],
+    "harm": 1,
+    "penetration": 0,
+    "compatibility": "smg",
+    "reloadCost": 1,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "burst",
+      "suppress"
+    ],
+    "description": "Submachine gun. 60/150 ft. Actions: fire, reload, overwatch, burst, suppress. Training prerequisites are checked when used."
+  },
+  "_id": "2cc4c91d1d6e95d5",
+  "_key": "!items!2cc4c91d1d6e95d5",
+  "folder": "4163d8719ac50fe3"
+}

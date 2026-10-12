@@ -1,0 +1,28 @@
+{
+  "name": "Long sword",
+  "type": "melee",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "long-sword",
+    "harm": 3,
+    "penetration": 1,
+    "reach": 5,
+    "strain": 1,
+    "hands": 2,
+    "traits": [
+      "parry"
+    ],
+    "accuracy": 0,
+    "actions": [
+      "strike",
+      "grapple",
+      "shove",
+      "disarm",
+      "takedown",
+      "lunge"
+    ]
+  },
+  "_id": "f0e83af203b07d0a",
+  "_key": "!items!f0e83af203b07d0a",
+  "folder": "c561b8b997de892c"
+}

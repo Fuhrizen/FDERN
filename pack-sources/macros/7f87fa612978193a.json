@@ -1,0 +1,11 @@
+{
+  "_id": "7f87fa612978193a",
+  "name": "Launch Payload",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"launch\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!7f87fa612978193a"
+}

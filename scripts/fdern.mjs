@@ -1,0 +1,48 @@
+import {CharacterData,EquipmentData,FdernActor,FdernItem} from './models.mjs';
+import {FdernActorSheet,FdernItemSheet} from './sheets.mjs';
+import {CharacterWizard} from './wizard.mjs';
+import {EncounterManager} from './encounter.mjs';
+import {FdernCombat} from './combat.mjs';
+import {registerSocket,serial} from './socket.mjs';
+import {execute} from './service.mjs';
+import {registerMovement,interruptMovement} from './movement.mjs';
+import {terrainEditor,distanceBetween} from './terrain.mjs';
+import {pickPoint,resolveHazards,expireAreas} from './areas.mjs';
+import {undoDamage} from './damage.mjs';
+import {attack} from './attacks.mjs';
+import {guard,readied,controllerInput,combatantFor} from './utils.mjs';
+import {UNIVERSAL,ICON} from './config.mjs';
+Hooks.once('init',()=>{
+  CONFIG.Actor.documentClass=FdernActor;CONFIG.Item.documentClass=FdernItem;CONFIG.Combat.documentClass=FdernCombat;
+  CONFIG.Actor.dataModels={character:CharacterData,npc:CharacterData};CONFIG.Item.dataModels=Object.fromEntries(['firearm','melee','shield','armour','magazine','grenade','launcher','gear','discipline','action'].map(k=>[k,EquipmentData]));
+  CONFIG.ActiveEffect.legacyTransferral=false;CONFIG.ActiveEffect.phases={initial:{priority:0,label:'Initial'},final:{priority:100,label:'Final'}};
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(foundry.documents.Actor,'fdern',FdernActorSheet,{types:['character','npc'],makeDefault:true,label:'FDERN Character'});
+  foundry.applications.apps.DocumentSheetConfig.registerSheet(foundry.documents.Item,'fdern',FdernItemSheet,{makeDefault:true,label:'FDERN Item'});
+  CONFIG.statusEffects=[{id:'dead',name:'Dead',img:'icons/svg/skull.svg'},{id:'down',name:'Down',img:'icons/svg/falling.svg'},{id:'impaired',name:'Impaired',img:'icons/svg/blood.svg'},{id:'threatened',name:'Threatened',img:'icons/svg/target.svg'},{id:'pinned',name:'Pinned',img:'icons/svg/net.svg'},{id:'overwhelmed',name:'Overwhelmed',img:'icons/svg/terror.svg'},{id:'prone',name:'Prone',img:'icons/svg/falling.svg'},{id:'take-cover',name:'Take Cover',img:'icons/svg/shield.svg'},{id:'grappled',name:'Grappled',img:'icons/svg/anchor.svg'},{id:'stunned',name:'Temporary Stun',img:'icons/svg/daze.svg'},{id:'overwatch',name:'Reserved Reaction',img:'icons/svg/eye.svg'}];
+  game.settings.register('fdern','enforceMovement',{name:'Enforce paid movement',hint:'Movement in combat requires a paid Move, Disengage, or reaction allowance. GM correction macros can bypass this.',scope:'world',config:true,type:Boolean,default:true});
+  game.settings.register('fdern','schemaVersion',{scope:'world',config:false,type:String,default:'0.1.0'});
+  game.fdern={CharacterWizard,EncounterManager,terrainEditor,distanceBetween,resolveHazards,expireAreas,interruptMovement,pickPoint,selectedActor(){const actor=canvas.tokens.controlled[0]?.actor??game.user.character;if(!actor)throw Error('Select an owned token or assign a character.');return actor;}};
+});
+Hooks.once('ready',()=>{
+  game.fdern.request=registerSocket(execute);game.fdern.encounter=new EncounterManager();
+  const pendingActors=new Set();
+  game.fdern.act=async(actor,id,item=null,options={})=>{
+    if(!actor)actor=game.fdern.selectedActor();if(typeof item==='string')item=actor.items.get(item);const target=options.target?.document??options.target??game.user.targets.first()?.document;
+    if(!item&&!UNIVERSAL.includes(id)&&!['strike','grapple','shove','disarm','takedown'].includes(id))item=readied(actor).find(i=>i.system.actions.includes(id))??actor.items.find(i=>i.system.actions.includes(id));
+    if(id==='aim'&&!item)item=readied(actor).find(i=>i.type==='firearm');
+    const point=['throw','launch'].includes(id)?options.point??await pickPoint():undefined;if(['throw','launch'].includes(id)&&!point)return;
+    if(pendingActors.has(actor.uuid))throw Error('This character already has an action awaiting resolution.');pendingActors.add(actor.uuid);try{return await game.fdern.request({type:'act',actor:actor.uuid,action:id,item:item?.id,target:target?.uuid,point});}finally{pendingActors.delete(actor.uuid);}
+  };
+  game.fdern.opportunity=async(actor,target)=>{if(!game.user.isGM)throw Error('The GM resolves opportunity strikes.');const c=actor.system.combat;if(!c.reactionAvailable||c.overwatch.active||c.wounds>=3)return;const choice=await controllerInput(actor,'Opportunity Strike','<p>Spend your Reaction on one immediate melee Strike?</p><select name="response"><option value="no">No</option><option value="yes">Strike</option></select>');if(choice?.response!=='yes')return;await actor.update({'system.combat.reactionAvailable':false});return attack(actor,'strike',readied(actor).find(i=>i.type==='melee'),target,{reaction:true});};
+  registerMovement();
+});
+function refresh(){game.fdern?.encounter?.rendered&&game.fdern.encounter.render();}
+for(const hook of ['updateCombat','createCombatant','deleteCombatant','updateCombatant','updateItem','createItem','deleteItem'])Hooks.on(hook,refresh);
+Hooks.on('updateActor',async actor=>{refresh();if(game.users.activeGM?.id!==game.user.id)return;await syncConditions(actor);});
+async function syncConditions(actor){const c=actor.system.combat;const desired={dead:c.dead,down:c.wounds>=3,impaired:c.wounds===2,threatened:c.pressure>=2&&c.pressure<5,pinned:c.pressure>=5&&c.pressure<7,overwhelmed:c.pressure===7,prone:c.prone,'take-cover':c.takeCover,grappled:!!(c.grappledBy||c.grappling),stunned:c.stunEffect>0,overwatch:c.overwatch.active};
+  for(const [id,active] of Object.entries(desired)){const effect=actor.effects.find(e=>e.getFlag('fdern','condition')===id);if(active&&!effect){const status=CONFIG.statusEffects.find(s=>s.id===id);await actor.createEmbeddedDocuments('ActiveEffect',[{name:status.name,img:status.img,statuses:[id],changes:[],flags:{fdern:{condition:id}}}]);}else if(!active&&effect)await effect.delete();}
+}
+Hooks.on('renderCombatTracker',(app,html)=>{if(html.querySelector('[data-fdern-encounter]'))return;const button=document.createElement('button');button.type='button';button.dataset.fdernEncounter='';button.innerHTML='<i class="fas fa-dice"></i> FDERN Encounter';button.addEventListener('click',()=>game.fdern.encounter.render({force:true}));html.prepend(button);});
+Hooks.on('getSceneControlButtons',controls=>{if(!game.user.isGM)return;const region=controls.regions;if(region)region.tools.fdernTerrain={name:'fdernTerrain',title:'FDERN: Cover & Difficult Terrain',icon:'fas fa-shield-halved',button:true,onChange:guard(()=>terrainEditor())};});
+Hooks.on('renderChatMessageHTML',(message,html)=>{const command=message.getFlag('fdern','command');if(command){html.hidden=true;return;}const button=html.querySelector('[data-fdern-undo]');if(button){button.hidden=!game.user.isGM;button.addEventListener('click',guard(()=>undoDamage(message)));}});
+Hooks.on('hotbarDrop',(bar,data,slot)=>{if(data.type!=='Item')return;guard(async()=>{const item=await fromUuid(data.uuid);if(!item?.actor)return;const command=`const item = await fromUuid(${JSON.stringify(item.uuid)}); if (!item?.actor) return ui.notifications.warn("Item no longer exists."); await game.fdern.act(item.actor, ${JSON.stringify(item.system.actions[0]??'ready')}, item);`;let macro=game.macros.find(m=>m.command===command);if(!macro)macro=await foundry.documents.Macro.create({name:item.name,type:'script',img:item.img,command});await game.user.assignHotbarMacro(macro,slot);})();return false;});

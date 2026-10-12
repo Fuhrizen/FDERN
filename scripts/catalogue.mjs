@@ -1,0 +1,41 @@
+import {DISCIPLINES,ICON,ACTIONS} from './config.mjs';
+const entry=(id,name,type,system)=>({id,name,type,img:ICON,system});
+const firearms=[
+ ['service-pistol','Service pistol','pistol','9x19',1,1,40,90,4,1,['assault'],1,0],
+ ['heavy-pistol','Heavy pistol','pistol','.45-acp',0,2,40,90,3,1,['assault'],2,0],
+ ['machine-pistol','Machine pistol','machine-pistol','9x19',0,2,50,120,5,1,['assault','automatic'],1,0],
+ ['smg','Submachine gun','smg','9x19',1,1,60,150,5,2,['assault','automatic'],1,0],
+ ['short-carbine','Short carbine','rifle','5.56',0,1,120,300,4,2,['assault','automatic'],2,1],
+ ['service-rifle','Service rifle','rifle','5.56',1,1,150,330,4,2,['automatic'],2,1],
+ ['intermediate-rifle','Intermediate rifle','rifle','7.62x39',0,2,110,300,4,2,['automatic'],3,1],
+ ['battle-rifle','Battle rifle','rifle','7.62x51',-1,3,150,360,4,2,['automatic'],4,2],
+ ['precision-semi','Precision semi-auto','precision','7.62x51',1,2,180,420,2,2,['semi-automatic','optic'],4,2],
+ ['bolt-precision','Bolt-action precision','precision','7.62x51',2,2,200,450,2,2,['manual','optic'],4,2],
+ ['combat-shotgun','Semi-auto combat shotgun','shotgun','12-gauge',1,2,30,80,3,2,['semi-automatic'],3,0],
+ ['pump-shotgun','Pump shotgun','shotgun','12-gauge',1,2,30,80,4,2,['manual'],3,0],
+ ['light-mg','Light machine gun','support','5.56',0,2,150,360,6,2,['automatic','heavy','support'],2,1],
+ ['gpmg','General-purpose MG','support','7.62x51',-1,3,180,420,8,2,['automatic','heavy','support'],4,2]
+];
+export const CATALOGUE=firearms.map(([id,name,family,cartridge,accuracy,recoil,effective,maximum,maxLoad,hands,traits,harm,penetration])=>{
+  const actions=['fire','reload','overwatch'];if(traits.includes('automatic'))actions.push('burst','suppress');if(['pistol','machine-pistol'].includes(family))actions.push('quick');if(family==='precision')actions.push('precision','observe');if(family==='shotgun')actions.push('close-blast');if(traits.includes('manual'))actions.push('cycle');if(family==='support')actions.push('setup','pickup','sustained');
+  const compatibility=['short-carbine','service-rifle'].includes(id)?'stanag-556':family==='shotgun'?'loose-12-gauge':id;
+  return entry(id,name,'firearm',{family,cartridge,accuracy,recoil,effective,maximum,maxLoad,currentLoad:family==='shotgun'?maxLoad:0,hands,traits,harm,penetration,compatibility,reloadCost:family==='support'?2:1,actions,description:`${name}. ${effective}/${maximum} ft. Actions: ${actions.join(', ')}. Training prerequisites are checked when used.`});
+});
+for(const [id,name,harm,penetration,reach,strain,hands,traits,extra] of [
+ ['knife','Fighting knife',2,0,5,1,1,[],[]],['baton','Baton',2,0,5,1,1,['non-lethal'],['stagger']],['short-sword','Short sword',3,0,5,1,1,['parry'],['lunge']],['long-sword','Long sword',3,1,5,1,2,['parry'],['lunge']],['hand-axe','Hand axe',4,0,5,2,1,[],['heavy-strike']],['war-hammer','War hammer',4,1,5,2,2,[],['heavy-strike','stagger']],['spear','Spear',3,0,10,1,2,[],['intercept','lunge']],['staff','Staff',2,0,10,1,2,['parry'],['intercept','stagger']]
+])CATALOGUE.push(entry(id,name,'melee',{family:id,harm,penetration,reach,strain,hands,traits,accuracy:0,actions:['strike','grapple','shove','disarm','takedown',...extra]}));
+for(const [id,name,absorption,ballistic,movePenalty] of [['light-shield','Light shield',1,false,0],['reinforced-shield','Reinforced shield',2,false,0],['ballistic-shield','Heavy ballistic shield',3,true,5]])CATALOGUE.push(entry(id,name,'shield',{family:'shield',harm:1,penetration:0,reach:5,strain:1,hands:1,absorption,movePenalty,traits:ballistic?['ballistic']:[],actions:['strike','cover-ally'],description:'Shield Absorb uses a Reaction after a hit. Breaks after absorbing a hit with original Harm at least twice its Absorption. No shield HP.'}));
+for(const [id,name,ballistic,meleeArmour] of [['clothing','Everyday clothing',0,0],['workwear','Protective workwear',0,1],['soft-vest','Soft ballistic vest',2,0],['plate-carrier','Plate carrier',4,1],['heavy-armour','Heavy specialist armour',5,2],['riot-armour','Riot protection',1,3]])CATALOGUE.push(entry(id,name,'armour',{ballistic,meleeArmour,hands:0,description:'Use the best applicable worn rating. Armour ratings do not stack.'}));
+for(const [id,name,payload,radius] of [['frag','Fragmentation grenade','fragmentation',10],['he','High explosive grenade','he',10],['flash','Flash grenade','flash',10],['concussion','Concussion grenade','concussion',10],['smoke','Smoke grenade','smoke',15],['incendiary','Incendiary grenade','incendiary',10]])CATALOGUE.push(entry(id,name,'grenade',{payload,radius,duration:2,quantity:1,hands:0,actions:['throw'],description:'Throw 2 A, 45 ft maximum. One delivery Test at DC 7/9/11 by range. Full or half effect at declared centre, no scatter.'}));
+CATALOGUE.push(entry('rocket-launcher','Shoulder rocket launcher (HE)','launcher',{family:'launcher',cartridge:'rocket-he',compatibility:'rocket-he',accuracy:0,recoil:3,harm:5,penetration:2,effective:75,maximum:200,fireCost:2,reloadCost:2,maxLoad:1,currentLoad:0,hands:2,payload:'rocket',radius:10,traits:['heavy'],actions:['launch','reload']}));
+CATALOGUE.push(entry('grenade-launcher','Single-shot grenade launcher','launcher',{family:'launcher',cartridge:'grenade-40mm',compatibility:'grenade-40mm',accuracy:0,recoil:2,harm:3,penetration:0,effective:100,maximum:250,fireCost:1,reloadCost:2,maxLoad:1,currentLoad:0,hands:2,payload:'fragmentation',radius:10,traits:[],actions:['launch','reload']}));
+CATALOGUE.push(entry('medical-kit','Medical kit','gear',{hands:0,actions:['field-dressing','advanced-dressing','stabilise'],description:'Field Dressing: Medicine 1+, 2 A, DC 9, removes 1 Wound and 1 Pressure, twice successfully per patient per encounter. Stabilise: 2 A, DC 9 + repeat Down episodes.'}));
+CATALOGUE.push(entry('engineering-tools','Engineering tools','gear',{hands:0,actions:['patch'],description:'Emergency Patch with Field Technician and Engineering 2. One minor equipment function; DC 11, 1 A.'}));
+const mounted=structuredClone(CATALOGUE.find(i=>i.id==='gpmg'));mounted.id='mounted-mg';mounted.name='Mounted general-purpose MG';mounted.system.family='support';mounted.system.traits.push('static');mounted.system.description='A static mount is equipment, not an extra combatant. Setup/Pickup 1 A; deployed firing position required. GM establishes firing arc; rotate beyond it with Interact.';CATALOGUE.push(mounted);
+export function disciplineItem(id){const d=DISCIPLINES[id];return {name:d.name,type:'discipline',img:ICON,system:{disciplineId:id,advanced:!!d.advanced,hands:0,description:`Requires ${d.skill} ${d.rank}${d.all?' and '+d.all.join(', '):''}${d.any?' and '+d.any.join(' or '):''}${d.basic?' and any basic Discipline':''}. ${d.advanced?'Advanced':'Basic'} Discipline.`}};}
+export function loadoutItems(draft){const output=[];for(const slot of ['primary','secondary','tertiary']){const source=CATALOGUE.find(i=>i.id===draft[slot]);if(!source)throw Error('Unknown loadout item.');const item=structuredClone(source);delete item.id;item._id=foundry.utils.randomID();item.system.slot=slot;item.system.readied=slot==='primary'&&['firearm','melee','shield','launcher'].includes(item.type);output.push(item);
+    if(['firearm','launcher'].includes(item.type)){const tube=item.system.family==='shotgun';for(let index=0;index<3;index++){const id=foundry.utils.randomID();output.push({_id:id,name:`${item.name} ${tube?'loose supply':'source'} ${String.fromCharCode(65+index)}`,type:'magazine',img:ICON,system:{cartridge:item.system.cartridge,compatibility:item.system.compatibility,currentLoad:item.system.maxLoad,maxLoad:item.system.maxLoad,hands:0}});if(index===0&&!tube)item.system.magazineId=id;}}
+  }
+  const armour=CATALOGUE.find(i=>i.id===draft.armour&&i.type==='armour');if(armour){const item=structuredClone(armour);delete item.id;item._id=foundry.utils.randomID();item.system.worn=true;output.push(item);}return output;
+}
+export const actionItem=(id,a)=>({name:a.name,type:'action',img:ICON,system:{actionId:id,hands:0,description:`${a.cost} Action(s)${a.load?`, ${a.load} Load`:''}. ${a.rank?`Required Skill rank ${a.rank}. `:''}${a.discipline?`Discipline: ${a.discipline}. `:''}Equipment must supply this action when applicable.`}});

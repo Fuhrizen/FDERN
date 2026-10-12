@@ -1,0 +1,13 @@
+{
+  "name": "Assist",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "assist",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "3e89672f3eef4d4f",
+  "_key": "!items!3e89672f3eef4d4f",
+  "folder": "17e7950d2b11ef5a"
+}

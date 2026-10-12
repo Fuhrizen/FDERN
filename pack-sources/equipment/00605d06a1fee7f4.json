@@ -1,0 +1,15 @@
+{
+  "_id": "00605d06a1fee7f4",
+  "_key": "!items!00605d06a1fee7f4",
+  "name": "stanag-556 · 4 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "5.56",
+    "compatibility": "stanag-556",
+    "currentLoad": 4,
+    "maxLoad": 4,
+    "hands": 0
+  }
+}

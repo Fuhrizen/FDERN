@@ -1,0 +1,11 @@
+{
+  "_id": "e9878359af99f417",
+  "name": "Suppress",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"suppress\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!e9878359af99f417"
+}

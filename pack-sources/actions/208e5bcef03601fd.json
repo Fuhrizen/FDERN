@@ -1,0 +1,13 @@
+{
+  "name": "Takedown",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "takedown",
+    "hands": 0,
+    "description": "2 Action(s). Required Skill rank 2. Discipline: grappling. Equipment must supply this action when applicable."
+  },
+  "_id": "208e5bcef03601fd",
+  "_key": "!items!208e5bcef03601fd",
+  "folder": "81cbe98296d4a02e"
+}

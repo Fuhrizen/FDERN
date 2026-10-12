@@ -1,0 +1,35 @@
+{
+  "name": "Short carbine",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "rifle",
+    "cartridge": "5.56",
+    "accuracy": 0,
+    "recoil": 1,
+    "effective": 120,
+    "maximum": 300,
+    "maxLoad": 4,
+    "currentLoad": 0,
+    "hands": 2,
+    "traits": [
+      "assault",
+      "automatic"
+    ],
+    "harm": 2,
+    "penetration": 1,
+    "compatibility": "stanag-556",
+    "reloadCost": 1,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "burst",
+      "suppress"
+    ],
+    "description": "Short carbine. 120/300 ft. Actions: fire, reload, overwatch, burst, suppress. Training prerequisites are checked when used."
+  },
+  "_id": "fba9eeb43c500de1",
+  "_key": "!items!fba9eeb43c500de1",
+  "folder": "4b99737308e559fe"
+}

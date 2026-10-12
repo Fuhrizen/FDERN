@@ -1,0 +1,25 @@
+{
+  "name": "Fighting knife",
+  "type": "melee",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "knife",
+    "harm": 2,
+    "penetration": 0,
+    "reach": 5,
+    "strain": 1,
+    "hands": 1,
+    "traits": [],
+    "accuracy": 0,
+    "actions": [
+      "strike",
+      "grapple",
+      "shove",
+      "disarm",
+      "takedown"
+    ]
+  },
+  "_id": "9fbe772a3767c48d",
+  "_key": "!items!9fbe772a3767c48d",
+  "folder": "c561b8b997de892c"
+}

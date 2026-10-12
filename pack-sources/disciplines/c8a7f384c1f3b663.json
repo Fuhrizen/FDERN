@@ -1,0 +1,14 @@
+{
+  "name": "Bladework",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "bladework",
+    "advanced": false,
+    "hands": 0,
+    "description": "Requires melee 2. Basic Discipline."
+  },
+  "_id": "c8a7f384c1f3b663",
+  "_key": "!items!c8a7f384c1f3b663",
+  "folder": "2b3400206435884a"
+}

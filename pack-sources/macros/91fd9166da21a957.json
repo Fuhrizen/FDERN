@@ -1,0 +1,11 @@
+{
+  "_id": "91fd9166da21a957",
+  "name": "Burst Fire",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"burst\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!91fd9166da21a957"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Shoulder rocket launcher (HE)",
+  "type": "launcher",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "launcher",
+    "cartridge": "rocket-he",
+    "compatibility": "rocket-he",
+    "accuracy": 0,
+    "recoil": 3,
+    "harm": 5,
+    "penetration": 2,
+    "effective": 75,
+    "maximum": 200,
+    "fireCost": 2,
+    "reloadCost": 2,
+    "maxLoad": 1,
+    "currentLoad": 0,
+    "hands": 2,
+    "payload": "rocket",
+    "radius": 10,
+    "traits": [
+      "heavy"
+    ],
+    "actions": [
+      "launch",
+      "reload"
+    ]
+  },
+  "_id": "80b1e6cdca4a5dc5",
+  "_key": "!items!80b1e6cdca4a5dc5",
+  "folder": "2dfe8e892f739b85"
+}

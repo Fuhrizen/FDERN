@@ -1,0 +1,39 @@
+{
+  "name": "General-purpose MG",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "support",
+    "cartridge": "7.62x51",
+    "accuracy": -1,
+    "recoil": 3,
+    "effective": 180,
+    "maximum": 420,
+    "maxLoad": 8,
+    "currentLoad": 0,
+    "hands": 2,
+    "traits": [
+      "automatic",
+      "heavy",
+      "support"
+    ],
+    "harm": 4,
+    "penetration": 2,
+    "compatibility": "gpmg",
+    "reloadCost": 2,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "burst",
+      "suppress",
+      "setup",
+      "pickup",
+      "sustained"
+    ],
+    "description": "General-purpose MG. 180/420 ft. Actions: fire, reload, overwatch, burst, suppress, setup, pickup, sustained. Training prerequisites are checked when used."
+  },
+  "_id": "d566138531a61853",
+  "_key": "!items!d566138531a61853",
+  "folder": "d5ceb0f6e035c9a6"
+}

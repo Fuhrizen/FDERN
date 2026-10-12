@@ -1,0 +1,13 @@
+{
+  "name": "Shove",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "shove",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "2183f43e3cbc6f27",
+  "_key": "!items!2183f43e3cbc6f27",
+  "folder": "81cbe98296d4a02e"
+}

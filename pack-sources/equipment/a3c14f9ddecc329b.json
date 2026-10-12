@@ -1,0 +1,27 @@
+{
+  "name": "Spear",
+  "type": "melee",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "spear",
+    "harm": 3,
+    "penetration": 0,
+    "reach": 10,
+    "strain": 1,
+    "hands": 2,
+    "traits": [],
+    "accuracy": 0,
+    "actions": [
+      "strike",
+      "grapple",
+      "shove",
+      "disarm",
+      "takedown",
+      "intercept",
+      "lunge"
+    ]
+  },
+  "_id": "a3c14f9ddecc329b",
+  "_key": "!items!a3c14f9ddecc329b",
+  "folder": "c561b8b997de892c"
+}

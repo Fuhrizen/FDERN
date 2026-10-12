@@ -1,0 +1,26 @@
+{
+  "name": "Hand axe",
+  "type": "melee",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "hand-axe",
+    "harm": 4,
+    "penetration": 0,
+    "reach": 5,
+    "strain": 2,
+    "hands": 1,
+    "traits": [],
+    "accuracy": 0,
+    "actions": [
+      "strike",
+      "grapple",
+      "shove",
+      "disarm",
+      "takedown",
+      "heavy-strike"
+    ]
+  },
+  "_id": "0e382028e9f61772",
+  "_key": "!items!0e382028e9f61772",
+  "folder": "c561b8b997de892c"
+}

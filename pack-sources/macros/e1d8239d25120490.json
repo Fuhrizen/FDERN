@@ -1,0 +1,11 @@
+{
+  "_id": "e1d8239d25120490",
+  "name": "Throw Grenade",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"throw\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!e1d8239d25120490"
+}

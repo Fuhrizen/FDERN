@@ -1,0 +1,33 @@
+{
+  "name": "Heavy pistol",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "pistol",
+    "cartridge": ".45-acp",
+    "accuracy": 0,
+    "recoil": 2,
+    "effective": 40,
+    "maximum": 90,
+    "maxLoad": 3,
+    "currentLoad": 0,
+    "hands": 1,
+    "traits": [
+      "assault"
+    ],
+    "harm": 2,
+    "penetration": 0,
+    "compatibility": "heavy-pistol",
+    "reloadCost": 1,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "quick"
+    ],
+    "description": "Heavy pistol. 40/90 ft. Actions: fire, reload, overwatch, quick. Training prerequisites are checked when used."
+  },
+  "_id": "31f0ba0e5d22fe31",
+  "_key": "!items!31f0ba0e5d22fe31",
+  "folder": "dbef7cd44d11b3ec"
+}

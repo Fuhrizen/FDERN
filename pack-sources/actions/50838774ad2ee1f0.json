@@ -1,0 +1,13 @@
+{
+  "name": "Fire",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "fire",
+    "hands": 0,
+    "description": "1 Action(s), 1 Load. Equipment must supply this action when applicable."
+  },
+  "_id": "50838774ad2ee1f0",
+  "_key": "!items!50838774ad2ee1f0",
+  "folder": "f03aa311c8a6abb0"
+}

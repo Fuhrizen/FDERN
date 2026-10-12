@@ -1,0 +1,24 @@
+{
+  "name": "Reinforced shield",
+  "type": "shield",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "shield",
+    "harm": 1,
+    "penetration": 0,
+    "reach": 5,
+    "strain": 1,
+    "hands": 1,
+    "absorption": 2,
+    "movePenalty": 0,
+    "traits": [],
+    "actions": [
+      "strike",
+      "cover-ally"
+    ],
+    "description": "Shield Absorb uses a Reaction after a hit. Breaks after absorbing a hit with original Harm at least twice its Absorption. No shield HP."
+  },
+  "_id": "27d082e6b77b74af",
+  "_key": "!items!27d082e6b77b74af",
+  "folder": "c24eced0668b0de7"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Lunge",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "lunge",
+    "hands": 0,
+    "description": "2 Action(s). Required Skill rank 2. Equipment must supply this action when applicable."
+  },
+  "_id": "847beaace3fe7e34",
+  "_key": "!items!847beaace3fe7e34",
+  "folder": "81cbe98296d4a02e"
+}

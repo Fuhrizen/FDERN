@@ -1,0 +1,15 @@
+{
+  "name": "Engineering tools",
+  "type": "gear",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "hands": 0,
+    "actions": [
+      "patch"
+    ],
+    "description": "Emergency Patch with Field Technician and Engineering 2. One minor equipment function; DC 11, 1 A."
+  },
+  "_id": "e5e92b30092b2743",
+  "_key": "!items!e5e92b30092b2743",
+  "folder": "c022b514bd4e08e3"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Light shield",
+  "type": "shield",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "shield",
+    "harm": 1,
+    "penetration": 0,
+    "reach": 5,
+    "strain": 1,
+    "hands": 1,
+    "absorption": 1,
+    "movePenalty": 0,
+    "traits": [],
+    "actions": [
+      "strike",
+      "cover-ally"
+    ],
+    "description": "Shield Absorb uses a Reaction after a hit. Breaks after absorbing a hit with original Harm at least twice its Absorption. No shield HP."
+  },
+  "_id": "ad230f7ecd5713e9",
+  "_key": "!items!ad230f7ecd5713e9",
+  "folder": "c24eced0668b0de7"
+}

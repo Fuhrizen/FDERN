@@ -1,0 +1,13 @@
+{
+  "name": "Sustained Suppression",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "sustained",
+    "hands": 0,
+    "description": "2 Action(s), 4 Load. Required Skill rank 3. Discipline: support-gunner. Equipment must supply this action when applicable."
+  },
+  "_id": "ac791eab73024042",
+  "_key": "!items!ac791eab73024042",
+  "folder": "e031e9716493f081"
+}

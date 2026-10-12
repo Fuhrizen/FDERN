@@ -1,0 +1,34 @@
+{
+  "name": "Pump shotgun",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "shotgun",
+    "cartridge": "12-gauge",
+    "accuracy": 1,
+    "recoil": 2,
+    "effective": 30,
+    "maximum": 80,
+    "maxLoad": 4,
+    "currentLoad": 4,
+    "hands": 2,
+    "traits": [
+      "manual"
+    ],
+    "harm": 3,
+    "penetration": 0,
+    "compatibility": "loose-12-gauge",
+    "reloadCost": 1,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "close-blast",
+      "cycle"
+    ],
+    "description": "Pump shotgun. 30/80 ft. Actions: fire, reload, overwatch, close-blast, cycle. Training prerequisites are checked when used."
+  },
+  "_id": "4e86b99dedb11407",
+  "_key": "!items!4e86b99dedb11407",
+  "folder": "e79d647caa21c399"
+}

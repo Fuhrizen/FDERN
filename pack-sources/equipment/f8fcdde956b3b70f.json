@@ -1,0 +1,14 @@
+{
+  "name": "Plate carrier",
+  "type": "armour",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "ballistic": 4,
+    "meleeArmour": 1,
+    "hands": 0,
+    "description": "Use the best applicable worn rating. Armour ratings do not stack."
+  },
+  "_id": "f8fcdde956b3b70f",
+  "_key": "!items!f8fcdde956b3b70f",
+  "folder": "f5c7d6c622778f7b"
+}

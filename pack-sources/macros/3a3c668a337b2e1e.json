@@ -1,0 +1,11 @@
+{
+  "_id": "3a3c668a337b2e1e",
+  "name": "Character Wizard",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "new game.fdern.CharacterWizard({actor:game.fdern.selectedActor()}).render({force:true});",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!3a3c668a337b2e1e"
+}

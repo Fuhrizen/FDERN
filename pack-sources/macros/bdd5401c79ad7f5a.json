@@ -1,0 +1,11 @@
+{
+  "_id": "bdd5401c79ad7f5a",
+  "name": "Take Cover",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"take-cover\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!bdd5401c79ad7f5a"
+}

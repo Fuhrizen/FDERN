@@ -1,0 +1,13 @@
+{
+  "name": "Strike",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "strike",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "136a653c9cc2f88e",
+  "_key": "!items!136a653c9cc2f88e",
+  "folder": "1609705f82b01fbb"
+}

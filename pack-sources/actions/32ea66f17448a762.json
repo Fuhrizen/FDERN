@@ -1,0 +1,13 @@
+{
+  "name": "Stabilise",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "stabilise",
+    "hands": 0,
+    "description": "2 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "32ea66f17448a762",
+  "_key": "!items!32ea66f17448a762",
+  "folder": "541f1cb084f4e5d1"
+}

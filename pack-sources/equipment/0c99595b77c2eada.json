@@ -1,0 +1,14 @@
+{
+  "name": "Everyday clothing",
+  "type": "armour",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "ballistic": 0,
+    "meleeArmour": 0,
+    "hands": 0,
+    "description": "Use the best applicable worn rating. Armour ratings do not stack."
+  },
+  "_id": "0c99595b77c2eada",
+  "_key": "!items!0c99595b77c2eada",
+  "folder": "f5c7d6c622778f7b"
+}

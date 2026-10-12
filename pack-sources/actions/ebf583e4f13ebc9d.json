@@ -1,0 +1,13 @@
+{
+  "name": "Cover Ally",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "cover-ally",
+    "hands": 0,
+    "description": "1 Action(s). Required Skill rank 2. Discipline: shieldwork. Equipment must supply this action when applicable."
+  },
+  "_id": "ebf583e4f13ebc9d",
+  "_key": "!items!ebf583e4f13ebc9d",
+  "folder": "17e7950d2b11ef5a"
+}

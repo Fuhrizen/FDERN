@@ -1,0 +1,13 @@
+{
+  "name": "Precision Shot",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "precision",
+    "hands": 0,
+    "description": "1 Action(s), 1 Load. Required Skill rank 3. Discipline: precision-shooting. Equipment must supply this action when applicable."
+  },
+  "_id": "4a23b2a4a8074b8b",
+  "_key": "!items!4a23b2a4a8074b8b",
+  "folder": "f03aa311c8a6abb0"
+}

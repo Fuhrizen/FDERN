@@ -1,0 +1,35 @@
+{
+  "name": "Precision semi-auto",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "precision",
+    "cartridge": "7.62x51",
+    "accuracy": 1,
+    "recoil": 2,
+    "effective": 180,
+    "maximum": 420,
+    "maxLoad": 2,
+    "currentLoad": 0,
+    "hands": 2,
+    "traits": [
+      "semi-automatic",
+      "optic"
+    ],
+    "harm": 4,
+    "penetration": 2,
+    "compatibility": "precision-semi",
+    "reloadCost": 1,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "precision",
+      "observe"
+    ],
+    "description": "Precision semi-auto. 180/420 ft. Actions: fire, reload, overwatch, precision, observe. Training prerequisites are checked when used."
+  },
+  "_id": "ee2d251a3c972bda",
+  "_key": "!items!ee2d251a3c972bda",
+  "folder": "c30901e50b46798b"
+}

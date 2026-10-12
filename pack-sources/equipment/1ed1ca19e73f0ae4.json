@@ -1,0 +1,40 @@
+{
+  "name": "Mounted general-purpose MG",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "support",
+    "cartridge": "7.62x51",
+    "accuracy": -1,
+    "recoil": 3,
+    "effective": 180,
+    "maximum": 420,
+    "maxLoad": 8,
+    "currentLoad": 0,
+    "hands": 2,
+    "traits": [
+      "automatic",
+      "heavy",
+      "support",
+      "static"
+    ],
+    "harm": 4,
+    "penetration": 2,
+    "compatibility": "gpmg",
+    "reloadCost": 2,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "burst",
+      "suppress",
+      "setup",
+      "pickup",
+      "sustained"
+    ],
+    "description": "A static mount is equipment, not an extra combatant. Setup/Pickup 1 A; deployed firing position required. GM establishes firing arc; rotate beyond it with Interact."
+  },
+  "_id": "1ed1ca19e73f0ae4",
+  "_key": "!items!1ed1ca19e73f0ae4",
+  "folder": "d5ceb0f6e035c9a6"
+}

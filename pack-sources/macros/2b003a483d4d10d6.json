@@ -1,0 +1,11 @@
+{
+  "_id": "2b003a483d4d10d6",
+  "name": "Rally",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"rally\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!2b003a483d4d10d6"
+}

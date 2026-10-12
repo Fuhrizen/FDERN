@@ -1,0 +1,14 @@
+{
+  "name": "Grappling",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "grappling",
+    "advanced": false,
+    "hands": 0,
+    "description": "Requires melee 2. Basic Discipline."
+  },
+  "_id": "81ffe7bbf5ca7ffb",
+  "_key": "!items!81ffe7bbf5ca7ffb",
+  "folder": "2b3400206435884a"
+}

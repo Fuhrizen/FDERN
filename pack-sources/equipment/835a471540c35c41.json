@@ -1,0 +1,14 @@
+{
+  "name": "Protective workwear",
+  "type": "armour",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "ballistic": 0,
+    "meleeArmour": 1,
+    "hands": 0,
+    "description": "Use the best applicable worn rating. Armour ratings do not stack."
+  },
+  "_id": "835a471540c35c41",
+  "_key": "!items!835a471540c35c41",
+  "folder": "f5c7d6c622778f7b"
+}

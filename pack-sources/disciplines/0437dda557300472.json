@@ -1,0 +1,14 @@
+{
+  "name": "Automatic Fire",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "automatic-fire",
+    "advanced": false,
+    "hands": 0,
+    "description": "Requires marksmanship 2. Basic Discipline."
+  },
+  "_id": "0437dda557300472",
+  "_key": "!items!0437dda557300472",
+  "folder": "2b3400206435884a"
+}

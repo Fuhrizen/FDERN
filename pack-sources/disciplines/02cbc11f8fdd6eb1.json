@@ -1,0 +1,14 @@
+{
+  "name": "Support Gunner",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "support-gunner",
+    "advanced": true,
+    "hands": 0,
+    "description": "Requires marksmanship 3 and automatic-fire. Advanced Discipline."
+  },
+  "_id": "02cbc11f8fdd6eb1",
+  "_key": "!items!02cbc11f8fdd6eb1",
+  "folder": "a16e3ad797303726"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Polearm Training",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "polearm-training",
+    "advanced": false,
+    "hands": 0,
+    "description": "Requires melee 2. Basic Discipline."
+  },
+  "_id": "ae443cfec5e2368f",
+  "_key": "!items!ae443cfec5e2368f",
+  "folder": "2b3400206435884a"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Grapple",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "grapple",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "ef859d03a4ebb9ff",
+  "_key": "!items!ef859d03a4ebb9ff",
+  "folder": "81cbe98296d4a02e"
+}

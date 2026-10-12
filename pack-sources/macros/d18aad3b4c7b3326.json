@@ -1,0 +1,11 @@
+{
+  "_id": "d18aad3b4c7b3326",
+  "name": "Reload",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"reload\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!d18aad3b4c7b3326"
+}

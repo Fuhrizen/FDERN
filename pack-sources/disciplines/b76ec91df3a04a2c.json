@@ -1,0 +1,14 @@
+{
+  "name": "Pistolcraft",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "pistolcraft",
+    "advanced": false,
+    "hands": 0,
+    "description": "Requires marksmanship 2. Basic Discipline."
+  },
+  "_id": "b76ec91df3a04a2c",
+  "_key": "!items!b76ec91df3a04a2c",
+  "folder": "2b3400206435884a"
+}

@@ -1,0 +1,11 @@
+{
+  "_id": "45138cfb4c1c4c53",
+  "name": "GM: Correct Token Position",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "if (!game.user.isGM) return; const token=canvas.tokens.controlled[0]?.document; if(!token)return; const point=await game.fdern.pickPoint(); if(point)await token.move(point,{fdernOverride:true});",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!45138cfb4c1c4c53"
+}

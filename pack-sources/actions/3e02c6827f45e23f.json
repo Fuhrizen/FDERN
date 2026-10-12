@@ -1,0 +1,13 @@
+{
+  "name": "Rally",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "rally",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "3e02c6827f45e23f",
+  "_key": "!items!3e02c6827f45e23f",
+  "folder": "17e7950d2b11ef5a"
+}

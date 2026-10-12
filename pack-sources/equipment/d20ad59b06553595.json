@@ -1,0 +1,15 @@
+{
+  "_id": "d20ad59b06553595",
+  "_key": "!items!d20ad59b06553595",
+  "name": "rocket-he · 1 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "rocket-he",
+    "compatibility": "rocket-he",
+    "currentLoad": 1,
+    "maxLoad": 1,
+    "hands": 0
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Close Quarters Control",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "close-quarters-control",
+    "advanced": true,
+    "hands": 0,
+    "description": "Requires melee 3 and grappling. Advanced Discipline."
+  },
+  "_id": "8a7e6b5215490fc8",
+  "_key": "!items!8a7e6b5215490fc8",
+  "folder": "a16e3ad797303726"
+}

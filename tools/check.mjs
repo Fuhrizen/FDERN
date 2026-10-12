@@ -1,0 +1,10 @@
+import {readFile,readdir,stat} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import Handlebars from 'handlebars';
+const m=JSON.parse(await readFile('system.json','utf8')),p=JSON.parse(await readFile('package.json','utf8'));
+if(m.version!==p.version)throw Error('Versions differ');
+for(const path of [...m.esmodules,...m.styles,...m.languages.map(l=>l.path),'README.md','LICENSE'])await stat(path);
+for(const file of await readdir('scripts'))if(file.endsWith('.mjs'))execFileSync(process.execPath,['--check',`scripts/${file}`]);
+for(const file of await readdir('templates'))Handlebars.precompile(await readFile(`templates/${file}`,'utf8'));
+for(const file of await readdir('lang'))JSON.parse(await readFile(`lang/${file}`,'utf8'));
+console.log('Manifest, module syntax, templates, and language data validated.');

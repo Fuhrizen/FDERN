@@ -1,0 +1,28 @@
+{
+  "name": "Short sword",
+  "type": "melee",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "short-sword",
+    "harm": 3,
+    "penetration": 0,
+    "reach": 5,
+    "strain": 1,
+    "hands": 1,
+    "traits": [
+      "parry"
+    ],
+    "accuracy": 0,
+    "actions": [
+      "strike",
+      "grapple",
+      "shove",
+      "disarm",
+      "takedown",
+      "lunge"
+    ]
+  },
+  "_id": "ebdcdc593bcfe8d4",
+  "_key": "!items!ebdcdc593bcfe8d4",
+  "folder": "c561b8b997de892c"
+}

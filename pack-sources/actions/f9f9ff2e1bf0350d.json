@@ -1,0 +1,13 @@
+{
+  "name": "Overwatch",
+  "type": "action",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "actionId": "overwatch",
+    "hands": 0,
+    "description": "1 Action(s). Equipment must supply this action when applicable."
+  },
+  "_id": "f9f9ff2e1bf0350d",
+  "_key": "!items!f9f9ff2e1bf0350d",
+  "folder": "17e7950d2b11ef5a"
+}

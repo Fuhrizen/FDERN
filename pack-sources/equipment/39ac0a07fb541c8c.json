@@ -1,0 +1,15 @@
+{
+  "_id": "39ac0a07fb541c8c",
+  "_key": "!items!39ac0a07fb541c8c",
+  "name": "loose-12-gauge · 4 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "12-gauge",
+    "compatibility": "loose-12-gauge",
+    "currentLoad": 4,
+    "maxLoad": 4,
+    "hands": 0
+  }
+}

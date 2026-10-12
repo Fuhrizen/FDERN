@@ -1,0 +1,26 @@
+{
+  "name": "Heavy ballistic shield",
+  "type": "shield",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "shield",
+    "harm": 1,
+    "penetration": 0,
+    "reach": 5,
+    "strain": 1,
+    "hands": 1,
+    "absorption": 3,
+    "movePenalty": 5,
+    "traits": [
+      "ballistic"
+    ],
+    "actions": [
+      "strike",
+      "cover-ally"
+    ],
+    "description": "Shield Absorb uses a Reaction after a hit. Breaks after absorbing a hit with original Harm at least twice its Absorption. No shield HP."
+  },
+  "_id": "1a555c4d845bb6ba",
+  "_key": "!items!1a555c4d845bb6ba",
+  "folder": "c24eced0668b0de7"
+}

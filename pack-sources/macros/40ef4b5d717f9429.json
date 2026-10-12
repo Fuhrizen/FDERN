@@ -1,0 +1,11 @@
+{
+  "_id": "40ef4b5d717f9429",
+  "name": "Field Dressing",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"field-dressing\"); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!40ef4b5d717f9429"
+}

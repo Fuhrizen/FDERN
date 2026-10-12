@@ -1,0 +1,14 @@
+{
+  "name": "Riflecraft",
+  "type": "discipline",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "disciplineId": "riflecraft",
+    "advanced": false,
+    "hands": 0,
+    "description": "Requires marksmanship 2. Basic Discipline."
+  },
+  "_id": "3679bb0dee2dbb99",
+  "_key": "!items!3679bb0dee2dbb99",
+  "folder": "2b3400206435884a"
+}

@@ -1,0 +1,15 @@
+{
+  "_id": "1847ea65db7b198e",
+  "_key": "!items!1847ea65db7b198e",
+  "name": "precision-semi · 2 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "7.62x51",
+    "compatibility": "precision-semi",
+    "currentLoad": 2,
+    "maxLoad": 2,
+    "hands": 0
+  }
+}

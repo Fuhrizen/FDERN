@@ -1,0 +1,39 @@
+{
+  "name": "Light machine gun",
+  "type": "firearm",
+  "img": "systems/fdern/assets/fdern.svg",
+  "system": {
+    "family": "support",
+    "cartridge": "5.56",
+    "accuracy": 0,
+    "recoil": 2,
+    "effective": 150,
+    "maximum": 360,
+    "maxLoad": 6,
+    "currentLoad": 0,
+    "hands": 2,
+    "traits": [
+      "automatic",
+      "heavy",
+      "support"
+    ],
+    "harm": 2,
+    "penetration": 1,
+    "compatibility": "light-mg",
+    "reloadCost": 2,
+    "actions": [
+      "fire",
+      "reload",
+      "overwatch",
+      "burst",
+      "suppress",
+      "setup",
+      "pickup",
+      "sustained"
+    ],
+    "description": "Light machine gun. 150/360 ft. Actions: fire, reload, overwatch, burst, suppress, setup, pickup, sustained. Training prerequisites are checked when used."
+  },
+  "_id": "2247a47ab5d9138e",
+  "_key": "!items!2247a47ab5d9138e",
+  "folder": "3c14a70e4e495650"
+}

@@ -1,0 +1,15 @@
+{
+  "_id": "aace100fa648a5c6",
+  "_key": "!items!aace100fa648a5c6",
+  "name": "intermediate-rifle · 4 Load",
+  "type": "magazine",
+  "img": "systems/fdern/assets/fdern.svg",
+  "folder": "68177333d58bcc52",
+  "system": {
+    "cartridge": "7.62x39",
+    "compatibility": "intermediate-rifle",
+    "currentLoad": 4,
+    "maxLoad": 4,
+    "hands": 0
+  }
+}

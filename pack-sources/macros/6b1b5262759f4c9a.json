@@ -1,0 +1,11 @@
+{
+  "_id": "6b1b5262759f4c9a",
+  "name": "Escape",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { const actor=game.fdern.selectedActor(); const item=null; await game.fdern.act(actor, \"escape\", item); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!6b1b5262759f4c9a"
+}

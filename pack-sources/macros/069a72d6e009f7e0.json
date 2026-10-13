@@ -3,7 +3,7 @@
   "name": "Encounter Manager",
   "type": "script",
   "img": "systems/fdern/assets/fdern.svg",
-  "command": "game.fdern.encounter.render({force:true});",
+  "command": "try { await game.fdern.encounter.render({force:true}); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0
   },

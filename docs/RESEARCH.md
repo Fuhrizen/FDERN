@@ -1,6 +1,6 @@
 # Implementation research
 
-Reviewed 12 October 2026. The attached FDERN Core Rulebook Playtest 1.1, particularly Appendix C, is the mechanical specification. FUS rules are not inherited.
+Reviewed 12 October 2026. FDERN Core Rulebook Playtest 1.1 is the existing implementation’s mechanical specification. The attachment in this session is the FUS rulebook; the user explicitly confirmed this work is for FDERN. FUS mechanics are not inherited.
 
 | Source | Applied decision |
 | --- | --- |
@@ -12,6 +12,9 @@ Reviewed 12 October 2026. The attached FDERN Core Rulebook Playtest 1.1, particu
 | [D&D 5e Combat implementation](https://github.com/foundryvtt/dnd5e/blob/6.1.x/module/documents/combat.mjs) | Reference for extending core Combat and preserving native document lifecycle. No code copied. |
 | [DCC v14 notes](https://github.com/foundryvtt-dcc/dcc/blob/main/docs/dev/V14.md) and init-hook module | Reference for TypeDataModel registration, ApplicationV2, explicit ActiveEffect phases, current messageMode and img fields. No rules or code copied. |
 | [FUS memory helpers](https://github.com/Fuhrizen/FUS/blob/main/scripts/memory.mjs), commit 4b0b91b6b7b2c967627b2bc902c646fab07ccd2d | Ported notebook parsing, ranked search, stable tag colours, safe plain-text enrichment, and document links at the user's request. |
+
+| [PF2e Toolbelt](https://github.com/reonZ/pf2e-toolbelt) | Reference for actionable chat, controlled-target workflows and modular quality-of-life tools. FDERN uses its own native documents and rules, with no dependency or copied code. |
+| [PF2e Workbench](https://github.com/xdy/xdy-pf2e-workbench) | Reference for ready-to-use macro packs and integrated combat conveniences. All FDERN actions now have guarded macros calling the system API. |
 
 ## Resolved ambiguities
 

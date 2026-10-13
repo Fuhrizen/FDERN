@@ -1,6 +1,6 @@
 FDERN's first playable system release for Foundry VTT v14, implementing Core Rulebook Playtest 1.1.
 
-Includes live Character/NPC and equipment sheets; a saved point-spend character wizard; weighted random side activations integrated with native Combat; action, Load, Recoil, Pressure, Wounds, injury, armour, shield, medical, grenade and advancement automation; controller reaction dialogs; native Region terrain tools; paid ruler movement; FUS memory notebooks; 57 equipment/ammo profiles, 16 Disciplines, 41 action references, and 21 macros.
+Includes live Character/NPC and equipment sheets with native Foundry styling; a saved point-spend character wizard; weighted random side activations integrated with native Combat; action, Load, Recoil, Pressure, Wounds, injury, armour, shield, medical, grenade and advancement automation; controller reaction dialogs; native Region terrain tools; paid ruler movement; FUS memory notebooks; 57 equipment/ammo profiles, 16 Disciplines, 41 action references, and 47 macros.
 
 Install using the `system.json` release asset, or extract `fdern.zip` into `Data/systems/`. SHA256SUMS verifies the assets.
 

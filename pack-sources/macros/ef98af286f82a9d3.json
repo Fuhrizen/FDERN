@@ -3,7 +3,7 @@
   "name": "Define Cover / Difficult Terrain",
   "type": "script",
   "img": "systems/fdern/assets/fdern.svg",
-  "command": "await game.fdern.terrainEditor();",
+  "command": "try { await game.fdern.terrainEditor(); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0
   },

@@ -31,7 +31,7 @@ Grenades choose a point on the map and resolve full or half effect there without
 
 ## Character sheets
 
-Combat, Skills, Equipment, Biography, Memory, and Veterancy tabs use responsive cards. Sheet fields and native document updates refresh the displayed resources. Drag equipment to the hotbar to create an item macro. Character and NPC mechanics are identical.
+Combat, Skills, Equipment, Biography, Memory, and Veterancy tabs use responsive cards. Sheet fields and native document updates refresh the displayed resources. Drag equipment to the hotbar to create an item macro. Character and NPC mechanics are identical. Layout CSS controls spacing and grids; Foundry supplies colours, typography, and standard controls.
 
 Memory ports FUS's plain-text notebook: titles, body text, quoted tags, tag colours, ranked search, expandable entries, and Foundry `@UUID` links. It does not call an external service. Search `tag:"field notes"` to filter by a tag.
 
@@ -41,7 +41,7 @@ VP spending enforces costs, prerequisites, Skill/Attribute caps, and the single 
 
 The system includes equipment grouped by weapon/cartridge/family, basic and advanced Disciplines, action references, and hotbar-ready macros. Firearms use independently tracked compatible magazines, tubes, belts, or launcher sources. Reload preserves partial sources. Heavy reload progress persists across activations. Repacking outside combat conserves total Load.
 
-Macros cover attacks, movement, Aim, Rally, Reload, Take Cover, Overwatch, grenades, treatment, the wizard, notebook-related sheet access, terrain tools, and encounter management. **GM: Correct Token Position** provides an explicit movement correction.
+The macro compendium includes all 41 rules actions and six utility macros, with visible error messages for missing tokens, items, or permissions. **GM: Correct Token Position** provides an explicit movement correction.
 
 ## API
 

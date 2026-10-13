@@ -3,7 +3,7 @@
   "name": "GM: Correct Token Position",
   "type": "script",
   "img": "systems/fdern/assets/fdern.svg",
-  "command": "if (!game.user.isGM) return; const token=canvas.tokens.controlled[0]?.document; if(!token)return; const point=await game.fdern.pickPoint(); if(point)await token.move(point,{fdernOverride:true});",
+  "command": "try { if (!game.user.isGM) throw Error(\"GM only.\"); const token=canvas.tokens.controlled[0]?.document; if(!token)throw Error(\"Select a token first.\"); const point=await game.fdern.pickPoint(); if(point)await token.move(point,{fdernOverride:true}); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0
   },

@@ -3,7 +3,7 @@
   "name": "Release Grapple",
   "type": "script",
   "img": "systems/fdern/assets/fdern.svg",
-  "command": "const actor=game.fdern.selectedActor(); await game.fdern.request({type:\"release\",actor:actor.uuid});",
+  "command": "try { const actor=game.fdern.selectedActor(); await game.fdern.request({type:\"release\",actor:actor.uuid}); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0
   },

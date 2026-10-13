@@ -2,13 +2,17 @@ import {mkdir,writeFile,rm} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {compilePack} from '@foundryvtt/foundryvtt-cli';
 import {CATALOGUE,disciplineItem,actionItem} from '../scripts/catalogue.mjs';
-import {DISCIPLINES,ACTIONS,ICON} from '../scripts/config.mjs';
+import {DISCIPLINES,ACTIONS,ICON,UNIVERSAL} from '../scripts/config.mjs';
 const stableId=value=>createHash('sha256').update(value).digest('hex').slice(0,16);
 const folders=new Map();
 function folder(pack,name,parent=null){const key=`${pack}:${parent??''}:${name}`;if(!folders.has(key))folders.set(key,{_id:stableId(key),name,type:pack==='macros'?'Macro':'Item',folder:parent,sorting:'a',color:'#3a5147',_key:`!folders!${stableId(key)}`});return folders.get(key)._id;}
 const macro=(id,name,command)=>({_id:stableId(`macro:${id}`),name,type:'script',img:ICON,command,ownership:{default:0},_key:`!macros!${stableId(`macro:${id}`)}`});
-const macros=Object.entries({move:'Move',fire:'Fire',aim:'Aim',reload:'Reload',rally:'Rally','take-cover':'Take Cover',strike:'Strike',suppress:'Suppress',burst:'Burst Fire',precision:'Precision Shot',overwatch:'Prepare Overwatch',throw:'Throw Grenade',launch:'Launch Payload','field-dressing':'Field Dressing',stabilise:'Stabilise'}).map(([id,name])=>macro(id,name,`try { await game.fdern.act(game.fdern.selectedActor(), ${JSON.stringify(id)}); } catch(error) { ui.notifications.error(error.message); }`));
-macros.push(macro('encounter','Encounter Manager','game.fdern.encounter.render({force:true});'),macro('terrain','Define Cover / Difficult Terrain','await game.fdern.terrainEditor();'),macro('wizard','Character Wizard','new game.fdern.CharacterWizard({actor:game.fdern.selectedActor()}).render({force:true});'),macro('repack','Repack Magazines','await game.fdern.request({type:"repack", actor:game.fdern.selectedActor().uuid});'),macro('release','Release Grapple','const actor=game.fdern.selectedActor(); await game.fdern.request({type:"release",actor:actor.uuid});'),macro('correct-move','GM: Correct Token Position','if (!game.user.isGM) return; const token=canvas.tokens.controlled[0]?.document; if(!token)return; const point=await game.fdern.pickPoint(); if(point)await token.move(point,{fdernOverride:true});'));
+const run=body=>`try { ${body} } catch(error) { ui.notifications.error(error.message); }`;
+const macros=Object.entries(ACTIONS).map(([id,a])=>{
+  const item=id==='ready'?'actor.items.find(i=>i.system.slot)??null':UNIVERSAL.includes(id)?'null':`actor.items.filter(i=>i.system.actions?.includes(${JSON.stringify(id)})).sort((a,b)=>Number(b.system.readied)-Number(a.system.readied))[0]??null`;
+  return macro(id,a.name,run(`const actor=game.fdern.selectedActor(); const item=${item}; await game.fdern.act(actor, ${JSON.stringify(id)}, item);`));
+});
+macros.push(macro('encounter','Encounter Manager',run('await game.fdern.encounter.render({force:true});')),macro('terrain','Define Cover / Difficult Terrain',run('await game.fdern.terrainEditor();')),macro('wizard','Character Wizard',run('new game.fdern.CharacterWizard({actor:game.fdern.selectedActor()}).render({force:true});')),macro('repack','Repack Magazines',run('const actor=game.fdern.selectedActor(); await game.fdern.request({type:"repack", actor:actor.uuid});')),macro('release','Release Grapple',run('const actor=game.fdern.selectedActor(); await game.fdern.request({type:"release",actor:actor.uuid});')),macro('correct-move','GM: Correct Token Position',run('if (!game.user.isGM) throw Error("GM only."); const token=canvas.tokens.controlled[0]?.document; if(!token)throw Error("Select a token first."); const point=await game.fdern.pickPoint(); if(point)await token.move(point,{fdernOverride:true});')));
 const equipment=CATALOGUE.map(item=>{const d=structuredClone(item);delete d.id;d._id=stableId(`equipment:${item.id}`);d._key=`!items!${d._id}`;
   if(item.type==='firearm'){const category=folder('equipment','Weapons');const calibre=folder('equipment',item.system.cartridge,category);d.folder=folder('equipment',item.system.family,calibre);}
   else d.folder=folder('equipment',item.type[0].toUpperCase()+item.type.slice(1));return d;});

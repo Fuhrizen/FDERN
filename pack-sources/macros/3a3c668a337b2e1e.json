@@ -3,7 +3,7 @@
   "name": "Character Wizard",
   "type": "script",
   "img": "systems/fdern/assets/fdern.svg",
-  "command": "new game.fdern.CharacterWizard({actor:game.fdern.selectedActor()}).render({force:true});",
+  "command": "try { new game.fdern.CharacterWizard({actor:game.fdern.selectedActor()}).render({force:true}); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0
   },

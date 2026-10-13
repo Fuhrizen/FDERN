@@ -3,7 +3,7 @@
   "name": "Aim",
   "type": "script",
   "img": "systems/fdern/assets/fdern.svg",
-  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"aim\"); } catch(error) { ui.notifications.error(error.message); }",
+  "command": "try { const actor=game.fdern.selectedActor(); const item=null; await game.fdern.act(actor, \"aim\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0
   },

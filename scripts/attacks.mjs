@@ -20,7 +20,7 @@ export async function attack(actor,id,item,target,{reaction=false,modifier=0}={}
   const aim=ranged&&c.aimTarget===target.uuid&&c.aimWeapon===item?.id?(id==='precision'?2:1):0;
   const spotter=game.combat?.combatants.map(x=>x.actor).find(x=>x&&x.uuid!==actor.uuid&&x.system.combat.spot.target===target.uuid);
   const skill=ranged?'marksmanship':'melee',attribute=ranged?'agility':'might';const bonus=personalBonus(actor.system.attributes[attribute],actor.system.skills[skill]);const accumulated=reaction||suppression&&id!=='sustained'?0:c.attackPenalty;
-  const stunned=stunPenalty(c,suppression?'test':ranged?'ranged':'melee',skill);const grapplePenalty=item&&(c.grappledBy||c.grappling)?2:0;
+  const stunned=stunPenalty(c,ranged?'ranged':'melee',skill);const grapplePenalty=item&&(c.grappledBy||c.grappling)?2:0;
   const rollModifier=modifier+(id==='quick'?-1:0)+aim+(spotter&&!suppression?1:0)+s.accuracy-accumulated-stunned-grapplePenalty;
   const roll=await new foundry.dice.Roll(`2d6 + ${bonus} + ${rollModifier}`).evaluate();const hit=roll.total>=dcData.dc;
   const update={};if(stunned)update['system.combat.stunUsed']=true;if(!suppression){update['system.combat.aimTarget']='';update['system.combat.aimWeapon']='';if(spotter)await spotter.update({'system.combat.spot.target':''});}

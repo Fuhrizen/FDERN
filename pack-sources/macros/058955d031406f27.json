@@ -1,0 +1,11 @@
+{
+  "_id": "058955d031406f27",
+  "name": "Assist",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { const actor=game.fdern.selectedActor(); const item=null; await game.fdern.act(actor, \"assist\", item); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!058955d031406f27"
+}

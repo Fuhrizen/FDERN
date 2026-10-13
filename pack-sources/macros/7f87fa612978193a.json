@@ -1,9 +1,9 @@
 {
   "_id": "7f87fa612978193a",
-  "name": "Launch Payload",
+  "name": "Launch",
   "type": "script",
   "img": "systems/fdern/assets/fdern.svg",
-  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"launch\"); } catch(error) { ui.notifications.error(error.message); }",
+  "command": "try { const actor=game.fdern.selectedActor(); const item=actor.items.filter(i=>i.system.actions?.includes(\"launch\")).sort((a,b)=>Number(b.system.readied)-Number(a.system.readied))[0]??null; await game.fdern.act(actor, \"launch\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0
   },

@@ -3,7 +3,7 @@
   "name": "Repack Magazines",
   "type": "script",
   "img": "systems/fdern/assets/fdern.svg",
-  "command": "await game.fdern.request({type:\"repack\", actor:game.fdern.selectedActor().uuid});",
+  "command": "try { const actor=game.fdern.selectedActor(); await game.fdern.request({type:\"repack\", actor:actor.uuid}); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0
   },

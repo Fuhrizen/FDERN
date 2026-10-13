@@ -10,6 +10,8 @@ Run `npm ci`, `npm test`, `npm run check`, `npm run build:packs`, and `npm run b
 
 This checklist has not been executed in the build environment. A licensed Foundry server is not present. Target: v14.368.
 
+13 October continuation: 34 rule/document/macro tests, static validation, compendium compilation and packaging pass locally. Local Chromium exits with SIGTRAP before rendering; responsive checks must pass in GitHub Actions before the release finalization.
+
 1. Install the release manifest in Setup. Create a clean FDERN world. Confirm four compendiums load and no startup errors occur.
 2. Connect a GM and two Players. Create two Characters and unlinked NPC tokens. Complete creation with valid budgets; close/reopen the wizard midway to check saved progress. Check all sheet tabs and native drag/drop.
 3. Confirm owner/observer restrictions. Have Player A try to request actions for Player B's Actor. Confirm rejection. Confirm commands and hidden NPC information are not exposed to unrelated Players.

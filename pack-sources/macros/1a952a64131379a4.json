@@ -3,7 +3,7 @@
   "name": "Move",
   "type": "script",
   "img": "systems/fdern/assets/fdern.svg",
-  "command": "try { await game.fdern.act(game.fdern.selectedActor(), \"move\"); } catch(error) { ui.notifications.error(error.message); }",
+  "command": "try { const actor=game.fdern.selectedActor(); const item=null; await game.fdern.act(actor, \"move\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0
   },

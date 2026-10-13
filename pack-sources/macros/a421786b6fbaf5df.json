@@ -1,0 +1,11 @@
+{
+  "_id": "a421786b6fbaf5df",
+  "name": "Stand",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { const actor=game.fdern.selectedActor(); const item=null; await game.fdern.act(actor, \"stand\", item); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!a421786b6fbaf5df"
+}

@@ -6,7 +6,7 @@ export class FdernCombat extends foundry.documents.Combat {
   async startCombat(){if(!game.user.isGM)throw Error('Only the GM can start encounters.');if(this.started)return this;
     const seen=new Set();for(const c of this.combatants){if(!c.actor)continue;if(seen.has(c.actor.uuid))throw Error('Each combatant needs a distinct actor or unlinked token; duplicate linked actors share resources.');seen.add(c.actor.uuid);await c.actor.update({'system.combat.dressings':0,'system.combat.attackPenalty':0});}
     await this.updateEmbeddedDocuments('Combatant',this.combatants.map((c,i)=>({_id:c.id,initiative:1000-i,'flags.fdern.activated':false})));
-    await this.update({round:1,turn:null,'flags.fdern.activeId':'','flags.fdern.drawnSide':''});await this.beginRound();return this;
+    await this.update({round:1,turn:null,'flags.fdern.activeId':'','flags.fdern.drawnSide':'','flags.fdern.ambushCount':0,'flags.fdern.normalStarted':false});await this.beginRound();return this;
   }
   async beginRound(){
     for(const c of this.combatants){if(!c.actor)continue;const state=c.actor.system.combat;

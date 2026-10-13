@@ -1,0 +1,11 @@
+{
+  "_id": "ee2bebf3ee3a4539",
+  "name": "Shove",
+  "type": "script",
+  "img": "systems/fdern/assets/fdern.svg",
+  "command": "try { const actor=game.fdern.selectedActor(); const item=actor.items.filter(i=>i.system.actions?.includes(\"shove\")).sort((a,b)=>Number(b.system.readied)-Number(a.system.readied))[0]??null; await game.fdern.act(actor, \"shove\", item); } catch(error) { ui.notifications.error(error.message); }",
+  "ownership": {
+    "default": 0
+  },
+  "_key": "!macros!ee2bebf3ee3a4539"
+}

@@ -31,8 +31,10 @@ export function actionReason(actor,id,item,{reaction=false}={}) {
 export async function spend(actor,cost){if(game.combat?.started&&combatantFor(actor)){if(!isActive(actor)||actor.system.combat.actionsRemaining<cost)throw Error('Action allowance or activation changed.');await actor.update({'system.combat.actionsRemaining':actor.system.combat.actionsRemaining-cost,'system.combat.moveRemaining':0,'system.combat.moveMode':''});}}
 export async function ready(actor,item,{pay=true}={}) {
   if(!item)throw Error('Select an accessible loadout item.');const s=item.system;if(s.broken)throw Error('Broken equipment cannot be readied.');if(!s.slot&&['firearm','melee','shield','launcher'].includes(item.type))throw Error('Assign an accessible loadout slot first.');
-  if(pay)await spend(actor,1);if(s.readied){if(s.deployed)throw Error('Pickup the deployed weapon first.');await item.update({'system.readied':false});if(actor.system.combat.overwatch.weapon===item.id)await actor.update({'system.combat.overwatch.active':false});return;}
-  const held=readied(actor);const updates=[];let hands=held.reduce((n,i)=>n+i.system.hands,0);for(const i of held){if(hands+s.hands<=2)break;if(i.system.deployed)throw Error('Pickup the deployed weapon first.');updates.push({_id:i.id,'system.readied':false});hands-=i.system.hands;}
+  if(s.readied&&s.deployed)throw Error('Pickup the deployed weapon first.');
+  const held=readied(actor);const updates=[];let hands=held.reduce((n,i)=>n+i.system.hands,0);
+  if(!s.readied)for(const i of held){if(hands+s.hands<=2)break;if(i.system.deployed)throw Error('Pickup the deployed weapon first.');updates.push({_id:i.id,'system.readied':false});hands-=i.system.hands;}
+  if(pay)await spend(actor,1);if(s.readied){await item.update({'system.readied':false});if(actor.system.combat.overwatch.weapon===item.id)await actor.update({'system.combat.overwatch.active':false});return;}
   updates.push({_id:item.id,'system.readied':true});await actor.updateEmbeddedDocuments('Item',updates);await actor.update({'system.combat.aimTarget':'','system.combat.aimWeapon':'','system.combat.overwatch.active':false});
 }
 export async function reload(actor,item){

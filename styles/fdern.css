@@ -1,16 +1,78 @@
-/* Layout only. Foundry supplies theme, typography, controls and colours. */
-.fdern .window-content{padding:0;overflow:hidden}
-.fdern h1,.fdern h2,.fdern h3{margin:0 0 12px}.fdern h3{margin-top:18px}
-.fdern p{margin:8px 0 14px}.fdern label{display:flex;flex-direction:column;gap:5px;margin:0 0 12px}
-.fdern label:has(input[type=checkbox]){flex-direction:row;align-items:center;gap:8px}
-.fdern input,.fdern select,.fdern textarea{padding:7px;min-height:34px;width:100%}.fdern input[type=checkbox]{width:16px;min-height:16px}.fdern input[type=color]{padding:2px}
-.fdern button{min-height:34px;padding:7px 10px;height:auto;white-space:normal;cursor:pointer}.fdern button:disabled{cursor:not-allowed}.fdern button small{display:block;margin-top:4px}
-.fdern .text-button{text-align:left;padding:3px 0;min-height:28px;width:auto}.fdern .eyebrow{margin:4px 0 8px}
-.fdern .sheet-layout{display:grid;grid-template-columns:minmax(165px,215px) minmax(0,1fr);height:100%;min-height:0}.fdern .sheet-rail{padding:20px 16px;overflow-y:auto;text-align:center}.fdern .portrait{display:block;width:128px;height:128px;margin:0 auto 14px;object-fit:cover}.fdern .actor-name{text-align:center}.fdern .sheet-main{padding:18px 22px;overflow:auto;min-width:0}.fdern .sheet-tabs,.fdern .wizard-steps{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:22px}.fdern .sheet-tabs button,.fdern .wizard-steps button{flex:1 1 auto}.fdern section{margin-bottom:24px}.fdern .section-heading{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}.fdern .section-heading h2,.fdern .section-heading h1{margin:0;flex:1}.fdern .section-heading button:not(.text-button){width:auto}
-.fdern .resource{padding:12px 0}.fdern .resource label{flex-direction:row;justify-content:space-between;align-items:center}.fdern .resource input{width:58px;text-align:center}.fdern meter{width:100%;height:9px;display:block;margin:5px 0 9px}.fdern .resource-summary{display:grid;gap:8px;text-align:left;margin:14px 0 18px}
-.fdern .action-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:7px}.fdern .equipment-card,.fdern .memory-card,.fdern .point-card{padding:14px;margin-bottom:10px}.fdern .equipment-card .section-heading .text-button{flex:1}.fdern .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:12px}.fdern .stat-grid label{margin:0}.fdern .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}.fdern .skill-row{display:flex;align-items:center;gap:10px;padding:8px 0}.fdern .skill-row>span,.fdern .skill-row>.text-button{flex:1}.fdern .skill-row input{width:52px;text-align:center}.fdern .skill-row>button:not(.text-button){width:auto}.fdern .skill-row small{display:block}
-.fdern .inventory-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:9px 0}.fdern .inventory-row .text-button{flex:1;min-width:130px}.fdern .inventory-row button{width:auto}.fdern .tag-list,.fdern .bag-row{display:flex;flex-wrap:wrap;gap:5px;margin:9px 0}.fdern .tag{display:inline-block;padding:3px 8px}.fdern .note-content{margin-top:12px;overflow-wrap:anywhere}.fdern .notice{padding:10px 12px}.fdern .item-body{padding:22px;overflow:auto;min-height:0}.fdern .item-header{display:flex;align-items:center;gap:16px;margin-bottom:14px}.fdern .item-header img{width:72px;height:72px;object-fit:contain}.fdern .check-grid{display:flex;flex-wrap:wrap;gap:12px}.fdern .wizard-shell{padding:22px;display:flex;flex-direction:column;height:100%;min-height:0}.fdern .wizard-content{flex:1;overflow:auto;min-height:0;padding:0 3px 12px}.fdern .point-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}.fdern .point-card{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;justify-content:space-between;gap:8px;margin:0}.fdern .stepper{display:flex;align-items:center;gap:10px}.fdern .stepper button{width:32px;padding:5px}.fdern .stepper output{min-width:20px;text-align:center}.fdern .discipline-card{padding:16px;text-align:left}.fdern .points{padding:6px 10px}.fdern .wizard-footer{display:flex;justify-content:space-between;gap:20px;padding-top:12px}.fdern .wizard-footer button{width:auto;min-width:100px}.fdern .encounter-shell{padding:22px;display:flex;flex-direction:column;height:100%;min-height:0}.fdern .encounter-list{overflow:auto;flex:1;min-height:0}.fdern .combatant-row{display:grid;grid-template-columns:38px minmax(120px,1fr) auto auto;align-items:center;gap:10px;margin:8px 0;padding:10px}.fdern .combatant-row img{width:38px;height:38px;object-fit:cover}.fdern .combatant-row small{display:block}.fdern .combatant-resources{display:flex;gap:9px}.fdern .row-actions{display:flex;gap:5px}.fdern .row-actions button{width:auto}.fdern.chat-card{padding:12px}.fdern.chat-card header{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding-bottom:8px;margin-bottom:10px}.fdern.chat-card ul{padding-left:20px}.fdern.chat-card button{width:auto}
-@media(max-width:720px){.fdern .sheet-layout{grid-template-columns:155px minmax(0,1fr)}.fdern .sheet-rail{padding:14px 10px}.fdern .portrait{width:106px;height:106px}.fdern .sheet-main{padding:14px}.fdern .action-grid{grid-template-columns:repeat(auto-fit,minmax(105px,1fr))}.fdern .combatant-row{grid-template-columns:32px minmax(100px,1fr) auto}.fdern .row-actions{grid-column:2/-1}.fdern .point-grid{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}}
-@media(max-width:460px){.fdern .sheet-layout{grid-template-columns:1fr}.fdern .sheet-rail{max-height:240px}.fdern .portrait{width:80px;height:80px}.fdern .sheet-main{padding:12px}.fdern .point-grid,.fdern .skill-grid{grid-template-columns:1fr}.fdern .combatant-resources{gap:4px}.fdern .wizard-shell,.fdern .encounter-shell{padding:12px}}
-
-.fdern .point-card>b{overflow-wrap:anywhere;min-width:0}.fdern .point-card .stepper{flex-shrink:0}
+/* FDERN only arranges content. Foundry owns themes, typography, fields, tabs,
+   buttons, fieldsets, notifications, focus and disabled states. */
+.fdern .fdern-sheet, .fdern .wizard-shell, .fdern .encounter-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  height: 100%;
+}
+.fdern .sheet-header {display: flex; align-items: center; gap: 12px;}
+.fdern .portrait-button {flex: 0 0 64px; width: 64px; height: 64px; padding: 0;}
+.fdern .portrait {display: block; width: 64px; height: 64px; object-fit: cover;}
+.fdern .identity {flex: 1; min-width: 0;}
+.fdern .identity p {margin: 4px 0;}
+.fdern .identity > button {width: auto;}
+.fdern .resource-fields, .fdern .profile-grid, .fdern .point-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 8px 16px;
+}
+.fdern .combat-summary {margin: 0;}
+.fdern .resource-fields .form-group {margin: 0;}
+.fdern .resource-fields input[type=number] {max-width: 48px;}
+.fdern .summary-values {display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 8px 0 0;}
+.fdern .summary-values > div {display: flex; gap: 8px; align-items: baseline;}
+.fdern .summary-values dd {margin: 0; font-variant-numeric: tabular-nums;}
+.fdern .sheet-tabs, .fdern .wizard-steps {flex-wrap: wrap; flex-shrink: 0; gap: 4px 16px;}
+.fdern .sheet-body, .fdern .wizard-content, .fdern .encounter-list, .fdern .item-body {
+  overflow: auto;
+  min-height: 0;
+  flex: 1;
+  scrollbar-gutter: stable;
+}
+.fdern .sheet-body > .tab > *, .fdern .wizard-content > *, .fdern .item-body > * {margin-bottom: 12px;}
+.fdern fieldset {min-width: 0;}
+.fdern legend {max-width: 100%; overflow-wrap: anywhere;}
+.fdern .section-heading {display: flex; flex-wrap: wrap; align-items: center; gap: 8px;}
+.fdern .section-heading > :first-child {flex: 1; margin: 0;}
+.fdern .inline-control {width: auto;}
+.fdern .action-list {display: grid; gap: 6px;}
+.fdern .action-row {display: grid; grid-template-columns: minmax(0, 1fr) auto 52px; align-items: center; gap: 4px 12px;}
+.fdern .action-reason {grid-column: 1 / -1;}
+.fdern .skill-row {display: grid; grid-template-columns: minmax(0, 1fr) auto 42px; align-items: center; gap: 8px;}
+.fdern .skill-test {text-align: left;}
+.fdern .inventory-row {display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 6px 0;}
+.fdern .item-name {flex: 1; min-width: 140px; text-align: left;}
+.fdern .row-actions {display: flex; flex-wrap: wrap; align-items: center; gap: 6px;}
+.fdern .row-actions button, .fdern .purchase-row button {width: auto;}
+.fdern .purchase-row {display: flex; gap: 12px; justify-content: space-between; align-items: center; padding: 4px 0;}
+.fdern .purchase-row small {display: block;}
+.fdern .tag-list, .fdern .bag-row {display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0;}
+.fdern .tag {padding: 2px 6px;}
+.fdern .note-content {overflow-wrap: anywhere;}
+.fdern .point-row {display: flex; justify-content: space-between; align-items: center; gap: 8px;}
+.fdern .stepper {display: flex; align-items: center; gap: 8px; flex-shrink: 0;}
+.fdern .stepper button {width: 28px; padding: 0;}
+.fdern .stepper output {min-width: 20px; text-align: center;}
+.fdern .wizard-footer {display: flex; justify-content: space-between; gap: 16px; flex-shrink: 0;}
+.fdern .wizard-footer button {width: auto; min-width: 90px;}
+.fdern .points {margin: 0;}
+.fdern .combatant-row {display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 8px 0;}
+.fdern .combatant-row img {width: 32px; height: 32px; object-fit: cover;}
+.fdern .combatant-row small {display: block;}
+.fdern .combatant-row .row-actions {grid-column: 2 / -1;}
+.fdern .combatant-row .combatant-name {width: auto; text-align: left;}
+.fdern .combatant-resources {display: flex; flex-wrap: wrap; gap: 8px; justify-content: end;}
+.fdern .encounter-shell > footer p {margin: 0;}
+.fdern .item-header {display: flex; align-items: center; gap: 12px;}
+.fdern .item-header img {width: 48px; height: 48px; object-fit: contain;}
+.fdern .check-grid {display: flex; flex-wrap: wrap; gap: 8px 16px;}
+.fdern .check-grid label {display: flex; gap: 6px; align-items: center;}
+.fdern.chat-card header {display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;}
+.fdern.chat-card button {width: auto;}
+@media(max-width: 520px) {
+  .fdern .summary-values {gap: 6px 12px;}
+  .fdern .combatant-row {grid-template-columns: 28px minmax(0, 1fr);}
+  .fdern .combatant-resources {grid-column: 2; justify-content: start;}
+}

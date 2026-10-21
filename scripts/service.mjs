@@ -5,6 +5,7 @@ import {attack} from './attacks.mjs';
 import {areaAttack} from './areas.mjs';
 import {tokenFor,isActive,combatantFor,learned,readied,controllerInput,input,choose,rollTest,chat,escapeHTML} from './utils.mjs';
 import {distanceBetween,coverBetween} from './terrain.mjs';
+import {sideOf} from './combat.mjs';
 const medicalIds=['field-dressing','advanced-dressing','stabilise'];
 export async function execute(request,user){
   if(!request||typeof request!=='object')throw Error('Invalid command.');
@@ -50,7 +51,13 @@ export async function execute(request,user){
   if(id==='overwatch'||id==='intercept'){
     const r=await controllerInput(actor,id==='overwatch'?'Prepare Overwatch':'Prepare Intercept',`<label>Declare ${id==='overwatch'?'visible watched approach within maximum range':'Reach boundary'}<input name="lane" required></label>${id==='overwatch'?`<label>Watched native Region (recommended)<select name="regionId"><option value="">GM-confirmed text lane</option>${canvas.scene.regions.map(r=>`<option value="${r.id}">${escapeHTML(r.name)}</option>`).join('')}</select></label>`:''}`);if(!r?.lane?.trim())return;await spend(actor,1);await actor.update({'system.combat.overwatch':{active:true,weapon:item.id,lane:String(r.lane).slice(0,300),kind:id,regionId:r.regionId??''},'system.combat.reactionAvailable':false});return;
   }
-  if(id==='cover-ally'){const own=tokenFor(actor);if(!target?.actor||!own||distanceBetween(own,target)>5)throw Error('Choose an ally within 5 ft.');await spend(actor,1);return actor.update({'system.combat.coverAlly':target.uuid});}
+  if(id==='cover-ally'){
+    const own=tokenFor(actor);if(!target?.actor||target.actor.uuid===actor.uuid||!own||distanceBetween(own,target)>5)throw Error('Choose another ally within 5 ft.');
+    const ownCombatant=combatantFor(actor),targetCombatant=combatantFor(target.actor);
+    const allied=ownCombatant&&targetCombatant?sideOf(ownCombatant)===sideOf(targetCombatant):own.disposition!==0&&own.disposition===target.document.disposition;
+    if(!allied)throw Error('Cover Ally can only protect an ally on your side.');
+    await spend(actor,1);return actor.update({'system.combat.coverAlly':target.uuid});
+  }
   if(id==='observe'){if(!target?.actor)throw Error('Target a combatant to Spot.');const own=tokenFor(actor);if(own&&coverBetween(own,target).cover===3)throw Error('Observation cannot see through solid Cover.');await spend(actor,1);const result=await rollTest(actor,'perception','reconnaissance',9,0,'Observe / Spot');if(result.total>=9)return actor.update({'system.combat.spot':{target:target.uuid,expiresRound:learned(actor).includes('tactical-observer')?(game.combat?.round??0)+1:0,expiresActivation:learned(actor).includes('tactical-observer')?'':actor.uuid}});return;}
   if(id==='patch'){await spend(actor,1);const result=await rollTest(actor,'intellect','engineering',11,0,'Emergency Patch');return chat(actor,'Emergency Patch',`<p>${result.total>=11?'One minor equipment function is restored for this encounter (GM confirms).':'No improvement.'} No ammunition, injury, or catastrophic destruction is repaired.</p>`);}
   if(id==='assist'){if(!target?.actor)throw Error('Select the ally being assisted.');await spend(actor,1);await actor.update({'system.combat.assistTarget':target.actor.uuid});return chat(actor,'Assist','<p>Material help for one nearby Test: +1, maximum +2 total assistance. Use the Test dialog when resolving that activity.</p>');}

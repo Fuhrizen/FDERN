@@ -4,8 +4,9 @@ const {gm,player}=setup();
 const {CharacterData,EquipmentData,FdernActor}=await import('../scripts/models.mjs');
 const {FdernCombat}=await import('../scripts/combat.mjs');
 const {execute}=await import('../scripts/service.mjs');
-const {actionReason,reload,advance}=await import('../scripts/equipment.mjs');
+const {actionReason,reload,advance,ready}=await import('../scripts/equipment.mjs');
 const {attack}=await import('../scripts/attacks.mjs');
+const {areaAttack}=await import('../scripts/areas.mjs');
 const {FdernItemSheet}=await import('../scripts/sheets.mjs');
 const {CATALOGUE}=await import('../scripts/catalogue.mjs');
 CONFIG.Item.dataModels=Object.fromEntries(['firearm','melee','shield','armour','magazine','grenade','launcher','gear','discipline','action'].map(k=>[k,EquipmentData]));
@@ -27,3 +28,9 @@ test('native expanded item form canonical arrays',()=>{const sheet=new FdernItem
 test('data models reject inconsistent Load/VP and define all damage track bounds',()=>{assert.throws(()=>new CharacterData({advancement:{lifetimeVP:2,spentVP:3}}),/Spent VP/);assert.throws(()=>new EquipmentData({currentLoad:5,maxLoad:4}),/capacity/);assert.throws(()=>new EquipmentData({effective:100,maximum:50}),/range/);const fields=CharacterData.defineSchema();assert.equal(fields.combat.fields.pressure.options.max,7);assert.equal(fields.combat.fields.bleedMarks.options.max,3);assert.equal(fields.combat.fields.bleeding.initial(),false);});
 
 test('restarting native Combat resets opening ambush history',async()=>{clear();const a=actor();const c=encounter([a]);await c.startCombat();await c.activate(c.combatants.first().id,{ambush:true});await c.endCombat();await c.setFlag('fdern','ambushCount',3);await c.setFlag('fdern','normalStarted',true);await c.startCombat();assert.equal(c.getFlag('fdern','ambushCount'),0);assert.equal(c.getFlag('fdern','normalStarted'),false);await c.activate(c.combatants.first().id,{ambush:true});assert.equal(a.system.combat.actionsRemaining,2);});
+
+test('failed Ready validation does not spend an Action when a deployed weapon blocks the swap',async()=>{clear();const a=actor();const deployed=await weapon(a,'service-rifle');await deployed.update({'system.deployed':true});const other=await weapon(a,'service-pistol');await other.update({'system.readied':false});const c=encounter([a]);await c.startCombat();await c.setFlag('fdern','drawnSide','A');await c.activate(c.combatants.first().id);await assert.rejects(ready(a,other),/Pickup the deployed weapon/);assert.equal(a.system.combat.actionsRemaining,3);});
+
+test('Cover Ally rejects an opposing combat side even when token dispositions match',async()=>{clear();const user=actor('Shield User',{skills:{melee:2}}),enemy=actor('Enemy');const [shield]=await user.createEmbeddedDocuments('Item',[{name:'Shield',type:'shield',system:{actions:['cover-ally'],readied:true,slot:'secondary',hands:1,traits:['ballistic']}}]);await user.createEmbeddedDocuments('Item',[{name:'Shieldwork',type:'discipline',system:{disciplineId:'shieldwork'}}]);const c=encounter([user,enemy]);await c.startCombat();await c.setFlag('fdern','drawnSide','A');await c.activate(c.combatants.first().id);assert.equal(enemy.token.disposition,user.token.disposition);await assert.rejects(execute({type:'act',actor:user.uuid,action:'cover-ally',item:shield.id,target:enemy.token.uuid},player),/only protect an ally/);assert.equal(user.system.combat.actionsRemaining,3);});
+
+test('Empty launcher validation happens before paying its Actions',async()=>{clear();const a=actor();const c=encounter([a]);await c.startCombat();await c.setFlag('fdern','drawnSide','A');await c.activate(c.combatants.first().id);const launcher={id:'launcher',name:'Launcher',system:{payload:'rocket',maximum:200,effective:75,fireCost:2,currentLoad:0,quantity:0,traits:[],radius:10,duration:2},async update(){throw Error('Should not update an empty launcher.');}};dialogResponses.push({legal:true});await assert.rejects(areaAttack(a,'launch',launcher,{x:100,y:50,elevation:0,level:null}),/Launcher is empty/);assert.equal(a.system.combat.actionsRemaining,3);});

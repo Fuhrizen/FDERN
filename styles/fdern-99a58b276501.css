@@ -1,0 +1,212 @@
+/* FDERN only arranges content. Foundry owns themes, typography, fields, tabs,
+   buttons, fieldsets, notifications, focus and disabled states. */
+.fdern .fdern-sheet, .fdern .wizard-shell, .fdern .encounter-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  height: 100%;
+}
+.fdern .sheet-header {display: flex; align-items: center; gap: 12px;}
+.fdern .portrait-button {flex: 0 0 64px; width: 64px; height: 64px; padding: 0;}
+.fdern .portrait {display: block; width: 64px; height: 64px; object-fit: cover;}
+.fdern .identity {flex: 1; min-width: 0;}
+.fdern .identity .form-group > label {flex: 0;}
+.fdern .identity .form-group > .form-fields {flex: 1;}
+.fdern .identity p {margin: 4px 0;}
+.fdern .identity > button {width: auto;}
+.fdern .resource-fields, .fdern .profile-grid, .fdern .point-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 8px 16px;
+}
+.fdern .combat-summary {margin: 0;}
+.fdern .resource-fields .form-group {margin: 0; flex-wrap: nowrap;}
+.fdern .resource-fields .form-group > label {flex: 0 0 auto; min-width: 72px;}
+.fdern .resource-fields .form-fields {justify-content: start;}
+.fdern .resource-fields input[type=number] {max-width: 48px;}
+.fdern .summary-values {display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 8px 0 0;}
+.fdern .summary-values > div {display: flex; gap: 8px; align-items: baseline;}
+.fdern .summary-values dd {margin: 0; font-variant-numeric: tabular-nums;}
+.fdern .sheet-tabs, .fdern .wizard-steps {flex-wrap: wrap; flex-shrink: 0; gap: 4px 16px;}
+.fdern .sheet-body, .fdern .wizard-content, .fdern .encounter-list, .fdern .item-body {
+  overflow: auto;
+  min-height: 0;
+  flex: 1;
+  scrollbar-gutter: stable;
+}
+.fdern .sheet-body > .tab > *, .fdern .wizard-content > *, .fdern .item-body > * {margin-bottom: 12px;}
+.fdern fieldset {min-width: 0;}
+.fdern legend {max-width: 100%; overflow-wrap: anywhere;}
+.fdern .section-heading {display: flex; flex-wrap: wrap; align-items: center; gap: 8px;}
+.fdern .section-heading > :first-child {flex: 1; margin: 0;}
+.fdern .inline-control {width: auto;}
+.fdern .action-list {display: grid; gap: 6px;}
+.fdern .action-row {display: grid; grid-template-columns: minmax(0, 1fr) auto 52px; align-items: center; gap: 4px 12px;}
+.fdern .action-reason {grid-column: 1 / -1;}
+.fdern .skill-row {display: grid; grid-template-columns: minmax(0, 1fr) auto 42px; align-items: center; gap: 8px;}
+.fdern .skill-test {text-align: left;}
+.fdern .inventory-row {display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 6px 0;}
+.fdern .item-name {flex: 1; min-width: 140px; text-align: left;}
+.fdern .row-actions {display: flex; flex-wrap: wrap; align-items: center; gap: 6px;}
+.fdern .row-actions button, .fdern .purchase-row button {width: auto;}
+.fdern .purchase-row {display: flex; gap: 12px; justify-content: space-between; align-items: center; padding: 4px 0;}
+.fdern .purchase-row small {display: block;}
+.fdern .tag-list, .fdern .bag-row {display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0;}
+.fdern .tag {padding: 2px 6px;}
+.fdern .note-content {overflow-wrap: anywhere;}
+.fdern .point-row {display: flex; justify-content: space-between; align-items: center; gap: 8px;}
+.fdern .stepper {display: flex; align-items: center; gap: 8px; flex-shrink: 0;}
+.fdern .stepper button {width: 28px; padding: 0;}
+.fdern .stepper output {min-width: 20px; text-align: center;}
+.fdern .wizard-footer {display: flex; justify-content: space-between; gap: 16px; flex-shrink: 0;}
+.fdern .wizard-footer button {width: auto; min-width: 90px;}
+.fdern .points {margin: 0;}
+.fdern .combatant-row {display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 8px 0;}
+.fdern .combatant-row img {width: 32px; height: 32px; object-fit: cover;}
+.fdern .combatant-row small {display: block;}
+.fdern .combatant-row .row-actions {grid-column: 2 / -1;}
+.fdern .combatant-row .combatant-name {width: auto; text-align: left;}
+.fdern .combatant-resources {display: flex; flex-wrap: wrap; gap: 8px; justify-content: end;}
+.fdern .encounter-shell > footer p {margin: 0;}
+.fdern .item-header {display: flex; align-items: center; gap: 12px;}
+.fdern .item-header img {width: 48px; height: 48px; object-fit: contain;}
+.fdern .check-grid {display: flex; flex-wrap: wrap; gap: 8px 16px;}
+.fdern .check-grid label {display: flex; gap: 6px; align-items: center;}
+.fdern.chat-card header {display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;}
+.fdern.chat-card button {width: auto;}
+@media(max-width: 520px) {
+  .fdern .summary-values {gap: 6px 12px;}
+  .fdern .combatant-row {grid-template-columns: 28px minmax(0, 1fr);}
+  .fdern .combatant-resources {grid-column: 2; justify-content: start;}
+}
+
+.fdern .combatant-row > div {min-width: 0;}
+.fdern .combatant-name, .fdern .item-name {max-width: 100%; white-space: normal; height: auto;}
+
+/* Reading, search and inventory layouts use the native application controls. */
+.fdern .sheet-toolbar {display:flex; flex-wrap:wrap; align-items:center; gap:8px;}
+.fdern .sheet-toolbar search {flex:1; min-width:min(100%,180px);}
+.fdern .sheet-toolbar > button {width:auto;}
+.fdern .skill-list {display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:8px 20px;}
+.fdern .skill-play-row, .fdern .advancement-row {display:flex; align-items:center; justify-content:space-between; gap:12px; padding:6px 0;}
+.fdern .skill-play-row > div, .fdern .advancement-row > div {min-width:0;}
+.fdern .skill-play-row small, .fdern .advancement-row small, .fdern .inventory-name small {display:block;}
+.fdern .skill-play-row > button, .fdern .advancement-row > button {width:auto; flex-shrink:0;}
+.fdern .inventory-name {flex:1; min-width:min(100%,180px);}
+.fdern .inventory-name > button {width:auto;}
+.fdern .loadout-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr)); gap:12px;}
+.fdern .loadout-grid fieldset {display:flex; flex-direction:column; align-items:start; gap:8px;}
+.fdern .loadout-grid .item-name {min-width:0;}
+.fdern .loadout-grid button {width:auto;}
+.fdern .discipline-row {display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:8px 0;}
+.fdern .profile-text {white-space:pre-line; overflow-wrap:anywhere;}
+.fdern .journal-preview, .fdern .memory-entry {margin:12px 0; overflow-wrap:anywhere;}
+.fdern .journal-preview p {margin:4px 0;}
+.fdern .journal-title {white-space:normal; height:auto; text-align:left;}
+.fdern .item-overview {display:flex; align-items:start; gap:16px;}
+.fdern .item-overview > div {min-width:0;}
+.fdern .item-portrait {width:64px; height:64px; object-fit:contain; flex-shrink:0;}
+.fdern .item-stat-list {display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr)); gap:8px 16px; margin:0;}
+.fdern .item-stat-list > div {display:flex; justify-content:space-between; gap:12px;}
+.fdern .item-stat-list dd {margin:0;}
+
+
+/* Document layout and native control placement; no system palette or theme. */
+.fdern .sheet-header {gap:16px; padding-bottom:4px;}
+.fdern .portrait-button, .fdern .portrait {width:88px; height:88px;}
+.fdern .portrait-button {flex-basis:88px;}
+.fdern .character-name {margin:0 0 8px;}
+.fdern .character-name input {font:inherit; width:100%; height:auto; min-height:44px;}
+.fdern .identity-line {display:flex; align-items:center; flex-wrap:wrap; gap:6px 16px;}
+.fdern .identity-line button {margin-inline-start:auto;}
+.fdern .attribute-strip {display:grid; grid-template-columns:repeat(auto-fit,minmax(88px,1fr)); gap:12px; margin:0 0 24px;}
+.fdern .attribute-strip > div {display:flex; align-items:baseline; justify-content:space-between; gap:8px;}
+.fdern .attribute-strip dd {margin:0; font-weight:bold;}
+.fdern .character-columns {display:grid; grid-template-columns:minmax(0,1.65fr) minmax(220px,1fr); gap:32px;}
+.fdern .character-columns h2 {margin:0 0 16px;}
+.fdern .profile-entry {margin:20px 0;}
+.fdern .profile-entry h3 {margin:0 0 6px;}
+.fdern .profile-entry p {margin:0;}
+.fdern .character-journal {margin-top:28px;}
+.fdern .character-training > h3 {margin-top:20px;}
+.fdern .training-skill {display:flex; align-items:center; justify-content:space-between; gap:12px; margin:8px 0;}
+.fdern .training-skill button {width:auto; min-width:58px;}
+.fdern .training-discipline {margin:12px 0;}
+.fdern .training-discipline p {margin:4px 0;}
+.fdern .creation-prompt, .fdern .equipment-heading {display:flex; align-items:center; justify-content:space-between; gap:12px;}
+.fdern .equipment-heading {margin:16px 0 10px; flex-wrap:wrap;}
+.fdern .equipment-heading h3, .fdern .creation-prompt p {margin:0;}
+.fdern .equipped-summary {display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; margin-top:16px;}
+.fdern .loadout-slot {display:flex; flex-direction:column; align-items:start; gap:6px; min-width:0; padding:8px 0;}
+.fdern .loadout-slot .item-name {min-width:0; text-align:start;}
+.fdern .inventory-workspace {container-type:inline-size;}
+.fdern .inventory-layout {display:grid; grid-template-columns:minmax(0,1fr) 230px; gap:24px; align-items:start;}
+.fdern .inventory-layout > * {min-width:0;}
+.fdern .inventory-board {container-type:inline-size;}
+.fdern .inventory-grid {--inventory-columns:6; --inventory-cell:calc(100cqw / var(--inventory-columns)); display:grid; grid-template-columns:repeat(var(--inventory-columns),minmax(0,1fr)); grid-auto-rows:var(--inventory-cell); min-height:calc(var(--inventory-cell) * 3); border:1px solid color-mix(in srgb,currentColor 28%,transparent); background-image:linear-gradient(to right,color-mix(in srgb,currentColor 28%,transparent) 1px,transparent 1px),linear-gradient(to bottom,color-mix(in srgb,currentColor 28%,transparent) 1px,transparent 1px); background-size:var(--inventory-cell) var(--inventory-cell); align-content:start;}
+.fdern .inventory-grid > .hint {grid-column:1 / -1; margin:12px;}
+.fdern .inventory-tile {display:flex; position:relative; flex-direction:column; align-items:center; justify-content:center; gap:3px; width:calc(100% - 6px); height:calc(100% - 6px); margin:3px; min-width:0; padding:8px 5px; white-space:normal; border:1px solid var(--button-border-color,currentColor); border-radius:4px;}
+.fdern .inventory-tile[aria-pressed=true] {outline:2px solid currentColor; outline-offset:-3px;}
+.fdern .inventory-tile img {width:24px; height:24px; object-fit:contain; flex-shrink:0;}
+.fdern .inventory-tile.tier-3 img, .fdern .inventory-tile.tier-5 img {width:48px; height:48px;}
+.fdern .inventory-tile strong {max-width:100%; line-height:1.15; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow-wrap:anywhere;}
+.fdern .tile-status {max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.fdern .tile-count {position:absolute; inset-block-start:4px; inset-inline-end:6px;}
+.fdern .inventory-inspector {margin-top:16px;}
+.fdern .inventory-inspector > header {display:flex; align-items:center; gap:12px;}
+.fdern .inventory-inspector > header img {width:40px; height:40px; object-fit:contain;}
+.fdern .inventory-inspector h3, .fdern .inventory-inspector header p {margin:0 0 4px;}
+.fdern .inventory-description {white-space:pre-line; overflow-wrap:anywhere;}
+.fdern .inventory-inspector .item-stat-list {grid-template-columns:1fr;}
+.fdern .inspector-actions {display:flex; flex-direction:column; gap:8px; margin:16px 0;}
+.fdern .inventory-order {justify-content:end;}
+.fdern .inventory-key {margin:16px 0;}
+.fdern .inventory-key dl {display:flex; flex-wrap:wrap; gap:12px;}
+.fdern .inventory-key dl > div {display:flex; gap:6px;}
+.fdern .inventory-key dd {margin:0;}
+.fdern .inventory-footer {display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:16px;}
+@container(max-width:720px) {
+  .fdern .inventory-layout {grid-template-columns:1fr; gap:8px;}
+  .fdern .inventory-inspector {display:grid; grid-template-columns:minmax(0,1fr); gap:12px;}
+  .fdern .inventory-inspector header, .fdern .inventory-inspector .inventory-description {grid-column:1 / -1;}
+  .fdern .inspector-actions {margin-top:0;}
+}
+@container(max-width:480px) {.fdern .inventory-grid {--inventory-columns:4;}}
+@media(max-width:650px) {
+  .fdern .character-columns {grid-template-columns:1fr; gap:24px;}
+  .fdern .portrait-button, .fdern .portrait {width:64px; height:64px;}
+  .fdern .portrait-button {flex-basis:64px;}
+}
+.fdern.chat-card {display:flex; flex-direction:column; gap:12px;}
+.fdern.chat-card header {align-items:baseline; gap:8px;}
+.fdern.chat-card header strong {flex:1;}
+.fdern.chat-card .fdern-chat-content > :first-child {margin-top:0;}
+.fdern.chat-card .fdern-chat-content > :last-child {margin-bottom:0;}
+.fdern.chat-card .fdern-chat-breakdown {display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 12px; margin:8px 0;}
+.fdern.chat-card .fdern-chat-breakdown dt, .fdern.chat-card .fdern-chat-breakdown dd {margin:0;}
+.fdern.chat-card .fdern-chat-breakdown dd {text-align:end;}
+.fdern.chat-card .fdern-chat-actions {display:flex; flex-wrap:wrap; gap:6px;}
+.fdern.chat-card .fdern-chat-actions button {width:auto; flex:1 1 auto; white-space:normal; height:auto; min-height:28px;}
+.fdern.chat-card .item-card-profile {display:grid; grid-template-columns:40px minmax(0,1fr); gap:12px;}
+.fdern.chat-card .item-card-profile img {width:40px; height:40px; object-fit:contain;}
+.fdern.chat-card .item-card-profile p {margin:0; overflow-wrap:anywhere;}
+
+.fdern .sheet-body {container-type:inline-size;}
+@container(max-width:600px) {.fdern .character-columns {grid-template-columns:1fr; gap:24px;}}
+.fdern.chat-card .fdern-chat-breakdown {grid-template-columns:1fr;}
+.fdern.chat-card .fdern-chat-breakdown > div {display:flex; justify-content:space-between; gap:12px;}
+.fdern .loadout-grid {grid-template-columns:repeat(3,minmax(0,1fr));}
+
+.fdern .inventory-item-actions {display:flex; flex-direction:column; gap:12px; margin-top:12px;}
+.fdern .inventory-item-actions > div {display:flex; flex-direction:column; gap:4px;}
+.fdern .inventory-item-actions small {white-space:normal;}
+.fdern .inventory-inspector {scroll-margin-block:12px;}
+.fdern .inventory-item-actions button {height:auto; min-height:var(--input-height,32px); white-space:normal; line-height:1.4; padding-block:6px;}
+
+.fdern .wizard-loadout-preview {display:flex; align-items:center; gap:10px; margin-top:8px; min-width:0;}
+.fdern .wizard-loadout-preview img {width:40px; height:40px; object-fit:contain; flex:0 0 40px;}
+.fdern .wizard-loadout-preview > div {min-width:0;}
+.fdern .wizard-loadout-preview p {margin:2px 0 0;}
+.fdern .wizard-review-loadout {display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:8px 16px; margin:12px 0;}
+.fdern .wizard-review-loadout > div {min-width:0;}

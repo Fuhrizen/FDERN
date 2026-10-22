@@ -3,6 +3,10 @@ root=pathlib.Path(__file__).resolve().parents[1]
 manifest=json.loads((root/'system.json').read_text())
 for pack in manifest['packs']:
     if not (root/pack['path']).is_dir(): raise SystemExit('Build compendiums first: npm run build:packs')
+css_source=(root/'styles/fdern.css').read_bytes()
+css_path='styles/fdern-'+hashlib.sha256(css_source).hexdigest()[:12]+'.css'
+assert css_path in manifest['styles'] and 'styles/fdern.css' not in manifest['styles'], 'Run npm run build:styles before packaging'
+assert (root/css_path).read_bytes()==css_source, 'Generated layout stylesheet differs from source'
 files=[root/name for name in ['system.json','README.md','LICENSE','CHANGELOG.md']]
 for directory in ['scripts','templates','styles','lang','assets','packs','docs']:
     files.extend(p for p in (root/directory).rglob('*') if p.is_file() and p.name!='LOCK')

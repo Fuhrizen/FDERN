@@ -52,3 +52,9 @@ test('every mapped SVG is self-contained, accessible and valid XML',async()=>{
     assert.equal(parsed.status,0,`${path}: ${parsed.stderr}`);
   }
 });
+
+test('the manifest delivers the exact current stylesheet through a content-specific URL',async()=>{
+  const {createHash}=await import('node:crypto');const manifest=JSON.parse(await readFile('system.json','utf8'));const source=await readFile('styles/fdern.css');const name=`styles/fdern-${createHash('sha256').update(source).digest('hex').slice(0,12)}.css`;
+  assert.ok(manifest.styles.includes(name));assert.ok(!manifest.styles.includes('styles/fdern.css'));assert.deepEqual(await readFile(name),source);
+  const legacy=await readFile('tests/fixtures/legacy-fdern.css');assert.notEqual(createHash('sha256').update(legacy).digest('hex').slice(0,12),createHash('sha256').update(source).digest('hex').slice(0,12));assert.match(legacy.toString(),/--fdern-bg:#14201d/);assert.doesNotMatch(source.toString(),/--fdern-bg:/);
+});

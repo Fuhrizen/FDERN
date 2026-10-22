@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.5
+
+- Give the layout stylesheet a content-specific URL so cached v0.1 styling cannot be reused with current templates.
+- Validate the generated stylesheet against its source in checks and release packaging.
+- Load browser previews from the manifest and test against a simulated stale legacy stylesheet cache.
+- No changes to gameplay, controls or the user’s native theme selection.
+
 ## 0.2.4
 
 - Nine condition icons, including separate Down and Prone cues, integrated into native status effects.

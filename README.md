@@ -85,3 +85,5 @@ A release workflow runs validation, compiles native compendiums, packages the sy
 Report reproducible bugs through the repository's Issues page. Include Foundry version, system version, console errors, reproduction steps, and a minimal example. FDERN implements the Playtest 1.1 rules; campaign structure, medical plausibility, unusual geometry, static firing arcs, and major equipment destruction remain GM decisions.
 
 Equipment uses bundled category artwork in compendiums, inventory, item sheets and chat. Explicit custom images are retained. Character and NPC tokens keep Foundry’s default token icon. See [assets/README.md](assets/README.md) for artwork coverage and licensing.
+
+Layout CSS is served through a content-specific filename declared in `system.json`, preventing stale styles after updates. When editing `styles/fdern.css`, run `npm run build:styles` before validation; the generated file and manifest change together.

@@ -198,7 +198,6 @@
 .fdern.chat-card .fdern-chat-breakdown > div {display:flex; justify-content:space-between; gap:12px;}
 .fdern .loadout-grid {grid-template-columns:repeat(3,minmax(0,1fr));}
 
-.fdern .inventory-filters {margin-top:12px;}
 .fdern .inventory-item-actions {display:flex; flex-direction:column; gap:12px; margin-top:12px;}
 .fdern .inventory-item-actions > div {display:flex; flex-direction:column; gap:4px;}
 .fdern .inventory-item-actions small {white-space:normal;}

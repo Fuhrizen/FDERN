@@ -35,12 +35,12 @@ export function actionReason(actor,id,item,{reaction=false}={}) {
 }
 export async function spend(actor,cost){if(game.combat?.started&&combatantFor(actor)){if(!isActive(actor)||actor.system.combat.actionsRemaining<cost)throw Error('Action allowance or activation changed.');await actor.update({'system.combat.actionsRemaining':actor.system.combat.actionsRemaining-cost,'system.combat.moveRemaining':0,'system.combat.moveMode':''});}}
 export async function ready(actor,item,{pay=true}={}) {
-  const {stowed,blocked}=equipPreview(actor,item);if(blocked)throw Error(blocked);const s=item.system;
+  const {stowed,blocked}=equipPreview(actor,item);if(blocked)throw Error(blocked);const wasReadied=item.system.readied;
   const updates=stowed.map(currentItem=>({_id:currentItem.id,'system.readied':false}));
-  updates.push({_id:item.id,'system.readied':!s.readied});
+  updates.push({_id:item.id,'system.readied':!wasReadied});
   if(pay)await spend(actor,1);
   await actor.updateEmbeddedDocuments('Item',updates);
-  if(s.readied){if(actor.system.combat.overwatch.weapon===item.id)await actor.update({'system.combat.overwatch.active':false});return;}
+  if(wasReadied){if(actor.system.combat.overwatch.weapon===item.id)await actor.update({'system.combat.overwatch.active':false});return;}
   await actor.update({'system.combat.aimTarget':'','system.combat.aimWeapon':'','system.combat.overwatch.active':false});
 }
 export async function reload(actor,item){

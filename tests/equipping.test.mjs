@@ -45,6 +45,16 @@ test('equipPreview explains blocked Ready states without changing the loadout',a
   assert.match(equipPreview(a,main).blocked,/Pickup the deployed weapon/);
 });
 
+test('Ready clears stale aim and overwatch on equip, then cancels its own reserved overwatch on stow',async()=>{
+  const a=actor(),pistol=await create(a,'firearm','Pistol',{slot:'primary',actions:['fire']});
+  await a.update({'system.combat.aimTarget':'Scene.target','system.combat.aimWeapon':pistol.id,'system.combat.overwatch.active':true,'system.combat.overwatch.weapon':'old-item'});
+  await ready(a,pistol,{pay:false});
+  assert.equal(a.system.combat.aimTarget,'');assert.equal(a.system.combat.aimWeapon,'');assert.equal(a.system.combat.overwatch.active,false);
+  await a.update({'system.combat.overwatch.active':true,'system.combat.overwatch.weapon':pistol.id});
+  await ready(a,pistol,{pay:false});
+  assert.equal(pistol.system.readied,false);assert.equal(a.system.combat.overwatch.active,false);
+});
+
 test('deployed equipment blocks a Ready swap before Action spending or state changes',async()=>{
   const a=actor(),main=await create(a,'firearm','Deployed Rifle',{slot:'primary',readied:true,deployed:true}),knife=await create(a,'melee','Knife',{family:'knife',slot:'secondary'});const c=await encounter(a);
   await assert.rejects(execute({type:'act',actor:a.uuid,action:'ready',item:knife.id},player),/Pickup the deployed weapon/);assert.equal(a.system.combat.actionsRemaining,3);assert.equal(main.system.readied,true);assert.equal(knife.system.readied,false);

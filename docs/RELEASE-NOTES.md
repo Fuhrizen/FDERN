@@ -1,9 +1,7 @@
-FDERN v0.1.2: native Foundry UI and full interface review.
+FDERN v0.1.3: character-first sheets and everyday quality of life.
 
-Character/NPC sheets, wizard, item editor, encounter panel and prompts now use Foundry's standard form structure and controls. Compact resources, native tabs, readied equipment first, expandable general actions, named ammunition sources, action checkboxes, and a detailed wizard review improve everyday play. No custom colour or typography theme is supplied.
+The sheet opens on Character with a readable profile, strongest Skill rolls, loadout summary and recent journal entries. Skills show their paired Attribute and total bonus, with search and a trained-only filter. The Equipment tab groups weapons, supplies, armour and ammunition, offers accessible slot selection and compendium browsing, and provides one-click armour and supply controls outside encounters. Slot changes safely displace and stow the previous item; ownership and encounter locks are enforced by the GM service.
 
-Observer controls, keyboard access and purchase availability are consistent. Wizard saves are ordered; open sheets refresh on combat changes; condition updates converge without duplicate or stale effects. Failed Ready and empty-launcher checks preserve Actions, and Cover Ally validates sides.
+Journal entries have previews, clickable tag filters and direct opening from Character. Advance explains VP costs, rank limits, training prerequisites and level progress, then confirms the exact purchase before spending. Items open with readable profiles and actions; Edit item exposes configuration separately. Compendium descriptions use player-facing names.
 
-Validation covers rules/documents, responsive template rendering, keyboard and observer interactions, compendium builds and archive integrity. Small real UI sections are visually inspected with the official demo's public core stylesheet and icon font in light and dark themes. A licensed Foundry server remains necessary for live multiplayer/canvas verification.
-
-Install or update through the existing manifest URL. Existing actors and compendiums keep their identities; no world schema change is required.
+All controls retain Foundry's native light/dark styling. No schema migration or additional module is required. Existing actors, item identities, notebook contents and hotbar macros are preserved. The visual review covers every tab, preparation and encounter states, item reading/editing, narrow layouts and wizard steps. Live multiplayer and canvas verification still require a licensed Foundry server.

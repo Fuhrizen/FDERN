@@ -23,3 +23,7 @@ test('wizard queues snapshots so a slow save cannot replace later point spending
   wizard.draft.name='First';const first=wizard.save();wizard.draft.name='Latest';wizard.draft.attributes.agility=2;wizard.step=2;const second=wizard.save();await Promise.all([first,second]);
   assert.equal(updates.length,2);assert.equal(updates[0]['flags.fdern.wizardDraft'].name,'First');assert.equal(updates[1]['flags.fdern.wizardDraft'].name,'Latest');assert.equal(updates[1]['flags.fdern.wizardDraft'].attributes.agility,2);assert.equal(updates[1]['flags.fdern.wizardStep'],2);
 });
+
+test('an all-unchecked browser action editor clears the array through its presence marker',()=>{
+  const sheet=new FdernItemSheet({});const data=sheet._processFormData(null,null,{object:{actionChoicesPresent:'1'}});assert.deepEqual(data.system.actions,[]);assert.equal(data.actionChoicesPresent,undefined);
+});

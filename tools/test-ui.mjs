@@ -53,7 +53,7 @@ try{browser=await chromium.launch({headless:true,...(process.env.FDERN_CHROMIUM?
   await page.evaluate(async()=>{apps.sheet.tabGroups.sheet='equipment';await renderApp(apps.sheet)});
   await page.locator('[data-sheet-search="inventory"]').fill('medical');await page.waitForFunction(()=>document.querySelectorAll('.inventory-tile').length===1);checks++;
   await page.locator('[data-sheet-search="inventory"]').fill('');await page.waitForFunction(()=>document.querySelectorAll('.inventory-tile').length>1);
-  await page.locator('.inventory-tile').filter({hasText:'Medical kit'}).click();await page.waitForFunction(()=>document.querySelector('.inventory-inspector h3')?.textContent==='Medical kit');if(await page.locator('.inventory-inspector [data-command="quantity"]').count()!==2)throw Error('Supply inspector has no quantity controls');checks++;
+  await page.locator('.inventory-tile').filter({hasText:'Medical kit'}).click();await page.waitForFunction(()=>document.querySelector('.inventory-inspector h3')?.textContent==='Medical kit');if(await page.locator('.inventory-inspector [data-command="quantity"]').count()!==2)throw Error('Supply inspector has no quantity controls');if(await page.locator('.inventory-inspector [data-command="ready"]').count()!==1)throw Error('Supply inspector has no Equip button');checks++;
   if(await page.locator('.inventory-tile[aria-pressed="true"]').count()!==1)throw Error('Inventory selection is ambiguous');checks++;
 
   await page.evaluate(()=>renderApp(apps.itemSheet));if(await page.locator('[name="system.harm"]').count())throw Error('Item should open in reading mode');await page.locator('[data-command="edit-mode"]').click();await page.waitForFunction(()=>document.querySelector('[name="system.harm"]'));checks++;

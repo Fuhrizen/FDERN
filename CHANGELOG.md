@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1
+
+- Square inventory cells, visible empty space and clearer item footprint outlines in native themes.
+- Equip one main item or up to two off-hand items; knives and grenades default to off-hand.
+- Equipment actions require an equipped item, including supplies, grenades and reloads.
+- Equipment category can be changed in the item editor; armour remains worn separately.
+
 ## 0.2.0
 
 - Character record layout with native headings and fields; removed dashboard summary boxes.

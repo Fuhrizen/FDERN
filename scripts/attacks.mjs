@@ -1,6 +1,6 @@
 import {ACTIONS} from './config.mjs';
 import {attackDC,personalBonus,stunPenalty} from './rules.mjs';
-import {ammoFor,spend,ready,actionReason} from './equipment.mjs';
+import {ammoFor,spend,actionReason} from './equipment.mjs';
 import {defensiveReaction,shieldAbsorb} from './reactions.mjs';
 import {pressure,damage} from './damage.mjs';
 import {confirmGeometry,distanceBetween} from './terrain.mjs';
@@ -12,7 +12,6 @@ export async function attack(actor,id,item,target,{reaction=false,modifier=0}={}
   if(!ranged&&geometry.distance>s.reach)throw Error('Target is outside Reach.');if(id==='close-blast'&&geometry.distance>20)throw Error('Close Blast requires a target within 20 ft.');
   if(ranged&&geometry.distance>s.maximum)throw Error('Target is beyond maximum range.');if(suppression&&geometry.distance>s.effective)throw Error('Suppression requires effective range.');
   if(id==='precision'&&(c.aimTarget!==target.uuid||c.aimWeapon!==item.id))throw Error('Precision Shot needs Aim against this target with this weapon.');
-  if(id==='quick')await ready(actor,item,{pay:false});
   if(!reaction)await spend(actor,a.cost);if(a.load){const ammo=ammoFor(actor,item);if(!ammo||ammo.system.currentLoad<a.load)throw Error('Insufficient installed Load.');await ammo.update({'system.currentLoad':ammo.system.currentLoad-a.load});}
   let response={bonus:0};if(!suppression)response=await defensiveReaction(target,ranged?'ranged':'melee',{reactionAttack:reaction});
   if(response.dive){const updated=await confirmGeometry(actor,target,item,{suppression});if(!updated||updated.cover===3){await chat(actor,a.name,'<p>Dive to Cover blocks the attack; paid costs remain spent.</p>');return;}Object.assign(geometry,updated);}

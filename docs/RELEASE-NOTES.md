@@ -1,9 +1,9 @@
-FDERN v0.2.0: shaped inventory, character layout and actionable chat.
+FDERN v0.2.1: inventory cells and equipped items.
 
-Character sheets now read as a character record: portrait and name, Attributes, background, description, motivation, connections, training and journal entries. Dashboard summary boxes and generic promotional prompts have been removed. Foundry supplies the default token icon, colours, typography and themes.
+The inventory now draws square cells behind item footprints, including unused space. Selection and outlines remain readable in Foundry’s native light and dark themes.
 
-The Equipment tab uses a responsive inventory grid with five item footprints: Pocket 1×1, Small 2×1, Medium 2×2, Long 3×1 and Bulky 3×2. Selecting an item opens its controls in a detail panel. Drag items to reorder, or use the ordering buttons. Foundry's native Item sort order is retained. Item size is configurable in Edit item; it changes the footprint without adding weight or capacity rules. Existing equipment gets a type-based automatic size.
+Equip one main item or two off-hand items. Knives and grenades default to off-hand; choose Automatic, Main item or Off-hand in Edit item. Equipping a conflicting item puts the previous equipment away. Deployed equipment must be picked up first. Armour is worn separately and ammunition stays available as a reload source.
 
-Send to chat posts an item profile with usable equipment actions. Skill cards offer another roll of the same Skill; attack cards offer details and reload controls for the relevant weapon; injury cards retain GM-only undo. Action buttons validate ownership and the current game state through the existing system API. The macro compendium now includes Send Equipment to Chat.
+Item actions now require equipment to be equipped, including grenades, medical supplies, repairs, Quick Presentation and reloading. Inventory and chat controls use Equip / Unequip; existing ready macro commands remain compatible. Existing readied state is retained, with invalid old combinations blocked until corrected.
 
-Existing character data, equipment identities, journal entries and macros remain intact. Live multiplayer and canvas behavior still require a licensed Foundry runtime.
+Browser review uses production templates and native Foundry CSS. Live multiplayer and canvas behaviour still need a licensed Foundry runtime.

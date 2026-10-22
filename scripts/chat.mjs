@@ -2,6 +2,7 @@ import {sortedInventoryItems} from './inventory-view.mjs';
 import {ACTIONS,defaultArtwork} from './config.mjs';
 import {chat,escapeHTML,choose} from './utils.mjs';
 import {ammoFor} from './equipment.mjs';
+import {equippable,equipmentMode} from './equipping.mjs';
 
 const accessibleTypes=new Set(['firearm','melee','shield','launcher','grenade','gear']);
 const number=(value)=>Number.isFinite(value)?value:null;
@@ -35,7 +36,11 @@ export async function postItem(actor,item){
   const typeLabel=({firearm:'Firearm',melee:'Melee weapon',shield:'Shield',armour:'Armour',magazine:'Ammunition',grenade:'Grenade',launcher:'Launcher',gear:'Equipment'})[item.type]??'Item';
   const body=`<section class="item-card-profile">${image}<div><p class="hint">${typeLabel}</p>${description}<dl class="fdern-chat-breakdown">${values}</dl></div></section>`;
   const actions=[{type:'open-item',item:item.id,label:'Details'}];
-  if(accessibleTypes.has(item.type)&&(s.slot||s.readied))actions.push({type:'act',command:'ready',item:item.id,label:'Ready / Stow'});
+  const canEquip=accessibleTypes.has(item.type)&&equippable(item)&&(['grenade','gear'].includes(item.type)||s.slot||s.readied);
+  if(canEquip){
+    const mode=equipmentMode(item),modeLabel=mode==='main'?'Main hand':mode==='offhand'?'Offhand':null;
+    actions.push({type:'act',command:'ready',item:item.id,label:`${s.readied?'Unequip':'Equip'}${modeLabel?` · ${modeLabel}`:''}`});
+  }
   if(['firearm','launcher'].includes(item.type)&&s.actions?.includes('reload'))actions.push({type:'act',command:'reload',item:item.id,label:`Reload · ${number(s.reloadCost)??ACTIONS.reload.cost} A`});
   const supplied=(s.actions??[]).filter(id=>Object.hasOwn(ACTIONS,id)&&id!=='reload').slice(0,3).map(id=>{
     const action=ACTIONS[id],actionCost=id==='launch'?number(s.fireCost)??action.cost:action.cost,cost=actionCost?`${actionCost} A`:'';const load=action.load?`${action.load} Load`:'';

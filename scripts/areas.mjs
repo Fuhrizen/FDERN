@@ -11,7 +11,7 @@ export async function areaAttack(actor,id,item,point){
   const thrown=id==='throw';if(distance>(thrown?45:s.maximum))throw Error('Blast centre is outside delivery range.');if(thrown&&s.quantity<1)throw Error('No device remains.');
   const confirm=await input('Confirm delivery',`<p>Centre at ${Math.round(point.x)}, ${Math.round(point.y)}; distance ${distance} ft. Confirm a credible trajectory. Resolve full/half effect here with no scatter.</p><label><input name="legal" type="checkbox" checked> Legal trajectory</label>`);if(!confirm?.legal)return;
   const ammo=thrown?null:ammoFor(actor,item);if(!thrown&&(!ammo||ammo.system.currentLoad<1))throw Error('Launcher is empty.');
-  const cost=thrown?2:s.fireCost;await spend(actor,cost);if(thrown)await item.update({'system.quantity':s.quantity-1});else await ammo.update({'system.currentLoad':ammo.system.currentLoad-1});
+  const cost=thrown?2:s.fireCost;await spend(actor,cost);if(thrown)await item.update({'system.quantity':s.quantity-1,...(s.quantity-1===0?{'system.readied':false}:{})});else await ammo.update({'system.currentLoad':ammo.system.currentLoad-1});
   const dc=thrown?(distance<=20?7:distance<=35?9:11):9+(distance>s.effective?1:0)+(actor.system.combat.moved&&!s.traits.includes('assault')?2:0);
   const skill=thrown?'athletics':'marksmanship',bonus=personalBonus(actor.system.attributes.agility,actor.system.skills[skill]);const roll=await new foundry.dice.Roll(`2d6 + ${bonus} + ${thrown?0:s.accuracy-actor.system.combat.attackPenalty}`).evaluate();const full=roll.total>=dc,strong=full&&roll.total>=dc+2;
   if(!thrown)await actor.update({'system.combat.attackPenalty':actor.system.combat.attackPenalty+s.recoil,'system.combat.attacks':actor.system.combat.attacks+1,'system.combat.aimTarget':''});

@@ -1,5 +1,5 @@
 {
-  "name": "Ready / Stow",
+  "name": "Equip / Unequip",
   "type": "action",
   "img": "icons/svg/mystery-man.svg",
   "system": {

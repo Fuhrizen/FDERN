@@ -19,7 +19,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
 }
 export class EquipmentData extends foundry.abstract.TypeDataModel {
   static defineSchema(){return {
-    description:str(),inventorySize:num(0,0,5),family:str(),cartridge:str(),compatibility:str(),accuracy:num(0,-5,5),recoil:num(1,1,3),strain:num(1,1,3),harm:num(1,0,12),penetration:num(0,0,12),effective:num(40,0),maximum:num(90,0),reach:num(5,0),hands:num(1,0,2),
+    description:str(),equipmentMode:new f.StringField({initial:'auto',choices:['auto','main','offhand']}),inventorySize:num(0,0,5),family:str(),cartridge:str(),compatibility:str(),accuracy:num(0,-5,5),recoil:num(1,1,3),strain:num(1,1,3),harm:num(1,0,12),penetration:num(0,0,12),effective:num(40,0),maximum:num(90,0),reach:num(5,0),hands:num(1,0,2),
     traits:new f.ArrayField(str()),actions:new f.ArrayField(str()),readied:bool(),worn:bool(),slot:new f.StringField({initial:'',choices:['','primary','secondary','tertiary']}),deployed:bool(),cycled:bool(true),broken:bool(),movePenalty:num(0,0,10),
     magazineId:str(),currentLoad:num(0,0),maxLoad:num(4,1),reloadCost:num(1,1,3),reloadProgress:num(),reloadSource:str(),quantity:num(1,0),ballistic:num(),meleeArmour:num(),absorption:num(1,1,5),radius:num(10,0),duration:num(2,0),payload:str('fragmentation'),fireCost:num(1,1,3),disciplineId:str(),actionId:str(),advanced:bool(),source:str('FDERN Playtest 1.1')
   };}

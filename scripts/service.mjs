@@ -6,6 +6,7 @@ import {areaAttack} from './areas.mjs';
 import {tokenFor,isActive,combatantFor,learned,readied,controllerInput,input,choose,rollTest,chat,escapeHTML} from './utils.mjs';
 import {distanceBetween,coverBetween} from './terrain.mjs';
 import {sideOf} from './combat.mjs';
+import {equipmentCost,equippedItems,loadoutValid} from './equipping.mjs';
 const medicalIds=['field-dressing','advanced-dressing','stabilise'];
 export async function execute(request,user){
   if(!request||typeof request!=='object')throw Error('Invalid command.');
@@ -26,7 +27,7 @@ export async function execute(request,user){
   if(request.type==='movement-interrupt'){const {resolveMovementInterrupt}=await import('./movement.mjs');return resolveMovementInterrupt(actor,request,execute);}
   if(request.type==='reaction-shot'){
     const target=await fromUuid(request.target);const state=actor.system.combat.overwatch;const item=actor.items.get(state.weapon);
-    if(!state.active||!item||!item.system.readied||actor.system.combat.wounds>=3||actor.system.combat.dead)throw Error('No valid reserved shot.');
+    if(!state.active||!item||!item.system.readied||!loadoutValid(actor)||actor.system.combat.wounds>=3||actor.system.combat.dead)throw Error('No valid reserved shot.');
     const confirmed=await input('Confirm reserved trigger',`<p>${escapeHTML(state.lane)}. Confirm ${escapeHTML(target?.name)} ${state.kind==='intercept'?'entered Reach':'voluntarily entered or crossed the watched lane'}. This shot interrupts movement and cannot be reacted to.</p><label><input type="checkbox" name="trigger" checked> Trigger occurred</label>`);if(!confirmed?.trigger)return;
     const reason=actionReason(actor,state.kind==='intercept'?'strike':'fire',item,{reaction:true});if(reason)throw Error(reason);await actor.update({'system.combat.overwatch.active':false,'system.combat.reactionAvailable':false});return attack(actor,state.kind==='intercept'?'strike':'fire',item,target,{reaction:true,modifier:state.kind==='intercept'?0:-1});
   }
@@ -76,8 +77,8 @@ async function opposed(actor,id,item,target){
   if(id==='lunge'){await spend(actor,2);await actor.update({'system.combat.moveRemaining':15,'system.combat.moveMode':'lunge'});await controllerInput(actor,'Lunge approach','<p>Move up to 15 ft on a credible approach using the native ruler, then continue to the +2 Disarm Test.</p>');await actor.update({'system.combat.moveRemaining':0,'system.combat.moveMode':''});}
   const own=tokenFor(actor);if(!own||distanceBetween(own,target)>(id==='grapple'||id==='takedown'?5:item?.system.reach??5))throw Error('Target is outside Reach.');
   if(id==='grapple'&&(actor.system.combat.grappling||defender.system.combat.grappledBy))throw Error('Release the existing hold first.');
-  if(id==='grapple'&&readied(actor).reduce((n,i)=>n+i.system.hands,0)>=2)throw Error('Grapple requires a usable hand.');if(id==='takedown'&&defender.system.combat.grappledBy!==actor.uuid)throw Error('Takedown requires an established hold.');
-  let heldItem=null;if(['disarm','lunge'].includes(id)){const items=readied(defender);if(!items.length)throw Error('Target has no held item.');const selected=await choose('Disarm which item?',items.map(i=>({value:i.id,label:i.name})));if(!selected)return;heldItem=defender.items.get(selected);}
+  if(id==='grapple'&&equippedItems(actor).reduce((n,i)=>n+equipmentCost(i),0)>=2)throw Error('Grapple requires a usable hand.');if(id==='takedown'&&defender.system.combat.grappledBy!==actor.uuid)throw Error('Takedown requires an established hold.');
+  let heldItem=null;if(['disarm','lunge'].includes(id)){const items=loadoutValid(defender)?equippedItems(defender):[];if(!items.length)throw Error('Target has no held item.');const selected=await choose('Disarm which item?',items.map(i=>({value:i.id,label:i.name})));if(!selected)return;heldItem=defender.items.get(selected);}
   if(id!=='lunge')await spend(actor,ACTIONS[id].cost);
   const options=id==='escape'?['agility:mobility','might:athletics']:['might:athletics','agility:melee'];const defOptions=['disarm','lunge'].includes(id)?['agility:melee','might:athletics']:['might:athletics','agility:mobility'];
   const select=async(a,opts)=>controllerInput(a,'Opposed Test',`<label>Approach<select name="pair">${opts.map(v=>`<option value="${v}">${v.replace(':',' + ')}</option>`).join('')}</select></label>`);

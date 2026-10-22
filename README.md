@@ -15,7 +15,7 @@ Create a world using FDERN. A licensed Foundry v14 installation is required; no 
 ## Play
 
 - Create a Character or NPC and open its Character Wizard. Allocate 5 Attribute points, 10 Skill points, and two eligible basic Disciplines, then choose a GM-approved loadout. Progress is saved between sessions.
-- Use the Equipment compendium for weapons, protection, devices, and compatible ammo sources. Assign Primary, Secondary, and Tertiary slots. Ready weapons before using their actions. A two-handed weapon uses both hands; a pistol can be held with a shield.
+- Use the Equipment compendium for weapons, protection, devices, and compatible ammo sources. Assign Primary, Secondary, and Tertiary slots. Equip items before using their actions. Equip one main item or up to two off-hand items. Knives and grenades default to off-hand; change this under Edit item → Equip as. Armour is worn separately.
 - Select tokens and open **FDERN Encounter** from the Combat sidebar, or use the macro. Set side names before starting. Draw a side, choose an eligible character, play its activation, and end it. Core Combat controls operate the same encounter.
 - Target a token, then choose an action on the sheet or hotbar. Cards show Action/Load costs, the roll, and the modifier breakdown. A connected GM resolves automation and controller dialogs offer eligible Reactions before the decisive roll.
 - Buy a Move or Disengage action, then move using Foundry's ruler. Paid distance, wounds, heavy equipment, difficult terrain, and grapples constrain movement. The GM can review reserved and opportunity triggers before movement proceeds.
@@ -37,7 +37,7 @@ The sheet opens on **Character**, with attributes, background, description, moti
 - **Equipment:** browse the compendium and drag items onto the sheet. The inventory grid uses five item footprints: Pocket (1×1), Small (2×1), Medium (2×2), Long (3×1), and Bulky (3×2). Select a tile to inspect and use its equipment. Drag tiles or use the ordering buttons to reorganize them. Edit item → Inventory size changes the footprint. Size is a visual arrangement, not a carrying limit. Accessible loadout slots, armour, supply counters, and ammunition remain native Item data. Reorganization is locked during an encounter.
 - **Journal:** add entries, read previews, expand notes, and click a tag to filter related entries. This ports FUS's plain-text notebook helpers: quoted tags, tag colours, ranked search and Foundry `@UUID` links. Search `tag:"field notes"` to filter by a tag.
 - **Advance:** see available VP, improvement costs, prerequisites and reasons a purchase is unavailable. Purchases ask for confirmation before spending.
-- **Combat:** readied equipment appears first; general actions expand when needed. Resources and action availability update with native document changes.
+- **Combat:** equipped equipment appears first; general actions expand when needed. Resources and action availability update with native document changes.
 
 Items open with a readable profile and usable actions. Owners can choose **Edit item** to change the underlying profile. Drag equipment to the hotbar for an item macro. Character and NPC mechanics are identical. Layout CSS controls spacing and grids; Foundry supplies colours, typography, buttons, fields, focus and disabled states. Both light and dark themes are supported.
 
@@ -47,7 +47,7 @@ VP spending enforces costs, prerequisites, Skill/Attribute caps, and the single 
 
 The system includes equipment grouped by weapon/cartridge/family, basic and advanced Disciplines, action references, and hotbar-ready macros. Firearms use independently tracked compatible magazines, tubes, belts, or launcher sources. Reload preserves partial sources. Heavy reload progress persists across activations. Repacking outside combat conserves total Load.
 
-Use **Send to chat** on an inventory item, or the **Send Equipment to Chat** macro, to post its profile and relevant actions. Chat buttons open documents, ready/stow equipment, reload, or use item actions through the same ownership and rules checks as the sheet. Skill cards provide a repeat roll; injury cards keep the GM undo control. Cards show the roll, modifiers, costs and outcome using the current Foundry theme.
+Use **Send to chat** on an inventory item, or the **Send Equipment to Chat** macro, to post its profile and relevant actions. Chat buttons open documents, equip/unequip equipment, reload, or use item actions through the same ownership and rules checks as the sheet. Skill cards provide a repeat roll; injury cards keep the GM undo control. Cards show the roll, modifiers, costs and outcome using the current Foundry theme.
 
 The macro compendium includes all 41 rules actions and seven utility macros, with visible error messages for missing tokens, items, or permissions. **GM: Correct Token Position** provides an explicit movement correction.
 

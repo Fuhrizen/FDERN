@@ -2,14 +2,19 @@ import {ACTIONS,UNIVERSAL,UNARMED,SKILLS,DISCIPLINES} from './config.mjs';
 import {burstDiscipline,qualifies,repack,advancementCost} from './rules.mjs';
 import {learned,readied,has,isActive,combatantFor,choose,chat,escapeHTML} from './utils.mjs';
 import {sortedInventoryItems} from './inventory-view.mjs';
+import {equipmentCost,equippable,equippedItems,loadoutValid} from './equipping.mjs';
 export const ammoFor = (actor,item) => item?.system.magazineId?actor.items.get(item.system.magazineId):item;
 export function actionReason(actor,id,item,{reaction=false}={}) {
   const a=ACTIONS[id];if(!a)return 'Unknown action.';const c=actor.system.combat,s=item?.system;
   if(c.dead||c.wounds>=3||c.recoveryPending)return 'Unable to act.';
-  if(game.combat?.started&&combatantFor(actor)&&!reaction){if(!isActive(actor))return 'Await this character’s activation.';if(c.actionsRemaining<(id==='reload'?1:id==='launch'?s?.fireCost??a.cost:a.cost))return 'Not enough Actions.';}
-  if(!UNIVERSAL.includes(id)&&!(!item&&UNARMED.includes(id))&&(!s?.actions.includes(id)))return 'The item does not supply this action.';
-  if(s?.broken)return 'Item is broken.';if(s?.readied&&readied(actor).reduce((n,i)=>n+i.system.hands,0)>2)return 'Readied equipment exceeds two hands.';if(s?.traits.includes('static')&&!s.deployed&&['fire','burst','suppress','sustained','overwatch'].includes(id))return 'Deploy the static weapon first.';
-  if(s&&!['quick','ready','reload','throw','field-dressing','advanced-dressing','stabilise','patch'].includes(id)&&!s.readied)return 'Ready this item first.';
+  const cost=id==='reload'?1:id==='launch'?s?.fireCost??a.cost:a.cost;
+  if(game.combat?.started&&combatantFor(actor)&&!reaction){if(!isActive(actor))return 'Await this character’s activation.';if(c.actionsRemaining<cost)return 'Not enough Actions.';}
+  if(!UNIVERSAL.includes(id)&&!(!item&&UNARMED.includes(id))&&(!s?.actions?.includes(id)))return 'The item does not supply this action.';
+  const itemAction=item&&(!UNIVERSAL.includes(id)||id==='aim')&&id!=='ready';
+  if(s?.broken)return 'Item is broken.';if(itemAction&&!s.readied)return 'Equip this item first.';
+  if(itemAction&&s.readied&&!loadoutValid(actor))return 'Resolve the equipped loadout before using equipment.';
+  if(item?.type==='grenade'&&(s.quantity??0)<=0)return 'No grenade remains.';
+  if(s?.traits.includes('static')&&!s.deployed&&['fire','burst','suppress','sustained','overwatch'].includes(id))return 'Deploy the static weapon first.';
   const skill=a.kind==='medical'?'medicine':id==='patch'?'engineering':s&&['melee','shield'].includes(item.type)||!item&&UNARMED.includes(id)?'melee':'marksmanship';
   if(a.rank&&(actor.system.skills[skill]??0)<a.rank)return `${SKILLS[skill]} ${a.rank} required.`;
   const disciplines=learned(actor);if(a.discipline&&!disciplines.includes(a.discipline))return `Learn ${DISCIPLINES[a.discipline]?.name??'the required Discipline'} first.`;
@@ -18,7 +23,7 @@ export function actionReason(actor,id,item,{reaction=false}={}) {
   if(['burst','suppress'].includes(id)&&!has(item,'automatic'))return 'Automatic weapon required.';
   if(id==='sustained'&&(!has(item,'support')||!s.deployed))return 'Deploy a Support weapon first.';
   if(id==='precision'&&(!has(item,'optic')||c.aimTarget===''||c.aimWeapon!==item.id))return 'Aim with a qualifying optic first.';
-  if(id==='quick'&&(!['pistol','machine-pistol'].includes(s.family)||c.attacks>0||!s.slot))return 'Quick Presentation requires an accessible pistol and the first Attack.';
+  if(id==='quick'&&(!['pistol','machine-pistol'].includes(s.family)||c.attacks>0))return 'Quick Presentation requires an equipped pistol and the first Attack.';
   if(id==='cycle'&&!has(item,'manual'))return 'Manual weapon required.';
   if(['fire','burst','precision','quick','close-blast','sustained'].includes(id)&&has(item,'manual')&&!s.cycled)return 'Cycle the weapon first.';
   if(a.load&&s?.magazineId){const source=actor.items.get(s.magazineId);if(!source||source.type!=='magazine'||source.system.cartridge!==s.cartridge||source.system.compatibility!==s.compatibility)return 'Installed source is incompatible.';if(actor.items.some(i=>i.id!==item.id&&i.system.magazineId===source.id))return 'This source is already installed in another weapon.';}
@@ -31,12 +36,20 @@ export function actionReason(actor,id,item,{reaction=false}={}) {
 }
 export async function spend(actor,cost){if(game.combat?.started&&combatantFor(actor)){if(!isActive(actor)||actor.system.combat.actionsRemaining<cost)throw Error('Action allowance or activation changed.');await actor.update({'system.combat.actionsRemaining':actor.system.combat.actionsRemaining-cost,'system.combat.moveRemaining':0,'system.combat.moveMode':''});}}
 export async function ready(actor,item,{pay=true}={}) {
-  if(!item)throw Error('Select an accessible loadout item.');const s=item.system;if(s.broken)throw Error('Broken equipment cannot be readied.');if(!s.slot&&['firearm','melee','shield','launcher'].includes(item.type))throw Error('Assign an accessible loadout slot first.');
-  if(s.readied&&s.deployed)throw Error('Pickup the deployed weapon first.');
-  const held=readied(actor);const updates=[];let hands=held.reduce((n,i)=>n+i.system.hands,0);
-  if(!s.readied)for(const i of held){if(hands+s.hands<=2)break;if(i.system.deployed)throw Error('Pickup the deployed weapon first.');updates.push({_id:i.id,'system.readied':false});hands-=i.system.hands;}
-  if(pay)await spend(actor,1);if(s.readied){await item.update({'system.readied':false});if(actor.system.combat.overwatch.weapon===item.id)await actor.update({'system.combat.overwatch.active':false});return;}
-  updates.push({_id:item.id,'system.readied':true});await actor.updateEmbeddedDocuments('Item',updates);await actor.update({'system.combat.aimTarget':'','system.combat.aimWeapon':'','system.combat.overwatch.active':false});
+  if(!item)throw Error('Select equipment to Ready or Stow.');const s=item.system;if(!equippable(item))throw Error('This item cannot be equipped.');if(s.broken)throw Error('Broken equipment cannot be readied.');if(item.type==='grenade'&&(s.quantity??0)<=0)throw Error('No grenade remains.');if(!s.slot&&['firearm','melee','shield','launcher'].includes(item.type))throw Error('Assign an accessible loadout slot first.');
+  if(s.deployed)throw Error('Pickup the deployed weapon first.');
+  const updates=[];
+  if(!s.readied){
+    let remaining=2-equipmentCost(item);const current=equippedItems(actor).filter(currentItem=>currentItem.id!==item.id);const toStow=[];
+    for(const currentItem of current){if(remaining>=equipmentCost(currentItem)){remaining-=equipmentCost(currentItem);continue;}toStow.push(currentItem);}
+    if(toStow.some(currentItem=>currentItem.system.deployed))throw Error('Pickup the deployed weapon first.');
+    for(const currentItem of toStow)updates.push({_id:currentItem.id,'system.readied':false});
+    updates.push({_id:item.id,'system.readied':true});
+  }else updates.push({_id:item.id,'system.readied':false});
+  if(pay)await spend(actor,1);
+  await actor.updateEmbeddedDocuments('Item',updates);
+  if(s.readied){if(actor.system.combat.overwatch.weapon===item.id)await actor.update({'system.combat.overwatch.active':false});return;}
+  await actor.update({'system.combat.aimTarget':'','system.combat.aimWeapon':'','system.combat.overwatch.active':false});
 }
 export async function reload(actor,item){
   const s=item.system;const internal=s.family==='shotgun';const used=new Set(actor.items.filter(i=>i.id!==item.id&&i.system.magazineId).map(i=>i.system.magazineId));
@@ -86,7 +99,7 @@ export async function inventory(actor,{command,item:itemId,slot,delta,target,bef
   if(!['gear','grenade'].includes(item.type))throw Error('Quantity can only be changed for gear or grenades; magazines use Load.');
   if(delta!==1&&delta!==-1)throw Error('Quantity changes must be exactly +1 or -1.');
   const quantity=item.system.quantity+delta;if(quantity<0)throw Error('Quantity cannot be negative.');
-  return item.update({'system.quantity':quantity});
+  return item.update({'system.quantity':quantity,...(item.type==='grenade'&&quantity===0?{'system.readied':false}:{})});
 }
 export async function advance(actor,{kind,key}) {
   const d=actor.system;const current=kind==='skill'?d.skills[key]:d.attributes[key];let cost;

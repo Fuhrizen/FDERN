@@ -11,6 +11,8 @@
 .fdern .portrait-button {flex: 0 0 64px; width: 64px; height: 64px; padding: 0;}
 .fdern .portrait {display: block; width: 64px; height: 64px; object-fit: cover;}
 .fdern .identity {flex: 1; min-width: 0;}
+.fdern .identity .form-group > label {flex: 0;}
+.fdern .identity .form-group > .form-fields {flex: 1;}
 .fdern .identity p {margin: 4px 0;}
 .fdern .identity > button {width: auto;}
 .fdern .resource-fields, .fdern .profile-grid, .fdern .point-grid {
@@ -19,7 +21,9 @@
   gap: 8px 16px;
 }
 .fdern .combat-summary {margin: 0;}
-.fdern .resource-fields .form-group {margin: 0;}
+.fdern .resource-fields .form-group {margin: 0; flex-wrap: nowrap;}
+.fdern .resource-fields .form-group > label {flex: 0 0 auto; min-width: 72px;}
+.fdern .resource-fields .form-fields {justify-content: start;}
 .fdern .resource-fields input[type=number] {max-width: 48px;}
 .fdern .summary-values {display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 8px 0 0;}
 .fdern .summary-values > div {display: flex; gap: 8px; align-items: baseline;}

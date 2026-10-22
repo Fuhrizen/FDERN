@@ -19,11 +19,28 @@ export async function rollTest(actor,attribute,skill,dc=9,modifier=0,label='Test
   if(penalty)await actor.update({'system.combat.stunUsed':true});
   await chat(actor,label,`<p>${escapeHTML(attribute)} + ${escapeHTML(skill)}: personal +${bonus}, modifier ${modifier}, Stun -${penalty}.</p><p><b>${roll.total}</b> vs DC ${dc}: ${roll.total>=dc?'Success':'Failure'}</p>`,[roll]);return roll;
 }
-export async function input(title,content,label='Continue') {return foundry.applications.api.DialogV2.prompt({window:{title},content,ok:{label,callback:(_event,button)=>Object.fromEntries(new FormData(button.form))},rejectClose:false});}
+// Use native form groups in every local or remote DialogV2 prompt.
+export function dialogContent(content){
+  if(!globalThis.document?.createElement)return content;
+  const template=document.createElement('template');template.innerHTML=content;
+  for(const label of template.content.querySelectorAll('label')){
+    if(label.closest('.form-group'))continue;
+    const controls=[...label.children].filter(el=>el.matches('input, select, textarea'));
+    if(!controls.length)continue;
+    const group=document.createElement('div');group.className='form-group';
+    const fields=document.createElement('div');fields.className='form-fields';
+    label.replaceWith(group);group.append(label,fields);
+    for(const control of controls){control.id||=`fdern-${foundry.utils.randomID()}`;fields.append(control);}
+    label.htmlFor=controls[0].id;
+    if(controls.some(el=>el.tagName==='TEXTAREA'))group.classList.add('stacked');
+  }
+  return template.innerHTML;
+}
+export async function input(title,content,label='Continue') {return foundry.applications.api.DialogV2.prompt({classes:['fdern','standard-form'],window:{title},content:dialogContent(content),ok:{label,callback:(_event,button)=>Object.fromEntries(new FormData(button.form))},rejectClose:false});}
 export async function choose(title,options,field='choice') {const r=await input(title,`<label>${escapeHTML(title)}<select name="${field}">${options.map(o=>`<option value="${escapeHTML(o.value)}">${escapeHTML(o.label)}</option>`).join('')}</select></label>`);return r?.[field];}
 export async function controllerInput(actor,title,content) {
   const user=ownerFor(actor);if(!user)throw Error('A connected controller is required.');
   if(user.id===game.user.id)return input(title,content);
-  return foundry.applications.api.DialogV2.query(user,'input',{window:{title},content,rejectClose:false});
+  return foundry.applications.api.DialogV2.query(user,'input',{classes:['fdern','standard-form'],window:{title},content:dialogContent(content),rejectClose:false});
 }
 export function guard(fn){return async(...args)=>{try{return await fn(...args);}catch(e){console.error('FDERN',e);ui.notifications.error(e.message);}};}

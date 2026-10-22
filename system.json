@@ -1,19 +1,106 @@
 {
-  "id": "fdern", "title": "FDERN", "description": "Modern tactical roleplaying for Foundry Virtual Tabletop.",
-  "version": "0.1.0", "compatibility": {"minimum": "14", "verified": "14.368", "maximum": "14"},
-  "authors": [{"name": "Fuhrizen", "url": "https://github.com/Fuhrizen"}],
-  "esmodules": ["scripts/fdern.mjs"], "styles": ["styles/fdern.css"],
-  "languages": [{"lang": "en", "name": "English", "path": "lang/en.json"}],
-  "documentTypes": {"Actor": {"character": {}, "npc": {}}, "Item": {"firearm": {}, "melee": {}, "shield": {}, "armour": {}, "magazine": {}, "grenade": {}, "launcher": {}, "gear": {}, "discipline": {}, "action": {}}},
-  "packs": [
-    {"name": "equipment", "label": "Equipment", "path": "packs/equipment", "type": "Item", "system": "fdern", "ownership": {"PLAYER": "OBSERVER", "ASSISTANT": "OWNER"}},
-    {"name": "disciplines", "label": "Disciplines", "path": "packs/disciplines", "type": "Item", "system": "fdern", "ownership": {"PLAYER": "OBSERVER", "ASSISTANT": "OWNER"}},
-    {"name": "actions", "label": "Actions", "path": "packs/actions", "type": "Item", "system": "fdern", "ownership": {"PLAYER": "OBSERVER", "ASSISTANT": "OWNER"}},
-    {"name": "macros", "label": "Combat Macros", "path": "packs/macros", "type": "Macro", "ownership": {"PLAYER": "OBSERVER", "ASSISTANT": "OWNER"}}
+  "id": "fdern",
+  "title": "FDERN",
+  "description": "Modern tactical roleplaying for Foundry Virtual Tabletop.",
+  "version": "0.1.1",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14.368",
+    "maximum": "14"
+  },
+  "authors": [
+    {
+      "name": "Fuhrizen",
+      "url": "https://github.com/Fuhrizen"
+    }
   ],
-  "url": "https://github.com/Fuhrizen/FDERN", "bugs": "https://github.com/Fuhrizen/FDERN/issues",
+  "esmodules": [
+    "scripts/fdern.mjs"
+  ],
+  "styles": [
+    "styles/fdern.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": {},
+      "npc": {}
+    },
+    "Item": {
+      "firearm": {},
+      "melee": {},
+      "shield": {},
+      "armour": {},
+      "magazine": {},
+      "grenade": {},
+      "launcher": {},
+      "gear": {},
+      "discipline": {},
+      "action": {}
+    }
+  },
+  "packs": [
+    {
+      "name": "equipment",
+      "label": "Equipment",
+      "path": "packs/equipment",
+      "type": "Item",
+      "system": "fdern",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "disciplines",
+      "label": "Disciplines",
+      "path": "packs/disciplines",
+      "type": "Item",
+      "system": "fdern",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "actions",
+      "label": "Actions",
+      "path": "packs/actions",
+      "type": "Item",
+      "system": "fdern",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    },
+    {
+      "name": "macros",
+      "label": "Combat Macros",
+      "path": "packs/macros",
+      "type": "Macro",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
+    }
+  ],
+  "url": "https://github.com/Fuhrizen/FDERN",
+  "bugs": "https://github.com/Fuhrizen/FDERN/issues",
   "manifest": "https://github.com/Fuhrizen/FDERN/releases/latest/download/system.json",
-  "download": "https://github.com/Fuhrizen/FDERN/releases/download/v0.1.0/fdern.zip",
-  "license": "LICENSE", "readme": "README.md", "socket": true, "grid": {"distance": 5, "units": "ft"},
-  "primaryTokenAttribute": "combat.wounds", "secondaryTokenAttribute": "combat.pressure"
+  "download": "https://github.com/Fuhrizen/FDERN/releases/download/v0.1.1/fdern.zip",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "socket": true,
+  "grid": {
+    "distance": 5,
+    "units": "ft"
+  },
+  "primaryTokenAttribute": "combat.wounds",
+  "secondaryTokenAttribute": "combat.pressure"
 }

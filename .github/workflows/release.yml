@@ -40,15 +40,6 @@ jobs:
           VERSION=$(node -p "JSON.parse(require('fs').readFileSync('system.json')).version")
           if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then exit 1; fi
           if gh release view "v$VERSION" >/dev/null 2>&1; then
-            EXISTING=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/v$VERSION" --jq '.object.sha')
-            # One-time finalization of v0.1.0 with native UI and complete action macros.
-            # All subsequent release versions remain immutable.
-            if [[ "$VERSION" == "0.1.0" && "$EXISTING" == "2488bcfd4772a2a5962ca06eeecfe2d486f37089" ]]; then
-              gh release upload "v$VERSION" dist/fdern.zip dist/system.json dist/SHA256SUMS --clobber
-              gh api "repos/$GITHUB_REPOSITORY/git/refs/tags/v$VERSION" -X PATCH -f sha="$GITHUB_SHA" -F force=true
-              gh release edit "v$VERSION" --notes-file docs/RELEASE-NOTES.md
-              exit 0
-            fi
             echo "This version already exists; releases are immutable. Bump system.json and package.json for the next release."
             exit 0
           fi

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1
+
+- Native Foundry tabs, form groups, fieldsets, disclosures and controls across the character sheet, wizard, item sheet, encounter panel and prompts.
+- Compact resource summary, readied equipment first, named ammunition sources, action checkboxes and a useful final wizard review.
+- Observer controls and purchase availability match permissions and budgets; portraits and tabs support the keyboard.
+- Wizard saves retain ordering; combat changes refresh open sheets; managed conditions reconcile without stale or duplicate effects.
+- Failed Ready and empty-launcher validation preserve Actions; Cover Ally checks encounter sides.
+- Visual inspection of small production UI sections in both native themes, responsive checks and targeted regressions.
+
 ## 0.1.0
 
 Initial FDERN implementation for Foundry VTT v14:

@@ -12,7 +12,6 @@ Reviewed 12 October 2026. FDERN Core Rulebook Playtest 1.1 is the existing imple
 | [D&D 5e Combat implementation](https://github.com/foundryvtt/dnd5e/blob/6.1.x/module/documents/combat.mjs) | Reference for extending core Combat and preserving native document lifecycle. No code copied. |
 | [DCC v14 notes](https://github.com/foundryvtt-dcc/dcc/blob/main/docs/dev/V14.md) and init-hook module | Reference for TypeDataModel registration, ApplicationV2, explicit ActiveEffect phases, current messageMode and img fields. No rules or code copied. |
 | [FUS memory helpers](https://github.com/Fuhrizen/FUS/blob/main/scripts/memory.mjs), commit 4b0b91b6b7b2c967627b2bc902c646fab07ccd2d | Ported notebook parsing, ranked search, stable tag colours, safe plain-text enrichment, and document links at the user's request. |
-
 | [PF2e Toolbelt](https://github.com/reonZ/pf2e-toolbelt) | Reference for actionable chat, controlled-target workflows and modular quality-of-life tools. FDERN uses its own native documents and rules, with no dependency or copied code. |
 | [PF2e Workbench](https://github.com/xdy/xdy-pf2e-workbench) | Reference for ready-to-use macro packs and integrated combat conveniences. All FDERN actions now have guarded macros calling the system API. |
 
@@ -24,3 +23,11 @@ Reviewed 12 October 2026. FDERN Core Rulebook Playtest 1.1 is the existing imple
 - Character creation issues three compatible sources per firearm/launcher as a convenient starting loadout. The book leaves loadout provisioning to the GM; the wizard labels it GM-approved.
 - Normal Suppress is a Test, so it does not inherit or add accumulated Recoil. Sustained Suppression counts as an Attack. No area suppression lane or scatter rule is added.
 - Difficult ground reduces the entire paid Move's allowance by 5 ft. The native ruler shows its terrain cost; the paid-distance check handles the actual modified Move allowance.
+
+## Native UI review — 22 October 2026
+
+- Reused Foundry's `ActorSheetV2` / `ItemSheetV2`, `ApplicationV2.TABS`, `standard-form`, `form-group`, native `fieldset`, `details`, notifications and buttons. FDERN CSS controls layout and grid dimensions; it supplies no theme, typography, control colours or focus styling.
+- Adapted the permission-aware inventory row pattern from [PF2e inventory](https://github.com/foundryvtt/pf2e/blob/v14-dev/static/templates/actors/partials/inventory.hbs), file SHA `81e9e04cfc808f3171312c8c1303fecb15780939`: inspection stays available while mutation controls depend on edit permission. Reimplemented using native buttons for keyboard access.
+- Used [D&D 5e character header](https://github.com/foundryvtt/dnd5e/blob/6.1.x/templates/actors/character-header.hbs), file SHA `ac372a6302d0c7d6df696116344d560f20bbbab7`, as a reference for separating identity from compact resource information and explicit accessible control names.
+- Reused the tab group/data attributes shown in [PF2e inventory tab](https://github.com/foundryvtt/pf2e/blob/v14-dev/static/templates/actors/character/tabs/inventory.hbs) with Foundry v14's native tab controller. No system-specific CSS, rules text, assets or substantial source code was copied from these projects.
+- The visual harness uses the official demo's public core stylesheet and icon font, never packaged with FDERN. It renders the real production templates and shared dialog formatter in light and dark themes at 1100, 760, 600 and 460 px. This is a template/DOM harness, not a licensed Foundry runtime.

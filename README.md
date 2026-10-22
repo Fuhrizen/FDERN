@@ -31,7 +31,7 @@ Grenades choose a point on the map and resolve full or half effect there without
 
 ## Character sheets
 
-Combat, Skills, Equipment, Biography, Memory, and Veterancy tabs use responsive cards. Sheet fields and native document updates refresh the displayed resources. Drag equipment to the hotbar to create an item macro. Character and NPC mechanics are identical. Layout CSS controls spacing and grids; Foundry supplies colours, typography, and standard controls.
+Combat, Skills, Equipment, Biography, Memory, and Veterancy use native tabs and forms. Readied equipment appears first in combat; general actions expand when needed. Sheet fields and native document updates refresh the displayed resources. Drag equipment to the hotbar to create an item macro. Character and NPC mechanics are identical. Layout CSS controls spacing and grids; Foundry supplies colours, typography, buttons, fields, focus and disabled states. Both light and dark themes are supported.
 
 Memory ports FUS's plain-text notebook: titles, body text, quoted tags, tag colours, ranked search, expandable entries, and Foundry `@UUID` links. It does not call an external service. Search `tag:"field notes"` to filter by a tag.
 

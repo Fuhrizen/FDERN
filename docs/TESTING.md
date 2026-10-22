@@ -10,7 +10,7 @@ Run `npm ci`, `npm test`, `npm run check`, `npm run build:packs`, and `npm run b
 
 This checklist has not been executed in the build environment. A licensed Foundry server is not present. Target: v14.368.
 
-13 October continuation: 34 rule/document/macro tests, static validation, compendium compilation and packaging pass locally. Local Chromium exits with SIGTRAP before rendering; responsive checks must pass in GitHub Actions before the release finalization.
+The native UI review adds observer permission, item action form, wizard save ordering and overlapping condition regressions. Chromium rendering runs in GitHub Actions because the local sandbox cannot launch it. The harness uses public Foundry core CSS and its icon font, captures real resources, weapon controls, wizard points, item fields, encounter and geometry dialog sections in both themes, and tests keyboard navigation and observer controls. Visual review is recorded in docs/UI-REVIEW.md.
 
 1. Install the release manifest in Setup. Create a clean FDERN world. Confirm four compendiums load and no startup errors occur.
 2. Connect a GM and two Players. Create two Characters and unlinked NPC tokens. Complete creation with valid budgets; close/reopen the wizard midway to check saved progress. Check all sheet tabs and native drag/drop.

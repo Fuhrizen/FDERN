@@ -1,7 +1,7 @@
-FDERN v0.2.3: equipment and action artwork.
+FDERN v0.2.4: condition artwork and starting-equipment previews.
 
-A coherent set of 23 original SVG icons makes equipment easier to distinguish in inventory and compendiums. Firearm families, protection, ammunition, medical and engineering supplies, and grenade payloads have separate cues. Action documents and macros use corresponding functional icons.
+Nine new SVGs distinguish injury, pressure and posture conditions. Down and Prone now have separate images. The native status IDs, condition rules and effect behavior are unchanged. Old stock icons on system-managed effects refresh during reconciliation; custom artwork and manual effects are retained.
 
-The same artwork appears in item sheets, inventory, chat profiles and new item hotbar macros. Existing system placeholders are resolved when sheets and chat render. Custom artwork is preserved, and character/NPC default token artwork stays native Foundry. Existing world documents are not rewritten.
+Character creation shows the selected equipment image and a concise profile beside each loadout choice. Changing a selection saves and updates the preview. The final Review step repeats the chosen artwork and profiles so players can check their gear before creation.
 
-All icons are bundled, self-contained vectors under the repository’s MIT license. Browser review includes every icon at 24, 32 and 48 pixels in both native themes. Live multiplayer and canvas behaviour still require a licensed Foundry runtime.
+All 32 icons are bundled vectors. Native Foundry themes, controls and character token defaults remain intact. Browser review uses production templates and native Foundry CSS; live token-HUD, multiplayer and canvas verification still need a licensed runtime.

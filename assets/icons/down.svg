@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Down</title>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
+  <g fill="none" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="25" cy="23" r="6"/><path d="m29 29 9 5 8 1M32 34l-9 7-8 1m23-7-3 10m-15-4 5 8M49 18v16m-5-5 5 5 5-5"/></g>
+</svg>

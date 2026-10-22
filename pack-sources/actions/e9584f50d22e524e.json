@@ -1,7 +1,7 @@
 {
   "name": "Drop Prone",
   "type": "action",
-  "img": "systems/fdern/assets/icons/move.svg",
+  "img": "systems/fdern/assets/icons/prone.svg",
   "system": {
     "actionId": "prone",
     "hands": 0,

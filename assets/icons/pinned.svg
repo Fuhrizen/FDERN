@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Pinned</title>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
+  <g fill="none" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="25" cy="39" r="5"/><path d="m30 40 10-2 8 4m-14-2 1 8m-9-6-6 7M21 12v17m-5-6 5 6 5-6M43 12v17m-5-6 5 6 5-6M15 48h34"/></g>
+</svg>

@@ -24,6 +24,19 @@ test('wizard queues snapshots so a slow save cannot replace later point spending
   assert.equal(updates.length,2);assert.equal(updates[0]['flags.fdern.wizardDraft'].name,'First');assert.equal(updates[1]['flags.fdern.wizardDraft'].name,'Latest');assert.equal(updates[1]['flags.fdern.wizardDraft'].attributes.agility,2);assert.equal(updates[1]['flags.fdern.wizardStep'],2);
 });
 
+test('wizard Loadout and Review show selected item artwork and useful profiles; changed selections refresh previews',async()=>{
+  const a=actor(),wizard=new CharacterWizard({actor:a});
+  let ctx=await wizard._prepareContext();
+  const rifle=ctx.loadoutSlots.find(slot=>slot.id==='primary');
+  assert.equal(rifle.preview.name,'Service rifle');assert.equal(rifle.preview.img,'systems/fdern/assets/icons/rifle.svg');assert.match(rifle.preview.profile,/Effective 150 ft · Max 330 ft · Harm 2 · Load 4/);
+  assert.match(ctx.loadoutSlots.find(slot=>slot.id==='armour').preview.profile,/Ballistic 4 · Melee 1/);
+  let renders=0;wizard.render=()=>{renders++;};
+  await CharacterWizard.onForm.call(wizard,{target:{}},null,{object:{primary:'battle-rifle'}});
+  assert.equal(renders,1);assert.equal(a.getFlag('fdern','wizardDraft').primary,'battle-rifle');
+  ctx=await wizard._prepareContext();assert.equal(ctx.loadoutSlots.find(slot=>slot.id==='primary').preview.name,'Battle rifle');
+  wizard.step=5;ctx=await wizard._prepareContext();assert.equal(ctx.loadoutSlots.find(slot=>slot.id==='primary').preview.name,'Battle rifle');assert.equal(ctx.review,true);
+});
+
 test('an all-unchecked browser action editor clears the array through its presence marker',()=>{
   const sheet=new FdernItemSheet({});const data=sheet._processFormData(null,null,{object:{actionChoicesPresent:'1'}});assert.deepEqual(data.system.actions,[]);assert.equal(data.actionChoicesPresent,undefined);
 });

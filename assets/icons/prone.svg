@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Prone</title>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
+  <g fill="none" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="17" cy="38" r="5"/><path d="M22 38h17l8-6m-17 6 5 9m-9-9-6 8m20-14 5-5m-34 20h40"/></g>
+</svg>

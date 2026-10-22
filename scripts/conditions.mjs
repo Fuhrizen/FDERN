@@ -1,3 +1,4 @@
+import {LEGACY_CONDITION_ARTWORK} from './artwork.mjs';
 // Reconcile only system-managed native ActiveEffects. Queue by document UUID so
 // overlapping actor updates cannot create duplicates or leave an old condition.
 const queues=new Map();
@@ -13,6 +14,7 @@ export function syncConditions(actor){
       const active=desiredConditions(actor)[id];
       const effects=actor.effects.filter(e=>e.getFlag('fdern','condition')===id);
       for(const effect of effects.slice(active?1:0))await effect.delete();
+      if(active&&effects[0]?.img===LEGACY_CONDITION_ARTWORK[id]){const status=CONFIG.statusEffects.find(s=>s.id===id);if(status?.img&&status.img!==effects[0].img)await effects[0].update({img:status.img});}
       if(active&&!effects.length){const status=CONFIG.statusEffects.find(s=>s.id===id);if(status)await actor.createEmbeddedDocuments('ActiveEffect',[{name:status.name,img:status.img,statuses:[id],changes:[],flags:{fdern:{condition:id}}}]);}
     }
   });

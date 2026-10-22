@@ -2,12 +2,15 @@ import {ACTIONS,ICON} from './config.mjs';
 
 export const ARTWORK_ICONS=Object.freeze([
   'pistol','smg','rifle','precision','shotgun','support','launcher','knife','melee','shield',
-  'armour','ammo','grenade','smoke','flash','fire','medical','tools','move','target','observe','discipline','action'
+  'armour','ammo','grenade','smoke','flash','fire','medical','tools','move','target','observe','discipline','action','dead','down','impaired','threatened','pinned','overwhelmed','prone','grappled','stunned'
 ]);
 const asset=category=>`systems/fdern/assets/icons/${category}.svg`;
+export const CONDITION_ARTWORK=Object.freeze({dead:'dead',down:'down',impaired:'impaired',threatened:'threatened',pinned:'pinned',overwhelmed:'overwhelmed',prone:'prone','take-cover':'shield',grappled:'grappled',stunned:'stunned',overwatch:'target'});
+export const LEGACY_CONDITION_ARTWORK=Object.freeze({dead:'icons/svg/skull.svg',down:'icons/svg/falling.svg',impaired:'icons/svg/blood.svg',threatened:'icons/svg/target.svg',pinned:'icons/svg/net.svg',overwhelmed:'icons/svg/terror.svg',prone:'icons/svg/falling.svg','take-cover':'icons/svg/shield.svg',grappled:'icons/svg/anchor.svg',stunned:'icons/svg/daze.svg',overwatch:'icons/svg/eye.svg'});
+export const conditionArtwork=id=>CONDITION_ARTWORK[id]?asset(CONDITION_ARTWORK[id]):null;
 const PLACEHOLDERS=new Set(['',ICON,'systems/fdern/assets/fdern.svg']);
 const FIREARM_ICONS=Object.freeze({pistol:'pistol','machine-pistol':'smg',smg:'smg',rifle:'rifle',precision:'precision',shotgun:'shotgun',support:'support'});
-const ACTION_ICONS=Object.freeze({reload:'ammo',cycle:'ammo',patch:'tools',aim:'target',overwatch:'target',intercept:'target','cover-ally':'shield','take-cover':'shield',prone:'move',stand:'move'});
+const ACTION_ICONS=Object.freeze({reload:'ammo',cycle:'ammo',patch:'tools',aim:'target',overwatch:'target',intercept:'target','cover-ally':'shield','take-cover':'shield',prone:'prone',stand:'move'});
 const KIND_ICONS=Object.freeze({ranged:'target',melee:'target',suppress:'target',opposed:'target',opposing:'target',movement:'move',test:'observe',medical:'medical',area:'grenade'});
 
 /** Choose an icon for an action document or macro without changing its rules. */

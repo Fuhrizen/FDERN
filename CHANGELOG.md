@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.4
+
+- Nine condition icons, including separate Down and Prone cues, integrated into native status effects.
+- Refresh old stock images on system-managed conditions while preserving custom and manual effects.
+- Reactive starting-equipment previews and illustrated loadout review in the character wizard.
+- Shared 32-icon contact sheet and expanded wizard interaction checks in both native themes.
+
 ## 0.2.3
 
 - 23 original vector icons for equipment, firearm families, grenade payloads, actions and macros.

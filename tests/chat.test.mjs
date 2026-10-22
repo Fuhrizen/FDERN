@@ -1,9 +1,9 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {setup,messages} from './harness.mjs';
+import {setup,messages,dialogResponses} from './harness.mjs';
 const {player}=setup();game.user=player;
 const {CharacterData,EquipmentData,FdernActor}=await import('../scripts/models.mjs');
 const {chat,bindChatActions,dispatchChatAction,rollTest}=await import('../scripts/utils.mjs');
-const {postItem}=await import('../scripts/chat.mjs');
+const {postItem,shareEquipment}=await import('../scripts/chat.mjs');
 CONFIG.Item.dataModels={firearm:EquipmentData,gear:EquipmentData,armour:EquipmentData,launcher:EquipmentData,magazine:EquipmentData};
 function actor(){const a=new FdernActor({name:'<Operator>',type:'character',owner:'player'});a.system=new CharacterData({attributes:{agility:2},skills:{marksmanship:1}} ,{parent:a});a.system.prepareDerivedData();return a;}
 
@@ -49,4 +49,10 @@ test('postItem shares a safe concise profile with item-bound actions and validat
   const [launcher]=await a.createEmbeddedDocuments('Item',[{name:'Launcher',type:'launcher',system:{img:'systems/fdern/assets/fdern.svg',fireCost:2,reloadCost:2,maximum:200,effective:75,actions:['launch','reload'],magazineId:source.id}}]);await postItem(a,launcher);assert.match(messages.at(-1).content,/Launch · 2 A · 1 Load/);assert.match(messages.at(-1).content,/Reload · 2 A/);assert.match(messages.at(-1).content,/icons\/svg\/mystery-man.svg/);
   const [armour,gear]=await a.createEmbeddedDocuments('Item',[{name:'Armour',type:'armour',system:{ballistic:1,meleeArmour:1}},{name:'Gear',type:'gear',system:{quantity:2}}]);await postItem(a,armour);assert.doesNotMatch(messages.at(-1).content,/\bLoad<\/dt>/);await postItem(a,gear);assert.match(messages.at(-1).content,/Quantity<\/dt><dd>2/);assert.doesNotMatch(messages.at(-1).content,/\bLoad<\/dt>/);
   game.user={id:'observer',isGM:false};await assert.rejects(postItem(a,rifle),/do not own/);game.user=player;
+});
+
+test('share equipment utility posts only the selected owned item and supports cancellation',async()=>{
+  const a=actor();const [first,second]=await a.createEmbeddedDocuments('Item',[{name:'First',type:'gear',system:{}},{name:'Second',type:'gear',system:{}}]);
+  dialogResponses.push({choice:second.id});await shareEquipment(a);assert.match(messages.at(-1).content,/Item · Second/);assert.doesNotMatch(messages.at(-1).content,/Item · First/);
+  const count=messages.length;dialogResponses.push(null);await shareEquipment(a);assert.equal(messages.length,count);
 });

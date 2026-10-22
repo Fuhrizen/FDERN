@@ -111,8 +111,6 @@
 .fdern .item-stat-list > div {display:flex; justify-content:space-between; gap:12px;}
 .fdern .item-stat-list dd {margin:0;}
 
-.fdern .character-profile, .fdern .character-overview {display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:12px;}
-.fdern .character-overview {align-items:start;}
 
 /* Document layout and native control placement; no system palette or theme. */
 .fdern .sheet-header {gap:16px; padding-bottom:4px;}

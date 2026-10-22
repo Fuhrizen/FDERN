@@ -1,4 +1,4 @@
-FDERN v0.1.1: native Foundry UI and full interface review.
+FDERN v0.1.2: native Foundry UI and full interface review.
 
 Character/NPC sheets, wizard, item editor, encounter panel and prompts now use Foundry's standard form structure and controls. Compact resources, native tabs, readied equipment first, expandable general actions, named ammunition sources, action checkboxes, and a detailed wizard review improve everyday play. No custom colour or typography theme is supplied.
 

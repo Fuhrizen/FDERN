@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- Corrected a truncated screenshot in the packaged UI review evidence. Runtime behavior matches 0.1.1.
+
 ## 0.1.1
 
 - Native Foundry tabs, form groups, fieldsets, disclosures and controls across the character sheet, wizard, item sheet, encounter panel and prompts.

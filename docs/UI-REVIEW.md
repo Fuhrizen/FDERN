@@ -1,6 +1,6 @@
 # Native UI review
 
-Reviewed 22 October 2026 for v0.1.1.
+Reviewed 22 October 2026 for v0.1.2.
 
 FDERN uses Foundry's standard forms, tabs, fieldsets, disclosures, buttons, notifications, typography and both themes. System CSS arranges content and sizes grids; it does not supply a colour theme. Architectural references and source attribution are in [RESEARCH.md](RESEARCH.md).
 

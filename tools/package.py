@@ -1,4 +1,4 @@
-import json, pathlib, zipfile, hashlib
+import json, pathlib, zipfile, hashlib, zlib
 root=pathlib.Path(__file__).resolve().parents[1]
 manifest=json.loads((root/'system.json').read_text())
 for pack in manifest['packs']:
@@ -6,6 +6,23 @@ for pack in manifest['packs']:
 files=[root/name for name in ['system.json','README.md','LICENSE','CHANGELOG.md']]
 for directory in ['scripts','templates','styles','lang','assets','packs','docs']:
     files.extend(p for p in (root/directory).rglob('*') if p.is_file() and p.name!='LOCK')
+def validate_png(path):
+    data=path.read_bytes()
+    if data[:8]!=b'\x89PNG\r\n\x1a\n': raise ValueError(f'Invalid PNG: {path}')
+    offset=8
+    while offset+12<=len(data):
+        size=int.from_bytes(data[offset:offset+4], 'big')
+        end=offset+12+size
+        if end>len(data): break
+        body=data[offset+4:end-4]
+        if zlib.crc32(body)!=int.from_bytes(data[end-4:end], 'big'): break
+        if body[:4]==b'IEND' and size==0 and end==len(data): return
+        offset=end
+    raise ValueError(f'Truncated or corrupt PNG: {path}')
+
+for file in files:
+    if file.suffix.lower()=='.png': validate_png(file)
+
 out=root/'dist';out.mkdir(exist_ok=True)
 with zipfile.ZipFile(out/'fdern.zip','w',compression=zipfile.ZIP_DEFLATED) as archive:
     for path in sorted(files):

@@ -10,7 +10,7 @@ function actor(){const a=new FdernActor({name:'<Operator>',type:'character',owne
 test('chat cards retain native article layout and escape context controls',async()=>{
   const a=actor();const [rifle]=await a.createEmbeddedDocuments('Item',[{name:'<Rifle>',type:'firearm',system:{slot:'primary',readied:false,broken:false,actions:['reload']}}]);
   await chat(a,'<Attack>','<p>Roll details</p>',[],{},[{type:'act',command:'ready',item:rifle.id,label:'Ready <Rifle>'}]);
-  const content=messages.at(-1).content;assert.match(content,/<article class="fdern chat-card">/);assert.match(content,/<div class="fdern-chat-content">/);assert.match(content,/&lt;Attack&gt;/);assert.match(content,/data-fdern-chat-action="open-actor"/);assert.match(content,/data-command="ready"/);assert.match(content,/Ready &lt;Rifle&gt;/);assert.doesNotMatch(content,/data-command="reload"/);
+  const content=messages.at(-1).content;assert.match(content,/<article class="fdern chat-card themed theme-light">/);assert.match(content,/<div class="fdern-chat-content">/);assert.match(content,/&lt;Attack&gt;/);assert.match(content,/data-fdern-chat-action="open-actor"/);assert.match(content,/data-command="ready"/);assert.match(content,/Ready &lt;Rifle&gt;/);assert.doesNotMatch(content,/data-command="reload"/);
   await chat(a,'Attack result','<p>Result</p>',[],{},[{type:'open-item',item:rifle.id,label:'Details'},{type:'act',command:'reload',item:rifle.id,label:'Reload'}]);assert.match(messages.at(-1).content,/data-command="reload"/);
 });
 

@@ -23,7 +23,7 @@ const chatActionMarkup=(actor,actions=[])=>{
   }).join('')}</footer>`;
 };
 export async function chat(actor,title,body,rolls=[],extra={},actions=[]) {
-  const content=`<article class="fdern chat-card"><header><strong>${escapeHTML(title)}</strong><span>${escapeHTML(actor?.name??'FDERN')}</span></header><div class="fdern-chat-content">${body}</div>${chatActionMarkup(actor,actions)}</article>`;
+  const content=`<article class="fdern chat-card themed theme-light"><header><strong>${escapeHTML(title)}</strong><span>${escapeHTML(actor?.name??'FDERN')}</span></header><div class="fdern-chat-content">${body}</div>${chatActionMarkup(actor,actions)}</article>`;
   const message={speaker:foundry.documents.ChatMessage.getSpeaker({actor}),content,rolls,...extra};
   foundry.documents.ChatMessage.applyMode(message,game.settings.get('core','messageMode'));
   return foundry.documents.ChatMessage.create(message);
@@ -32,7 +32,7 @@ export async function rollTest(actor,attribute,skill,dc=9,modifier=0,label='Test
   if(!Object.hasOwn(actor.system.attributes,attribute)||!Object.hasOwn(actor.system.skills,skill)||!Number.isFinite(dc)||!Number.isFinite(modifier))throw Error('Invalid Test inputs.');const {personalBonus,stunPenalty}=await import('./rules.mjs');const penalty=stunPenalty(actor.system.combat,'test',skill);const bonus=personalBonus(actor.system.attributes[attribute],actor.system.skills[skill]);
   const roll=await new foundry.dice.Roll(`2d6 + ${bonus} + ${modifier} - ${penalty}`).evaluate();
   if(penalty)await actor.update({'system.combat.stunUsed':true});
-  const body=`<p><strong>${roll.total} vs DC ${dc}: ${roll.total>=dc?'Success':'Failure'}</strong></p><dl class="fdern-chat-breakdown"><div><dt>Approach</dt><dd>${escapeHTML(ATTRIBUTES[attribute])} + ${escapeHTML(SKILLS[skill])}</dd></div><div><dt>Personal</dt><dd>+${bonus}</dd></div><div><dt>Modifier</dt><dd>${modifier>=0?'+':''}${modifier}</dd></div><div><dt>Stun</dt><dd>-${penalty}</dd></div></dl>`;
+  const body=`<p><strong>${roll.total} vs DC ${dc}: ${roll.total>=dc?'Success':'Failure'}</strong></p><dl class="fdern-chat-breakdown"><div><dt>Approach</dt><dd>${escapeHTML(ATTRIBUTES[attribute])} + ${escapeHTML(SKILLS[skill])}</dd></div><div><dt>Personal</dt><dd>+${bonus}</dd></div>${modifier?`<div><dt>Modifier</dt><dd>${modifier>=0?'+':''}${modifier}</dd></div>`:''}${penalty?`<div><dt>Stun</dt><dd>-${penalty}</dd></div>`:''}</dl>`;
   await chat(actor,label,body,[roll],{},[
     {type:'test',attribute,skill,dc,modifier,label:`Roll ${SKILLS[skill]}`}
   ]);return roll;

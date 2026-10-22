@@ -1,8 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
   <title id="title">Support weapon</title>
   <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
-  <g fill="#f2f0e6" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M8 25h16l5-5h15l5 4h7v6h-9l-4 6H28l-5-4H8z"/>
-    <path d="M13 25l-4-5h9l5 5M30 36v9h9l2-9M46 24v7M50 24v7M20 34c4 0 4 7 8 7s4-7 8-7" fill="none"/>
+  <g fill="none" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 24h10l7 4h19l4-3h5v6h-8l-4 5H27l-5-5h-9z"/>
+    <path d="M8 24l-1-5h9l9 9M53 27h3M28 36l-1 4M42 36l6 12M27 40l-7 8M20 48h8M39 30h6"/>
+    <path d="M27 38c4 1 7 1 11 0"/>
   </g>
 </svg>

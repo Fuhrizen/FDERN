@@ -26,7 +26,7 @@
       "burst",
       "suppress"
     ],
-    "description": "Battle rifle. 150/360 ft. Actions: fire, reload, overwatch, burst, suppress. Training prerequisites are checked when used."
+    "description": "Battle rifle. Effective range 150 ft; maximum range 360 ft."
   },
   "_id": "71aabc59dc288bfe",
   "_key": "!items!71aabc59dc288bfe",

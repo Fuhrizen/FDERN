@@ -26,7 +26,7 @@
       "close-blast",
       "cycle"
     ],
-    "description": "Pump shotgun. 30/80 ft. Actions: fire, reload, overwatch, close-blast, cycle. Training prerequisites are checked when used."
+    "description": "Pump shotgun. Effective range 30 ft; maximum range 80 ft."
   },
   "_id": "4e86b99dedb11407",
   "_key": "!items!4e86b99dedb11407",

@@ -25,7 +25,7 @@
       "overwatch",
       "quick"
     ],
-    "description": "Heavy pistol. 40/90 ft. Actions: fire, reload, overwatch, quick. Training prerequisites are checked when used."
+    "description": "Heavy pistol. Effective range 40 ft; maximum range 90 ft."
   },
   "_id": "31f0ba0e5d22fe31",
   "_key": "!items!31f0ba0e5d22fe31",

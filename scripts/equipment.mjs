@@ -50,6 +50,32 @@ export async function reload(actor,item){
   await chat(actor,'Reload',`<p>${escapeHTML(item.name)} loaded from ${escapeHTML(source.name)}. Removed magazine retained with its remaining Load.</p>`);
 }
 export async function repackActor(actor){if(game.combat?.started&&combatantFor(actor))throw Error('Repacking is only available outside encounters.');const mags=actor.items.filter(i=>i.type==='magazine').map(i=>({id:i.id,...i.system.toObject()}));await actor.updateEmbeddedDocuments('Item',repack(mags).map(m=>({_id:m.id,'system.currentLoad':m.currentLoad})));return chat(actor,'Magazines repacked','<p>Total remaining Load conserved within each compatible source type.</p>');}
+export async function inventory(actor,{command,item:itemId,slot,delta}={}){
+  if(!['wear','slot','quantity'].includes(command))throw Error('Unknown inventory command.');
+  const item=actor.items.get(itemId);if(!item)throw Error('Inventory item no longer exists.');
+  if(command==='wear'){
+    if(game.combat?.started&&combatantFor(actor))throw Error('Finish the encounter before changing worn armour.');
+    if(item.type!=='armour')throw Error('Only armour can be worn.');
+    const worn=!item.system.worn;
+    const updates=actor.items.filter(i=>i.type==='armour'&&i.id!==item.id&&worn&&i.system.worn).map(i=>({_id:i.id,'system.worn':false}));
+    updates.push({_id:item.id,'system.worn':worn});
+    return actor.updateEmbeddedDocuments('Item',updates);
+  }
+  if(command==='slot'){
+    if(game.combat?.started&&combatantFor(actor))throw Error('Finish the encounter before changing loadout slots.');
+    if(!['firearm','melee','shield','launcher','grenade','gear'].includes(item.type))throw Error('Only accessible equipment can use a loadout slot.');
+    if(!['','primary','secondary','tertiary'].includes(slot))throw Error('Choose a valid loadout slot.');
+    const updates=[];
+    if(slot)for(const displaced of actor.items.filter(i=>i.id!==item.id&&i.system.slot===slot))updates.push({_id:displaced.id,'system.slot':'','system.readied':false});
+    updates.push({_id:item.id,'system.slot':slot,...(!slot?{'system.readied':false}:{})});
+    return actor.updateEmbeddedDocuments('Item',updates);
+  }
+  if(game.combat?.started&&combatantFor(actor))throw Error('Finish the encounter before changing carried quantities.');
+  if(!['gear','grenade'].includes(item.type))throw Error('Quantity can only be changed for gear or grenades; magazines use Load.');
+  if(delta!==1&&delta!==-1)throw Error('Quantity changes must be exactly +1 or -1.');
+  const quantity=item.system.quantity+delta;if(quantity<0)throw Error('Quantity cannot be negative.');
+  return item.update({'system.quantity':quantity});
+}
 export async function advance(actor,{kind,key}) {
   const d=actor.system;const current=kind==='skill'?d.skills[key]:d.attributes[key];let cost;
   if(kind==='skill'){if(!(key in d.skills)||current>=4)throw Error('Invalid Skill purchase.');cost=advancementCost('skill',current);}

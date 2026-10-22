@@ -31,7 +31,7 @@
       "pickup",
       "sustained"
     ],
-    "description": "General-purpose MG. 180/420 ft. Actions: fire, reload, overwatch, burst, suppress, setup, pickup, sustained. Training prerequisites are checked when used."
+    "description": "General-purpose MG. Effective range 180 ft; maximum range 420 ft."
   },
   "_id": "d566138531a61853",
   "_key": "!items!d566138531a61853",

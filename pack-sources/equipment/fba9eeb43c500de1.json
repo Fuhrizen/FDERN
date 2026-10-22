@@ -27,7 +27,7 @@
       "burst",
       "suppress"
     ],
-    "description": "Short carbine. 120/300 ft. Actions: fire, reload, overwatch, burst, suppress. Training prerequisites are checked when used."
+    "description": "Short carbine. Effective range 120 ft; maximum range 300 ft."
   },
   "_id": "fba9eeb43c500de1",
   "_key": "!items!fba9eeb43c500de1",

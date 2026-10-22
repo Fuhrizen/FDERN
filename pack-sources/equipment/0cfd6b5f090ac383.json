@@ -28,7 +28,7 @@
       "observe",
       "cycle"
     ],
-    "description": "Bolt-action precision. 200/450 ft. Actions: fire, reload, overwatch, precision, observe, cycle. Training prerequisites are checked when used."
+    "description": "Bolt-action precision. Effective range 200 ft; maximum range 450 ft."
   },
   "_id": "0cfd6b5f090ac383",
   "_key": "!items!0cfd6b5f090ac383",

@@ -28,7 +28,7 @@
       "suppress",
       "quick"
     ],
-    "description": "Machine pistol. 50/120 ft. Actions: fire, reload, overwatch, burst, suppress, quick. Training prerequisites are checked when used."
+    "description": "Machine pistol. Effective range 50 ft; maximum range 120 ft."
   },
   "_id": "7e7a10794d73e2e3",
   "_key": "!items!7e7a10794d73e2e3",

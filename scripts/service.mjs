@@ -1,6 +1,6 @@
 import {ACTIONS,PAIRINGS} from './config.mjs';
 import {allowance,moveDistance,personalBonus,stunPenalty,clamp} from './rules.mjs';
-import {actionReason,spend,ready,reload,repackActor,advance} from './equipment.mjs';
+import {actionReason,spend,ready,reload,repackActor,inventory,advance} from './equipment.mjs';
 import {attack} from './attacks.mjs';
 import {areaAttack} from './areas.mjs';
 import {tokenFor,isActive,combatantFor,learned,readied,controllerInput,input,choose,rollTest,chat,escapeHTML} from './utils.mjs';
@@ -17,6 +17,7 @@ export async function execute(request,user){
     throw Error('Unknown encounter command.');
   }
   const actor=await fromUuid(request.actor);if(!actor||actor.documentName!=='Actor'||!actor.testUserPermission(user,'OWNER'))throw Error('You do not own this Actor.');
+  if(request.type==='inventory'){await inventory(actor,request);return {item:request.item,command:request.command};}
   if(request.type==='repack')return repackActor(actor);
   if(request.type==='advance')return advance(actor,request.purchase??{});
   if(request.type==='award'){if(!user.isGM)throw Error('Only the GM awards VP.');const vp=clamp(request.vp,0,100);await actor.update({'system.advancement.lifetimeVP':actor.system.advancement.lifetimeVP+vp});return;}

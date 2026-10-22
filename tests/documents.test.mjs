@@ -34,3 +34,66 @@ test('failed Ready validation does not spend an Action when a deployed weapon bl
 test('Cover Ally rejects an opposing combat side even when token dispositions match',async()=>{clear();const user=actor('Shield User',{skills:{melee:2}}),enemy=actor('Enemy');const [shield]=await user.createEmbeddedDocuments('Item',[{name:'Shield',type:'shield',system:{actions:['cover-ally'],readied:true,slot:'secondary',hands:1,traits:['ballistic']}}]);await user.createEmbeddedDocuments('Item',[{name:'Shieldwork',type:'discipline',system:{disciplineId:'shieldwork'}}]);const c=encounter([user,enemy]);await c.startCombat();await c.setFlag('fdern','drawnSide','A');await c.activate(c.combatants.first().id);assert.equal(enemy.token.disposition,user.token.disposition);await assert.rejects(execute({type:'act',actor:user.uuid,action:'cover-ally',item:shield.id,target:enemy.token.uuid},player),/only protect an ally/);assert.equal(user.system.combat.actionsRemaining,3);});
 
 test('Empty launcher validation happens before paying its Actions',async()=>{clear();const a=actor();const c=encounter([a]);await c.startCombat();await c.setFlag('fdern','drawnSide','A');await c.activate(c.combatants.first().id);const launcher={id:'launcher',name:'Launcher',system:{payload:'rocket',maximum:200,effective:75,fireCost:2,currentLoad:0,quantity:0,traits:[],radius:10,duration:2},async update(){throw Error('Should not update an empty launcher.');}};dialogResponses.push({legal:true});await assert.rejects(areaAttack(a,'launch',launcher,{x:100,y:50,elevation:0,level:null}),/Launcher is empty/);assert.equal(a.system.combat.actionsRemaining,3);});
+
+test('inventory wear toggles one armour choice and loadout slots displace and stow safely',async()=>{
+  clear();const a=actor('Quartermaster');
+  const [vest,coat]=await a.createEmbeddedDocuments('Item',[
+    {name:'Vest',type:'armour',system:{worn:true}},
+    {name:'Coat',type:'armour',system:{worn:false}}
+  ]);
+  const [old,newItem,packed]=await a.createEmbeddedDocuments('Item',[
+    {name:'Old Rifle',type:'firearm',system:{slot:'primary',readied:true,hands:2}},
+    {name:'New Rifle',type:'firearm',system:{slot:'',readied:false,hands:2}},
+    {name:'Packed Sidearm',type:'firearm',system:{slot:'secondary',readied:true,hands:1}}
+  ]);
+  await execute({type:'inventory',actor:a.uuid,command:'wear',item:coat.id},player);
+  assert.equal(vest.system.worn,false);assert.equal(coat.system.worn,true);
+  await execute({type:'inventory',actor:a.uuid,command:'wear',item:coat.id},player);
+  assert.equal(coat.system.worn,false);
+  await execute({type:'inventory',actor:a.uuid,command:'slot',item:newItem.id,slot:'primary'},player);
+  assert.equal(old.system.slot,'');assert.equal(old.system.readied,false);
+  assert.equal(newItem.system.slot,'primary');assert.equal(newItem.system.readied,false);
+  await execute({type:'inventory',actor:a.uuid,command:'slot',item:packed.id,slot:''},player);
+  assert.equal(packed.system.slot,'');assert.equal(packed.system.readied,false);
+  await assert.rejects(execute({type:'inventory',actor:a.uuid,command:'slot',item:vest.id,slot:'primary'},player),/Only accessible equipment/);
+});
+
+test('inventory quantities allow one gear/grenade at a time and reject ammo edits',async()=>{
+  clear();const a=actor('Quartermaster');
+  const [kit,grenade,magazine]=await a.createEmbeddedDocuments('Item',[
+    {name:'Medical Kit',type:'gear',system:{quantity:0}},
+    {name:'Frag Grenade',type:'grenade',system:{quantity:1}},
+    {name:'Magazine',type:'magazine',system:{quantity:1,currentLoad:3,maxLoad:4}}
+  ]);
+  await execute({type:'inventory',actor:a.uuid,command:'quantity',item:kit.id,delta:1},player);
+  assert.equal(kit.system.quantity,1);
+  await execute({type:'inventory',actor:a.uuid,command:'quantity',item:grenade.id,delta:-1},player);
+  assert.equal(grenade.system.quantity,0);
+  await assert.rejects(execute({type:'inventory',actor:a.uuid,command:'quantity',item:grenade.id,delta:-1},player),/cannot be negative/);
+  await assert.rejects(execute({type:'inventory',actor:a.uuid,command:'quantity',item:kit.id,delta:2},player),/exactly/);
+  await assert.rejects(execute({type:'inventory',actor:a.uuid,command:'quantity',item:magazine.id,delta:-1},player),/magazines use Load/);
+  await assert.rejects(execute({type:'inventory',actor:a.uuid,command:'quantity',item:kit.id,delta:1},{id:'outsider',isGM:false}),/do not own/);
+  assert.equal(magazine.system.currentLoad,3);assert.equal(kit.system.quantity,1);
+});
+
+test('inventory responses are socket-safe plain acknowledgments',async()=>{
+  clear();const a=actor('Quartermaster');const [kit]=await a.createEmbeddedDocuments('Item',[{name:'Kit',type:'gear',system:{quantity:1}}]);
+  const result=await execute({type:'inventory',actor:a.uuid,command:'quantity',item:kit.id,delta:1},player);
+  assert.deepEqual(result,{item:kit.id,command:'quantity'});assert.doesNotThrow(()=>JSON.stringify(result));assert.equal(kit.system.quantity,2);
+});
+
+test('inventory locks affect combatants only and block changes to deployed encounter gear',async()=>{
+  clear();const a=actor('Quartermaster');const [vest,rifle,kit]=await a.createEmbeddedDocuments('Item',[
+    {name:'Vest',type:'armour',system:{}},
+    {name:'Rifle',type:'firearm',system:{slot:'',readied:false}},
+    {name:'Kit',type:'gear',system:{quantity:1}}
+  ]);const opponent=actor('Opponent');const c=encounter([a,opponent]);await c.startCombat();
+  await assert.rejects(execute({type:'inventory',actor:a.uuid,command:'wear',item:vest.id},player),/Finish the encounter/);
+  await assert.rejects(execute({type:'inventory',actor:a.uuid,command:'slot',item:rifle.id,slot:'primary'},player),/Finish the encounter/);
+  await assert.rejects(execute({type:'inventory',actor:a.uuid,command:'quantity',item:kit.id,delta:1},player),/Finish the encounter/);
+  assert.equal(vest.system.worn,false);assert.equal(rifle.system.slot,'');assert.equal(kit.system.quantity,1);
+  const offscreen=actor('Offscreen Quartermaster');const [offscreenKit]=await offscreen.createEmbeddedDocuments('Item',[{name:'Kit',type:'gear',system:{quantity:1}}]);
+  const result=await execute({type:'inventory',actor:offscreen.uuid,command:'quantity',item:offscreenKit.id,delta:1},player);
+  assert.deepEqual(result,{item:offscreenKit.id,command:'quantity'});assert.equal(offscreenKit.system.quantity,2);
+  game.combat=null;
+});

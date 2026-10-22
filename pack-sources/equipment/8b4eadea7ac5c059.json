@@ -26,7 +26,7 @@
       "burst",
       "suppress"
     ],
-    "description": "Intermediate rifle. 110/300 ft. Actions: fire, reload, overwatch, burst, suppress. Training prerequisites are checked when used."
+    "description": "Intermediate rifle. Effective range 110 ft; maximum range 300 ft."
   },
   "_id": "8b4eadea7ac5c059",
   "_key": "!items!8b4eadea7ac5c059",

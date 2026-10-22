@@ -25,7 +25,7 @@
       "overwatch",
       "quick"
     ],
-    "description": "Service pistol. 40/90 ft. Actions: fire, reload, overwatch, quick. Training prerequisites are checked when used."
+    "description": "Service pistol. Effective range 40 ft; maximum range 90 ft."
   },
   "_id": "bce818c005e24f0a",
   "_key": "!items!bce818c005e24f0a",

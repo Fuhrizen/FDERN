@@ -27,7 +27,7 @@
       "burst",
       "suppress"
     ],
-    "description": "Submachine gun. 60/150 ft. Actions: fire, reload, overwatch, burst, suppress. Training prerequisites are checked when used."
+    "description": "Submachine gun. Effective range 60 ft; maximum range 150 ft."
   },
   "_id": "2cc4c91d1d6e95d5",
   "_key": "!items!2cc4c91d1d6e95d5",

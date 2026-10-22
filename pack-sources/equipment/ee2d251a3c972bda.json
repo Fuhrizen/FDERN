@@ -27,7 +27,7 @@
       "precision",
       "observe"
     ],
-    "description": "Precision semi-auto. 180/420 ft. Actions: fire, reload, overwatch, precision, observe. Training prerequisites are checked when used."
+    "description": "Precision semi-auto. Effective range 180 ft; maximum range 420 ft."
   },
   "_id": "ee2d251a3c972bda",
   "_key": "!items!ee2d251a3c972bda",

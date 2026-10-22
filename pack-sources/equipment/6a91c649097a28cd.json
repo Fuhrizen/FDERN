@@ -26,7 +26,7 @@
       "burst",
       "suppress"
     ],
-    "description": "Service rifle. 150/330 ft. Actions: fire, reload, overwatch, burst, suppress. Training prerequisites are checked when used."
+    "description": "Service rifle. Effective range 150 ft; maximum range 330 ft."
   },
   "_id": "6a91c649097a28cd",
   "_key": "!items!6a91c649097a28cd",

@@ -31,7 +31,7 @@
       "pickup",
       "sustained"
     ],
-    "description": "Light machine gun. 150/360 ft. Actions: fire, reload, overwatch, burst, suppress, setup, pickup, sustained. Training prerequisites are checked when used."
+    "description": "Light machine gun. Effective range 150 ft; maximum range 360 ft."
   },
   "_id": "2247a47ab5d9138e",
   "_key": "!items!2247a47ab5d9138e",

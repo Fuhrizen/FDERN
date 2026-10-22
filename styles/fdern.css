@@ -83,3 +83,30 @@
 
 .fdern .combatant-row > div {min-width: 0;}
 .fdern .combatant-name, .fdern .item-name {max-width: 100%; white-space: normal; height: auto;}
+
+/* Reading, search and inventory layouts use the native application controls. */
+.fdern .sheet-toolbar {display:flex; flex-wrap:wrap; align-items:center; gap:8px;}
+.fdern .sheet-toolbar search {flex:1; min-width:min(100%,180px);}
+.fdern .sheet-toolbar > button {width:auto;}
+.fdern .skill-list {display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:8px 20px;}
+.fdern .skill-play-row, .fdern .advancement-row {display:flex; align-items:center; justify-content:space-between; gap:12px; padding:6px 0;}
+.fdern .skill-play-row > div, .fdern .advancement-row > div {min-width:0;}
+.fdern .skill-play-row small, .fdern .advancement-row small, .fdern .inventory-name small {display:block;}
+.fdern .skill-play-row > button, .fdern .advancement-row > button {width:auto; flex-shrink:0;}
+.fdern .inventory-name {flex:1; min-width:min(100%,180px);}
+.fdern .inventory-name > button {width:auto;}
+.fdern .loadout-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr)); gap:12px;}
+.fdern .loadout-grid fieldset {display:flex; flex-direction:column; align-items:start; gap:8px;}
+.fdern .loadout-grid .item-name {min-width:0;}
+.fdern .loadout-grid button {width:auto;}
+.fdern .discipline-row {display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:8px 0;}
+.fdern .profile-text {white-space:pre-line; overflow-wrap:anywhere;}
+.fdern .journal-preview, .fdern .memory-entry {margin:12px 0; overflow-wrap:anywhere;}
+.fdern .journal-preview p {margin:4px 0;}
+.fdern .journal-title {white-space:normal; height:auto; text-align:left;}
+.fdern .item-overview {display:flex; align-items:start; gap:16px;}
+.fdern .item-overview > div {min-width:0;}
+.fdern .item-portrait {width:64px; height:64px; object-fit:contain; flex-shrink:0;}
+.fdern .item-stat-list {display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr)); gap:8px 16px; margin:0;}
+.fdern .item-stat-list > div {display:flex; justify-content:space-between; gap:12px;}
+.fdern .item-stat-list dd {margin:0;}

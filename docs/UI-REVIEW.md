@@ -1,55 +1,34 @@
 # Native UI review
 
-Reviewed 22 October 2026 for v0.1.3.
+## v0.2.0 — 22 October 2026
 
-FDERN uses Foundry's standard forms, tabs, fieldsets, disclosures, buttons, notifications, typography and both themes. System CSS arranges content and sizes grids; it does not supply a colour theme. Architectural references and source attribution are in [RESEARCH.md](RESEARCH.md).
+The implementation replaces the dashboard summary with a character record: portrait and name, Attributes, character history, training and journal entries. The Equipment tab uses five item footprints and a selected-item detail panel. Foundry supplies the colours, themes, typography and controls. The default artwork is Foundry's token icon; custom artwork remains unchanged.
 
-## Findings and changes
-
-| Finding | Result |
+| Area | Implemented behavior |
 | --- | --- |
-| Fixed sidebar and large button grids dominated the sheet | Compact header and resources; native tab navigation and action rows |
-| General actions obscured weapon controls | Collapsible general actions; readied equipment first |
-| Checkbox icons were absent in the initial preview | Visual harness loads the same core icon font as Foundry |
-| Resource and long item labels wrapped awkwardly | Compact resource labels; stacked weapon fields |
-| Observer buttons invited unauthorized edits | Owner-aware actions, portrait, item and purchase controls |
-| Portrait image lacked native keyboard activation | Native button; keyboard tab navigation checked |
-| Action choices and ammo source fields exposed raw IDs | Named ammo selector and action checkboxes |
-| Live renders collapsed disclosures or saved wizard drafts out of order | Disclosure state retained; wizard saves queued as snapshots |
-| Combat changes could leave open sheets stale | Combat lifecycle refreshes rendered actor sheets |
-| Concurrent condition updates could duplicate statuses | Per-actor reconciliation queue and duplicate cleanup |
-| Invalid Ready or empty-launcher checks spent Actions | Validation precedes resource spending |
-| Cover Ally accepted opponents | Combat side validation with disposition fallback |
+| Character | Native headings and flowing character text; no summary dashboard or promotional prompts |
+| Inventory | Pocket 1×1, Small 2×1, Medium 2×2, Long 3×1, Bulky 3×2; configurable per Item |
+| Selection | Item details, equipment actions, quantities, armour and chat sharing in one panel |
+| Ordering | Native Item sort order through Foundry's integer-sort helper; drag and keyboard controls |
+| Chat | Structured roll and injury results; item-bound actions; repeat Skill rolls; GM injury undo |
+| Macros | Send Equipment to Chat utility, alongside the existing action macros |
 
-## Whole-sheet usability review
+67 automated rule, document, ownership, chat and utility tests pass. Manifest, templates and module syntax validate; native compendium compilation and archive integrity checks pass.
 
-| Area | Player workflow |
-| --- | --- |
-| Character | Default landing page; readable background, description, motivation and connections; strongest Skill rolls and recent notes; resumable creation |
-| Skills | Search by Skill or Attribute; trained-only filter; paired Attribute and total roll bonus; correction fields behind a GM disclosure |
-| Equipment | Search and compendium browsing; three accessible slots; grouped weapons, supplies, armour and ammunition; safe slot swaps, armour toggles and supply counters |
-| Journal | Previews, direct opening from Character, clickable tag filters and a clear Add entry action |
-| Advance | Available VP and level progress; exact costs, named prerequisites and passive/family benefits; reasons unavailable; purchase confirmation |
-| Item details | Readable profile and actions first; explicit editing mode; open action profiles refresh after combat, actor or ammunition changes |
+### Visual inspection
 
-The profile grid was reduced to two balanced columns after inspection, and the summary and strongest Skills share a row. Combat resources live on Combat; active wounds remain visible in the identity header. Equipment was inspected both during preparation and during encounters. Encounter locks apply to participating characters only.
+Production templates were rendered using the official demo's public core stylesheet and icon font, with the runner's preinstalled Chrome. The responsive and interaction harness passed 69 checks at 1100, 760, 600 and 460 px. Character, Skills, Equipment, Journal and Advance were inspected at the top and bottom in both themes, alongside combat, wizard, item and chat sections.
 
-![Character overview using Foundry's dark theme](ui/character-overview-dark.png)
+Inspection confirmed all five footprints, selected-item controls, and the new character record. It caught a dark-theme inheritance issue in parchment chat messages; applying Foundry's native light theme to the card corrected text and button contrast. Zero-value modifiers were removed from roll cards. The three accessible loadout slots remain on one row at narrow widths.
 
-![Equipment preparation using native controls](ui/equipment-preparation-dark.png)
+![Character record](ui/character-record-dark.png)
 
-## Visual inspection
+![Inventory grid and item controls](ui/inventory-grid-dark.png)
 
-Production templates were rendered in Chromium with the official public demo's core stylesheet and icon font. Every Character, Skills, Equipment, Journal and Advance tab was inspected at both the top and bottom, alongside combat resources, equipment actions, wizard points, item reading/editing, encounter and geometry-dialog sections in both themes. Desktop and narrow sheets were also inspected. Inspection led to the wrapping, icon, action-order and prompt-spacing corrections above.
+![Equipment chat card](ui/chat-equipment.png)
 
-![Light theme resource summary](ui/resources-light.png)
+A licensed Foundry server is still needed for live multiplayer, canvas interactions, native dragging and module interoperability. The checklist is in [TESTING.md](TESTING.md).
 
-![Dark theme resource summary](ui/resources-dark.png)
+## Previous review: v0.1.3
 
-![Native wizard point spending](ui/skill-points-light.png)
-
-The v0.1.3 review passed 54 rule/document/lifecycle tests and 65 responsive UI and interaction checks. The responsive harness covers 1100, 760, 600 and 460 px, keyboard navigation, observer restrictions, memory expansion, point spending and disclosure persistence. Rule/document tests, native compendium compilation and archive validation also run before publishing.
-
-## Runtime boundary
-
-This review uses a template/DOM harness, not a licensed Foundry server. Live multiplayer ownership, canvas geometry, native dragging, detached windows and module interoperability still require the checklist in [TESTING.md](TESTING.md).
+The previous interface passed 54 rule/document/lifecycle tests and 65 browser interaction and responsive checks at 1100, 760, 600 and 460 px. Production templates were inspected with the official demo's public core stylesheet and icon font in light and dark themes. Existing images in `docs/ui/` document that earlier interface, not the new v0.2.0 layout.

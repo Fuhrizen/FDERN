@@ -193,3 +193,4 @@
 @container(max-width:600px) {.fdern .character-columns {grid-template-columns:1fr; gap:24px;}}
 .fdern.chat-card .fdern-chat-breakdown {grid-template-columns:1fr;}
 .fdern.chat-card .fdern-chat-breakdown > div {display:flex; justify-content:space-between; gap:12px;}
+.fdern .loadout-grid {grid-template-columns:repeat(3,minmax(0,1fr));}

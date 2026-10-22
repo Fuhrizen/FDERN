@@ -13,7 +13,7 @@ export async function damage(actor,{harm,penetration=0,kind='ranged',absorption=
   if(nonLethal){if(result.wounds>0)await stun(actor);}
   else if(result.wounds>0){const fatal=before.wounds>=3;await actor.update({'system.combat.wounds':Math.min(3,before.wounds+result.wounds),'system.combat.dead':fatal||before.dead});}
   if(forceStun&&result.result>=5&&!nonLethal)await stun(actor);
-  const after=foundry.utils.deepClone(actor.system.combat);const outcome=nonLethal?(result.wounds?'Temporary Stun':'No Stun'):`${result.wounds} Wound(s)`;const state=actor.system.combat.dead?' · Fatal':actor.system.combat.wounds>=3?' · Down':'';
+  const after=foundry.utils.deepClone(actor.system.combat);const outcome=nonLethal?(result.wounds?'Temporary Stun':'No Stun'):`${result.wounds} ${result.wounds===1?'Wound':'Wounds'}`;const state=actor.system.combat.dead?' · Fatal':actor.system.combat.wounds>=3?' · Down':'';
   const body=`<p><strong>${result.result} Injury Result</strong></p><dl class="fdern-chat-breakdown"><div><dt>Die</dt><dd>${roll.total}</dd></div><div><dt>Harm after Shield</dt><dd>${Math.max(0,harm-absorption)}</dd></div><div><dt>Effective Armour</dt><dd>${result.effectiveArmour}</dd></div><div><dt>Applied</dt><dd>${outcome}${state}</dd></div></dl><button type="button" data-fdern-undo>Undo injury (GM)</button>`;
   const message=await chat(actor,label,body,[roll],{flags:{fdern:{undo:{actor:actor.uuid,before,after,used:false}}}});return {...result,message:message.id};
 }

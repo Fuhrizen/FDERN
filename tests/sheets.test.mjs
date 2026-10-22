@@ -27,3 +27,22 @@ test('wizard queues snapshots so a slow save cannot replace later point spending
 test('an all-unchecked browser action editor clears the array through its presence marker',()=>{
   const sheet=new FdernItemSheet({});const data=sheet._processFormData(null,null,{object:{actionChoicesPresent:'1'}});assert.deepEqual(data.system.actions,[]);assert.equal(data.actionChoicesPresent,undefined);
 });
+
+test('sheet opens on Character and keeps inventory searches separate from skills and journal',async()=>{
+  const a=actor();await a.createEmbeddedDocuments('Item',[CATALOGUE.find(i=>i.id==='medical-kit'),CATALOGUE.find(i=>i.id==='service-rifle')]);
+  const sheet=new FdernActorSheet({actor:a});sheet._skillQuery='medicine';sheet._inventoryQuery='medical';
+  const ctx=await sheet._prepareContext({});assert.equal(ctx.tab,'biography');assert.equal(ctx.skillRows.length,1);assert.equal(ctx.skillRows[0].id,'medicine');assert.equal(ctx.inventoryGroups.flatMap(g=>g.items).length,1);assert.equal(ctx.inventoryGroups[1].items[0].name,'Medical kit');assert.equal(ctx.canManageInventory,true);
+});
+
+test('item read mode retains its profile and actions, and observer cannot enter editing mode',async()=>{
+  const a=actor();const [item]=await a.createEmbeddedDocuments('Item',[CATALOGUE.find(i=>i.id==='service-rifle')]);const sheet=new FdernItemSheet({item});
+  let ctx=await sheet._prepareContext({});assert.equal(ctx.editing,false);assert.ok(ctx.readStats.some(f=>f.key==='harm'));assert.ok(ctx.itemActionRows.some(a=>a.id==='fire'));
+  await FdernItemSheet.dispatch.call(sheet,null,{dataset:{command:'edit-mode'}});ctx=await sheet._prepareContext({});assert.equal(ctx.editing,true);
+  sheet.isEditable=false;ctx=await sheet._prepareContext({});assert.equal(ctx.editing,false);await FdernItemSheet.dispatch.call(sheet,null,{dataset:{command:'edit-mode'}});assert.equal(sheet._editing,true);
+});
+
+test('equipment controls send ownership-checked inventory intents rather than editing documents directly',async()=>{
+  const a=actor();const sheet=new FdernActorSheet({actor:a});let request;game.fdern.request=async data=>{request=data;};
+  await FdernActorSheet.dispatch.call(sheet,null,{dataset:{command:'quantity',id:'supply',delta:'-1'}});assert.deepEqual(request,{type:'inventory',actor:a.uuid,command:'quantity',item:'supply',delta:-1});
+  request=null;sheet.isEditable=false;await FdernActorSheet.dispatch.call(sheet,null,{dataset:{command:'wear',id:'armour'}});assert.equal(request,null);
+});

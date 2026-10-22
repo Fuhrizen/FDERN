@@ -31,9 +31,15 @@ Grenades choose a point on the map and resolve full or half effect there without
 
 ## Character sheets
 
-Combat, Skills, Equipment, Biography, Memory, and Veterancy use native tabs and forms. Readied equipment appears first in combat; general actions expand when needed. Sheet fields and native document updates refresh the displayed resources. Drag equipment to the hotbar to create an item macro. Character and NPC mechanics are identical. Layout CSS controls spacing and grids; Foundry supplies colours, typography, buttons, fields, focus and disabled states. Both light and dark themes are supported.
+The sheet opens on **Character**, with your background, description, motivation, connections, strongest Skills and recent journal entries. **Edit character** updates the profile; unfinished characters can resume the saved wizard.
 
-Memory ports FUS's plain-text notebook: titles, body text, quoted tags, tag colours, ranked search, expandable entries, and Foundry `@UUID` links. It does not call an external service. Search `tag:"field notes"` to filter by a tag.
+- **Skills:** search by Skill or Attribute, filter trained Skills, and roll the displayed bonus. The roll dialog allows a different Attribute and situational modifiers.
+- **Equipment:** browse the compendium and drag items onto the sheet. Choose accessible loadout slots, ready or stow weapons, wear armour, track supplies, and inspect compatible ammunition. Loadout reorganization is locked for characters in a running encounter.
+- **Journal:** add entries, read previews, expand notes, and click a tag to filter related entries. This ports FUS's plain-text notebook helpers: quoted tags, tag colours, ranked search and Foundry `@UUID` links. Search `tag:"field notes"` to filter by a tag.
+- **Advance:** see available VP, improvement costs, prerequisites and reasons a purchase is unavailable. Purchases ask for confirmation before spending.
+- **Combat:** readied equipment appears first; general actions expand when needed. Resources and action availability update with native document changes.
+
+Items open with a readable profile and usable actions. Owners can choose **Edit item** to change the underlying profile. Drag equipment to the hotbar for an item macro. Character and NPC mechanics are identical. Layout CSS controls spacing and grids; Foundry supplies colours, typography, buttons, fields, focus and disabled states. Both light and dark themes are supported.
 
 VP spending enforces costs, prerequisites, Skill/Attribute caps, and the single lifetime Attribute purchase. Lifetime VP determines level; spending does not reduce it. Levels do not grant extra actions or health.
 

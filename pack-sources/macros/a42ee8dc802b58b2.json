@@ -2,7 +2,7 @@
   "_id": "a42ee8dc802b58b2",
   "name": "Drop Prone",
   "type": "script",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/move.svg",
   "command": "try { const actor=game.fdern.selectedActor(); const item=null; await game.fdern.act(actor, \"prone\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

@@ -1,7 +1,7 @@
 {
   "name": "High explosive grenade",
   "type": "grenade",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/grenade.svg",
   "system": {
     "payload": "he",
     "radius": 10,

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Melee weapon</title>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
+  <g fill="#f2f0e6" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 50l8-8 8 8-8 8z" transform="translate(0 -4)"/>
+    <path d="M27 43L44 20l4-5 1 8-17 24z"/>
+    <path d="M19 39l11 10M42 26l6 5" fill="none"/>
+  </g>
+</svg>

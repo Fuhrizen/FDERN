@@ -1,7 +1,7 @@
 {
   "name": "Protective workwear",
   "type": "armour",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/armour.svg",
   "system": {
     "ballistic": 0,
     "meleeArmour": 1,

@@ -1,7 +1,7 @@
 {
   "name": "Soft ballistic vest",
   "type": "armour",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/armour.svg",
   "system": {
     "ballistic": 2,
     "meleeArmour": 0,

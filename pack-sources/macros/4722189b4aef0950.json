@@ -2,7 +2,7 @@
   "_id": "4722189b4aef0950",
   "name": "Fire",
   "type": "script",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/target.svg",
   "command": "try { const actor=game.fdern.selectedActor(); const item=actor.items.filter(i=>i.system.actions?.includes(\"fire\")).sort((a,b)=>Number(b.system.readied)-Number(a.system.readied))[0]??null; await game.fdern.act(actor, \"fire\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

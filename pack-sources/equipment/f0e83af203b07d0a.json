@@ -1,7 +1,7 @@
 {
   "name": "Long sword",
   "type": "melee",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/melee.svg",
   "system": {
     "family": "long-sword",
     "harm": 3,

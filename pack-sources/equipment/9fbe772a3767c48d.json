@@ -1,7 +1,7 @@
 {
   "name": "Fighting knife",
   "type": "melee",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/knife.svg",
   "system": {
     "family": "knife",
     "harm": 2,

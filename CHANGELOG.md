@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.3
+
+- 23 original vector icons for equipment, firearm families, grenade payloads, actions and macros.
+- Shared artwork across compendiums, item sheets, inventory, chat profiles and item hotbar macros.
+- Custom artwork and native character token defaults are preserved; old item placeholders resolve without rewriting world documents.
+- Asset validation and a browser contact sheet covering 24, 32 and 48 pixel icons in both native themes.
+
 ## 0.2.2
 
 - Use equipped item actions directly from the inventory inspector, with Action/Load costs and current availability.

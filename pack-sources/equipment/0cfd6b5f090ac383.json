@@ -1,7 +1,7 @@
 {
   "name": "Bolt-action precision",
   "type": "firearm",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/precision.svg",
   "system": {
     "family": "precision",
     "cartridge": "7.62x51",

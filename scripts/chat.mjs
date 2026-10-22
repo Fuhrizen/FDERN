@@ -1,5 +1,6 @@
+import {itemArtwork} from './artwork.mjs';
 import {sortedInventoryItems} from './inventory-view.mjs';
-import {ACTIONS,defaultArtwork} from './config.mjs';
+import {ACTIONS} from './config.mjs';
 import {chat,escapeHTML,choose} from './utils.mjs';
 import {ammoFor} from './equipment.mjs';
 import {equippable,equipmentMode} from './equipping.mjs';
@@ -30,7 +31,7 @@ export async function postItem(actor,item){
   if(!item||item.actor?.uuid!==actor.uuid||actor.items.get(item.id)!==item)throw Error('This item is no longer on the Actor.');
   const s=item.system,rows=breakdown(actor,item);
   const values=rows.map(([label,value])=>`<div><dt>${escapeHTML(label)}</dt><dd>${escapeHTML(value)}</dd></div>`).join('');
-  const image=`<img src="${escapeHTML(defaultArtwork(item.img))}" alt="">`;
+  const image=`<img src="${escapeHTML(itemArtwork(item))}" alt="">`;
   const playerDescription=String(s.description??'').replace(/Actions: [^.]+\. Training prerequisites are checked when used\./,'');
   const description=playerDescription?`<p>${escapeHTML(playerDescription)}</p>`:'';
   const typeLabel=({firearm:'Firearm',melee:'Melee weapon',shield:'Shield',armour:'Armour',magazine:'Ammunition',grenade:'Grenade',launcher:'Launcher',gear:'Equipment'})[item.type]??'Item';

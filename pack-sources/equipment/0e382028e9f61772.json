@@ -1,7 +1,7 @@
 {
   "name": "Hand axe",
   "type": "melee",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/melee.svg",
   "system": {
     "family": "hand-axe",
     "harm": 4,

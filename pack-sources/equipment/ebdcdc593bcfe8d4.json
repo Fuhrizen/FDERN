@@ -1,7 +1,7 @@
 {
   "name": "Short sword",
   "type": "melee",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/melee.svg",
   "system": {
     "family": "short-sword",
     "harm": 3,

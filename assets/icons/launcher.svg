@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Launcher</title>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
+  <g fill="#f2f0e6" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 24h39v13H10z"/>
+    <path d="M49 27h5v7h-5M14 24v13M18 37v8h8l3-8M39 24v13M11 20h5M21 20h5" fill="none"/>
+  </g>
+</svg>

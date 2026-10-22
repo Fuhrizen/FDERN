@@ -1,7 +1,7 @@
 {
   "name": "Riot protection",
   "type": "armour",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/armour.svg",
   "system": {
     "ballistic": 1,
     "meleeArmour": 3,

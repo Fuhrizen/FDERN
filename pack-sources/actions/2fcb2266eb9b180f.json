@@ -1,7 +1,7 @@
 {
   "name": "Escape",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/target.svg",
   "system": {
     "actionId": "escape",
     "hands": 0,

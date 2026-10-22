@@ -1,5 +1,5 @@
 import {createServer} from 'node:http';
-import {readFile,mkdir,writeFile,stat} from 'node:fs/promises';
+import {readFile,readdir,mkdir,writeFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 if(await stat('artifacts/browsers').then(()=>true).catch(()=>false))process.env.PLAYWRIGHT_BROWSERS_PATH=path.resolve('artifacts/browsers');
 const {chromium}=await import('playwright');
@@ -92,5 +92,9 @@ try{browser=await chromium.launch({headless:true,...(process.env.FDERN_CHROMIUM?
   }
   await page.setViewportSize({width:460,height:900});await page.evaluate(async()=>{apps.sheet.tabGroups.sheet='combat';await renderApp(apps.sheet)});await page.screenshot({path:'artifacts/ui/character-narrow.png',fullPage:true});for(const tab of ['biography','equipment']){await page.evaluate(async tab=>{apps.sheet.tabGroups.sheet=tab;await renderApp(apps.sheet)},tab);await page.screenshot({path:`artifacts/ui/${tab}-narrow.png`,fullPage:true});await page.locator('.sheet-body').evaluate(el=>el.scrollTop=el.scrollHeight);await page.screenshot({path:`artifacts/ui/${tab}-narrow-end.png`,fullPage:true});}
   await page.setViewportSize({width:1000,height:900});await page.evaluate(async()=>{apps.sheet.tabGroups.sheet='combat';await renderApp(apps.sheet)});await page.screenshot({path:'artifacts/ui/character-sheet.png',fullPage:true});
+  const assetNames=(await readdir('assets/icons')).filter(name=>name.endsWith('.svg')).sort();
+  for(const theme of ['light','dark']){
+    await page.setViewportSize({width:1000,height:1000});await page.setContent(`<html><head><link rel="stylesheet" href="${origin}/artifacts/native/preview.css"><style>body{padding:24px;overflow:auto;margin:0}.asset-gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.asset-gallery fieldset{min-width:0;margin:0}.asset-gallery fieldset div{display:flex;gap:16px;align-items:center;min-height:56px}</style></head><body class="theme-${theme}"><h1>Equipment and action artwork</h1><p>24, 32 and 48 pixels</p><div class="asset-gallery">${assetNames.map(name=>`<fieldset><legend>${name.replace('.svg','')}</legend><div>${[24,32,48].map(size=>`<img src="${origin}/systems/fdern/assets/icons/${name}" width="${size}" height="${size}" alt="${name.replace('.svg','')} at ${size} pixels">`).join('')}</div></fieldset>`).join('')}</div></body></html>`);await page.waitForFunction(()=>[...document.images].every(img=>img.complete&&img.naturalWidth>0));checks++;await page.screenshot({path:`artifacts/ui/asset-gallery-${theme}.png`,fullPage:true});
+  }
   if(errors.length)throw Error(errors.join('\n'));await writeFile('artifacts/ui/results.json',JSON.stringify({checks,status:'passed',viewports:[1100,760,600,460],nativeStylesheet:nativeURL,runtime:'Chromium template and ApplicationV2 harness; no licensed Foundry server'},null,2));console.log(`${checks} responsive UI and interaction checks passed.`);
 }finally{await browser?.close();await new Promise(resolve=>server.close(resolve));}

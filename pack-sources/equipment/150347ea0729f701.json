@@ -1,7 +1,7 @@
 {
   "name": "War hammer",
   "type": "melee",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/melee.svg",
   "system": {
     "family": "war-hammer",
     "harm": 4,

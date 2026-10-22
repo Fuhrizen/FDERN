@@ -1,7 +1,7 @@
 {
   "name": "Service pistol",
   "type": "firearm",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/pistol.svg",
   "system": {
     "family": "pistol",
     "cartridge": "9x19",

@@ -1,7 +1,7 @@
 {
   "name": "Throw",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/grenade.svg",
   "system": {
     "actionId": "throw",
     "hands": 0,

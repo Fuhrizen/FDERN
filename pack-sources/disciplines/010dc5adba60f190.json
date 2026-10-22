@@ -1,7 +1,7 @@
 {
   "name": "Tactical Observer",
   "type": "discipline",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/discipline.svg",
   "system": {
     "disciplineId": "tactical-observer",
     "advanced": true,

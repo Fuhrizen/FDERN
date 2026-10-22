@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Shotgun</title>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
+  <g fill="#f2f0e6" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 27h12l6-5h14l6 3h10v5H45l-4 6H27l-6-4H8z"/>
+    <path d="M12 27l-3-5h8l4 5M26 35l1 4h14M31 25v7M35 25v7" fill="none"/>
+  </g>
+</svg>

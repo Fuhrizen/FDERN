@@ -1,7 +1,7 @@
 {
   "name": "Shoulder rocket launcher (HE)",
   "type": "launcher",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/launcher.svg",
   "system": {
     "family": "launcher",
     "cartridge": "rocket-he",

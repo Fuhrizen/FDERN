@@ -1,7 +1,7 @@
 {
   "name": "Mounted general-purpose MG",
   "type": "firearm",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/support.svg",
   "system": {
     "family": "support",
     "cartridge": "7.62x51",

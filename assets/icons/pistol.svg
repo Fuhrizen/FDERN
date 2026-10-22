@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Pistol</title>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
+  <g fill="#f2f0e6" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 23h35l8 5v8H35l-2 7H21l2-8H10z"/>
+    <path d="M45 23v13M27 36l4 2-2 5M17 28h3" fill="none"/>
+  </g>
+</svg>

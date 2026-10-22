@@ -1,7 +1,7 @@
 {
   "name": "Single-shot grenade launcher",
   "type": "launcher",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/launcher.svg",
   "system": {
     "family": "launcher",
     "cartridge": "grenade-40mm",

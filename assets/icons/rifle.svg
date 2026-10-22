@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Rifle</title>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
+  <g fill="#f2f0e6" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 28h13l6-5h18l5 3h7v5h-8l-3 5H28l-5-4H8z"/>
+    <path d="M12 28l-3-5h9l4 5M34 36v8h7l3-8M48 26v5M52 26v5" fill="none"/>
+  </g>
+</svg>

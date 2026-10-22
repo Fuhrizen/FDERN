@@ -1,7 +1,7 @@
 {
   "name": "Reinforced shield",
   "type": "shield",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/shield.svg",
   "system": {
     "family": "shield",
     "harm": 1,

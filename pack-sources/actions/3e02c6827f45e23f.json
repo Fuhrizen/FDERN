@@ -1,7 +1,7 @@
 {
   "name": "Rally",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/action.svg",
   "system": {
     "actionId": "rally",
     "hands": 0,

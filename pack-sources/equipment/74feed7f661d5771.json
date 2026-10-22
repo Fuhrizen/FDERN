@@ -1,7 +1,7 @@
 {
   "name": "Heavy specialist armour",
   "type": "armour",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/armour.svg",
   "system": {
     "ballistic": 5,
     "meleeArmour": 2,

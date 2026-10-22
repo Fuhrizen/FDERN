@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Fragmentation grenade</title>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
+  <g fill="none" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M28 17v-5h10v7l5 4v19l-8 8h-9l-8-8V25l5-5z"/><path d="M25 20h12M23 27h18M23 34h18M26 45l-4 7m9-7v8m8-8 4 7"/><path d="m38 12 4-4 7 7-6 6"/></g>
+</svg>

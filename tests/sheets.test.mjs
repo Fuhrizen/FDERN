@@ -62,3 +62,9 @@ test('equipped filter includes worn armour, hides packed items, and search clear
   await FdernActorSheet.dispatch.call(sheet,null,{dataset:{command:'clear-search',search:'inventory'}});ctx=await sheet._prepareContext({});assert.deepEqual(ctx.inventoryGrid.map(row=>row.id),[rifle.id,vest.id]);assert.equal(sheet._skillQuery,'medicine');assert.equal(sheet._search,'journal');assert.equal(sheet._equippedOnly,true);
   await FdernActorSheet.dispatch.call(sheet,null,{dataset:{command:'equipped-filter'}});ctx=await sheet._prepareContext({});assert.ok(ctx.inventoryGrid.some(row=>row.id===kit.id));
 });
+
+test('item artwork reaches inventory and item sheets while custom pictures and actor defaults remain intact',async()=>{
+  const a=actor();a.img='icons/svg/mystery-man.svg';const [rifle,kit]=await a.createEmbeddedDocuments('Item',[{...CATALOGUE.find(i=>i.id==='service-rifle'),img:'systems/fdern/assets/fdern.svg'},{...CATALOGUE.find(i=>i.id==='medical-kit'),img:'worlds/campaign/custom-kit.webp'}]);
+  const sheet=new FdernActorSheet({actor:a});let ctx=await sheet._prepareContext({});assert.equal(ctx.actor.img,'icons/svg/mystery-man.svg');assert.equal(ctx.inventoryGrid.find(row=>row.id===rifle.id).img,'systems/fdern/assets/icons/rifle.svg');assert.equal(ctx.inventoryGrid.find(row=>row.id===kit.id).img,'worlds/campaign/custom-kit.webp');assert.equal(rifle.img,'systems/fdern/assets/fdern.svg');
+  ctx=await new FdernItemSheet({item:rifle})._prepareContext({});assert.equal(ctx.item.img,'systems/fdern/assets/icons/rifle.svg');ctx=await new FdernItemSheet({item:kit})._prepareContext({});assert.equal(ctx.item.img,'worlds/campaign/custom-kit.webp');
+});

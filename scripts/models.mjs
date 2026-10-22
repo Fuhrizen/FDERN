@@ -1,3 +1,4 @@
+import {itemArtwork} from './artwork.mjs';
 import {ATTRIBUTES,SKILLS,ICON} from './config.mjs';
 import {allowance,moveDistance,pressureState,level} from './rules.mjs';
 const f=foundry.data.fields;
@@ -34,5 +35,5 @@ export class FdernActor extends foundry.documents.Actor {
   async modifyTokenAttribute(attribute,value,isDelta=false,isBar=true){if(['combat.wounds','combat.pressure'].includes(attribute)){const key=attribute.split('.')[1];const next=Math.min(key==='wounds'?3:7,Math.max(0,isDelta?this.system.combat[key]+value:value));return this.update({[`system.${attribute}`]:next});}return super.modifyTokenAttribute(attribute,value,isDelta,isBar);}
 }
 export class FdernItem extends foundry.documents.Item {
-  async _preCreate(data,options,user){await super._preCreate(data,options,user);if(data.system?.actions===undefined){const defaults={firearm:['fire','reload','overwatch'],melee:['strike','grapple','shove','disarm','takedown'],shield:['strike','cover-ally'],grenade:['throw'],launcher:['launch','reload']};if(defaults[data.type??this.type])this.updateSource({'system.actions':defaults[data.type??this.type]});}if(!data.img)this.updateSource({img:ICON});}
+  async _preCreate(data,options,user){await super._preCreate(data,options,user);if(data.system?.actions===undefined){const defaults={firearm:['fire','reload','overwatch'],melee:['strike','grapple','shove','disarm','takedown'],shield:['strike','cover-ally'],grenade:['throw'],launcher:['launch','reload']};if(defaults[data.type??this.type])this.updateSource({'system.actions':defaults[data.type??this.type]});}this.updateSource({img:itemArtwork({type:data.type??this.type,name:data.name??this.name,img:data.img,system:data.system??this.system})});}
   async use(action='fire',target){return game.fdern.act(this.actor,action,this,{target});}}

@@ -1,7 +1,7 @@
 {
   "name": "Heavy pistol",
   "type": "firearm",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/pistol.svg",
   "system": {
     "family": "pistol",
     "cartridge": ".45-acp",

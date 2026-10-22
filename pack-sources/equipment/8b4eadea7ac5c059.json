@@ -1,7 +1,7 @@
 {
   "name": "Intermediate rifle",
   "type": "firearm",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/rifle.svg",
   "system": {
     "family": "rifle",
     "cartridge": "7.62x39",

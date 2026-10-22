@@ -1,7 +1,7 @@
 {
   "name": "Stagger",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/target.svg",
   "system": {
     "actionId": "stagger",
     "hands": 0,

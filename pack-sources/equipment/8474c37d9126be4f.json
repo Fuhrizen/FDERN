@@ -3,7 +3,7 @@
   "_key": "!items!8474c37d9126be4f",
   "name": "heavy-pistol · 3 Load",
   "type": "magazine",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/ammo.svg",
   "folder": "68177333d58bcc52",
   "system": {
     "cartridge": ".45-acp",

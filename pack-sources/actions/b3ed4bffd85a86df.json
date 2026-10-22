@@ -1,7 +1,7 @@
 {
   "name": "Pickup",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/action.svg",
   "system": {
     "actionId": "pickup",
     "hands": 0,

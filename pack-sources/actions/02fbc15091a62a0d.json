@@ -1,7 +1,7 @@
 {
   "name": "Cycle",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/ammo.svg",
   "system": {
     "actionId": "cycle",
     "hands": 0,

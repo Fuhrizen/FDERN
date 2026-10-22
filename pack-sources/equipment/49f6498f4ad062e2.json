@@ -1,7 +1,7 @@
 {
   "name": "Incendiary grenade",
   "type": "grenade",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/fire.svg",
   "system": {
     "payload": "incendiary",
     "radius": 10,

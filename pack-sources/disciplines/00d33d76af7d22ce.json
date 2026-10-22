@@ -1,7 +1,7 @@
 {
   "name": "Shotgunner",
   "type": "discipline",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/discipline.svg",
   "system": {
     "disciplineId": "shotgunner",
     "advanced": false,

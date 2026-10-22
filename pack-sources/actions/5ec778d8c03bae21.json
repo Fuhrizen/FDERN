@@ -1,7 +1,7 @@
 {
   "name": "Field Dressing",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/medical.svg",
   "system": {
     "actionId": "field-dressing",
     "hands": 0,

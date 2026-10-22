@@ -3,7 +3,7 @@
   "_key": "!items!2fc67760800dcd7d",
   "name": "service-pistol · 4 Load",
   "type": "magazine",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/ammo.svg",
   "folder": "68177333d58bcc52",
   "system": {
     "cartridge": "9x19",

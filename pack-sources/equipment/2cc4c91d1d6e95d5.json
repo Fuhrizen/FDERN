@@ -1,7 +1,7 @@
 {
   "name": "Submachine gun",
   "type": "firearm",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/smg.svg",
   "system": {
     "family": "smg",
     "cartridge": "9x19",

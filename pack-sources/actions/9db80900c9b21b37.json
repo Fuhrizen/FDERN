@@ -1,7 +1,7 @@
 {
   "name": "Burst Fire",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/target.svg",
   "system": {
     "actionId": "burst",
     "hands": 0,

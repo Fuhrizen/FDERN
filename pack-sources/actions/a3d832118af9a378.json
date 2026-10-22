@@ -1,7 +1,7 @@
 {
   "name": "Interact",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/action.svg",
   "system": {
     "actionId": "interact",
     "hands": 0,

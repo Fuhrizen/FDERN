@@ -2,7 +2,7 @@
   "_id": "3a3c668a337b2e1e",
   "name": "Character Wizard",
   "type": "script",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/discipline.svg",
   "command": "try { new game.fdern.CharacterWizard({actor:game.fdern.selectedActor()}).render({force:true}); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

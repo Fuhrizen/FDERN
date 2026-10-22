@@ -3,7 +3,7 @@
   "_key": "!items!69b67c4d56932ecb",
   "name": "smg · 5 Load",
   "type": "magazine",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/ammo.svg",
   "folder": "68177333d58bcc52",
   "system": {
     "cartridge": "9x19",

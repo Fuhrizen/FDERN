@@ -1,7 +1,7 @@
 {
   "name": "Smoke grenade",
   "type": "grenade",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/smoke.svg",
   "system": {
     "payload": "smoke",
     "radius": 15,

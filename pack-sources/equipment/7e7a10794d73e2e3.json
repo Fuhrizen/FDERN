@@ -1,7 +1,7 @@
 {
   "name": "Machine pistol",
   "type": "firearm",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/smg.svg",
   "system": {
     "family": "machine-pistol",
     "cartridge": "9x19",

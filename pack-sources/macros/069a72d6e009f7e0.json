@@ -2,7 +2,7 @@
   "_id": "069a72d6e009f7e0",
   "name": "Encounter Manager",
   "type": "script",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/target.svg",
   "command": "try { await game.fdern.encounter.render({force:true}); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

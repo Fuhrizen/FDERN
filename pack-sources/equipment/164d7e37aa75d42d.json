@@ -1,7 +1,7 @@
 {
   "name": "Fragmentation grenade",
   "type": "grenade",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/grenade.svg",
   "system": {
     "payload": "fragmentation",
     "radius": 10,

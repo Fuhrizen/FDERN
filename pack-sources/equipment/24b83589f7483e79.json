@@ -1,7 +1,7 @@
 {
   "name": "Flash grenade",
   "type": "grenade",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/flash.svg",
   "system": {
     "payload": "flash",
     "radius": 10,

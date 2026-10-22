@@ -2,7 +2,7 @@
   "_id": "ef98af286f82a9d3",
   "name": "Define Cover / Difficult Terrain",
   "type": "script",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/observe.svg",
   "command": "try { await game.fdern.terrainEditor(); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

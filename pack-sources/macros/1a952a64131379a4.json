@@ -2,7 +2,7 @@
   "_id": "1a952a64131379a4",
   "name": "Move",
   "type": "script",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/move.svg",
   "command": "try { const actor=game.fdern.selectedActor(); const item=null; await game.fdern.act(actor, \"move\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

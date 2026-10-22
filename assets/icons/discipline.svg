@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Open training manual</title>
+  <rect x="2" y="2" width="60" height="60" rx="8" fill="#252525"/>
+  <g fill="none" stroke="#f2f0e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16c9-3 16-1 22 4 6-5 13-7 22-4v32c-9-3-16-1-22 4-6-5-13-7-22-4z"/><path d="M32 20v32M16 23c5-1 9 0 12 2M16 31c5-1 9 0 12 2m-12 6c5-1 9 0 12 2m8-16c4-2 8-3 12-2m-12 10c4-2 8-3 12-2m-12 10c4-2 8-3 12-2"/></g>
+</svg>

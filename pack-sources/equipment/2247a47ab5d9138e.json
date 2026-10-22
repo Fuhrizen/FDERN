@@ -1,7 +1,7 @@
 {
   "name": "Light machine gun",
   "type": "firearm",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/support.svg",
   "system": {
     "family": "support",
     "cartridge": "5.56",

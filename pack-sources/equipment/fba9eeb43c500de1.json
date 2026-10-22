@@ -1,7 +1,7 @@
 {
   "name": "Short carbine",
   "type": "firearm",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/rifle.svg",
   "system": {
     "family": "rifle",
     "cartridge": "5.56",

@@ -1,7 +1,7 @@
 {
   "name": "Cover Ally",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/shield.svg",
   "system": {
     "actionId": "cover-ally",
     "hands": 0,

@@ -2,7 +2,7 @@
   "_id": "3d008bf33da19b9e",
   "name": "Send Equipment to Chat",
   "type": "script",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/action.svg",
   "command": "try { await game.fdern.shareEquipment(game.fdern.selectedActor()); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

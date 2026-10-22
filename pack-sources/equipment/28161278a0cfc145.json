@@ -1,7 +1,7 @@
 {
   "name": "Concussion grenade",
   "type": "grenade",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/flash.svg",
   "system": {
     "payload": "concussion",
     "radius": 10,

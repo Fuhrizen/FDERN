@@ -1,7 +1,7 @@
 {
   "name": "Step into Cover",
   "type": "action",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/move.svg",
   "system": {
     "actionId": "step",
     "hands": 0,

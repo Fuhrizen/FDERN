@@ -2,7 +2,7 @@
   "_id": "91fd9166da21a957",
   "name": "Burst Fire",
   "type": "script",
-  "img": "icons/svg/mystery-man.svg",
+  "img": "systems/fdern/assets/icons/target.svg",
   "command": "try { const actor=game.fdern.selectedActor(); const item=actor.items.filter(i=>i.system.actions?.includes(\"burst\")).sort((a,b)=>Number(b.system.readied)-Number(a.system.readied))[0]??null; await game.fdern.act(actor, \"burst\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

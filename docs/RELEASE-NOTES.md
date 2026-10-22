@@ -1,9 +1,7 @@
-FDERN v0.2.2: inventory actions and faster sheet interactions.
+FDERN v0.2.3: equipment and action artwork.
 
-Use an equipped item directly from its inventory inspector. Actions show their Action and Load costs, with reasons for unavailable actions. Every button uses the same ownership and rules checks as Combat and chat.
+A coherent set of 23 original SVG icons makes equipment easier to distinguish in inventory and compendiums. Firearm families, protection, ammunition, medical and engineering supplies, and grenade payloads have separate cues. Action documents and macros use corresponding functional icons.
 
-Before equipping, the inspector names the items that will be put away. The preview and actual equip action share one plan, including deployed equipment restrictions.
+The same artwork appears in item sheets, inventory, chat profiles and new item hotbar macros. Existing system placeholders are resolved when sheets and chat render. Custom artwork is preserved, and character/NPC default token artwork stays native Foundry. Existing world documents are not rewritten.
 
-Filter to equipped and worn items, clear searches with the X button or Escape, and navigate inventory selection with Left/Right, Home and End. Search clearing affects only the current tab; hidden inventory items remain intact. Accessible loadout preparation can be expanded when needed; it defaults to collapsed for sheets opened during combat. Colours, themes and controls remain native Foundry.
-
-Browser review uses production templates and native Foundry CSS. Live multiplayer and canvas behaviour still require a licensed Foundry runtime.
+All icons are bundled, self-contained vectors under the repository’s MIT license. Browser review includes every icon at 24, 32 and 48 pixels in both native themes. Live multiplayer and canvas behaviour still require a licensed Foundry runtime.

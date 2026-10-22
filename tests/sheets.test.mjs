@@ -46,3 +46,19 @@ test('equipment controls send ownership-checked inventory intents rather than ed
   await FdernActorSheet.dispatch.call(sheet,null,{dataset:{command:'quantity',id:'supply',delta:'-1'}});assert.deepEqual(request,{type:'inventory',actor:a.uuid,command:'quantity',item:'supply',delta:-1});
   request=null;sheet.isEditable=false;await FdernActorSheet.dispatch.call(sheet,null,{dataset:{command:'wear',id:'armour'}});assert.equal(request,null);
 });
+
+test('inventory inspector exposes guarded item actions and previews the equipment it will replace',async()=>{
+  const a=actor();const [rifle,kit]=await a.createEmbeddedDocuments('Item',[CATALOGUE.find(i=>i.id==='service-rifle'),CATALOGUE.find(i=>i.id==='medical-kit')]);
+  await rifle.update({'system.readied':true,'system.slot':'primary'});const sheet=new FdernActorSheet({actor:a});sheet._selectedItem=kit.id;
+  let ctx=await sheet._prepareContext({});assert.equal(ctx.selectedInventory.readyRow.swapNames,rifle.name);assert.ok(ctx.selectedInventory.itemActions.some(row=>row.id==='field-dressing'&&row.disabled&&/Equip/.test(row.reason)));
+  await rifle.update({'system.readied':false});await kit.update({'system.readied':true});ctx=await sheet._prepareContext({});assert.ok(ctx.selectedInventory.itemActions.some(row=>row.id==='field-dressing'));assert.equal(ctx.selectedInventory.readyRow.swapNames,'');
+  sheet.isEditable=false;ctx=await sheet._prepareContext({});assert.ok(ctx.selectedInventory.itemActions.every(row=>row.disabled));
+});
+
+test('equipped filter includes worn armour, hides packed items, and search clearing preserves other queries',async()=>{
+  const a=actor();const [rifle,kit,vest]=await a.createEmbeddedDocuments('Item',[CATALOGUE.find(i=>i.id==='service-rifle'),CATALOGUE.find(i=>i.id==='medical-kit'),CATALOGUE.find(i=>i.id==='plate-carrier')]);await rifle.update({'system.readied':true});await vest.update({'system.worn':true});
+  const sheet=new FdernActorSheet({actor:a});sheet._equippedOnly=true;sheet._skillQuery='medicine';sheet._search='journal';sheet._inventoryQuery='rifle';sheet.render=()=>{};
+  let ctx=await sheet._prepareContext({});assert.deepEqual(ctx.inventoryGrid.map(row=>row.id),[rifle.id]);
+  await FdernActorSheet.dispatch.call(sheet,null,{dataset:{command:'clear-search',search:'inventory'}});ctx=await sheet._prepareContext({});assert.deepEqual(ctx.inventoryGrid.map(row=>row.id),[rifle.id,vest.id]);assert.equal(sheet._skillQuery,'medicine');assert.equal(sheet._search,'journal');assert.equal(sheet._equippedOnly,true);
+  await FdernActorSheet.dispatch.call(sheet,null,{dataset:{command:'equipped-filter'}});ctx=await sheet._prepareContext({});assert.ok(ctx.inventoryGrid.some(row=>row.id===kit.id));
+});

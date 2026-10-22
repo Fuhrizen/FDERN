@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2
+
+- Use equipped item actions directly from the inventory inspector, with Action/Load costs and current availability.
+- Preview the items that equipping will put away, using the same plan as authoritative execution.
+- Filter inventory to equipped and worn equipment; clear sheet searches with a button or Escape.
+- Navigate inventory selection using Left/Right, Home and End while retaining keyboard focus.
+
 ## 0.2.1
 
 - Square inventory cells, visible empty space and clearer item footprint outlines in native themes.

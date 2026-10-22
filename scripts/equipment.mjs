@@ -2,7 +2,7 @@ import {ACTIONS,UNIVERSAL,UNARMED,SKILLS,DISCIPLINES} from './config.mjs';
 import {burstDiscipline,qualifies,repack,advancementCost} from './rules.mjs';
 import {learned,readied,has,isActive,combatantFor,choose,chat,escapeHTML} from './utils.mjs';
 import {sortedInventoryItems} from './inventory-view.mjs';
-import {equipmentCost,equippable,equippedItems,loadoutValid} from './equipping.mjs';
+import {equipPreview,loadoutValid} from './equipping.mjs';
 export const ammoFor = (actor,item) => item?.system.magazineId?actor.items.get(item.system.magazineId):item;
 export function actionReason(actor,id,item,{reaction=false}={}) {
   const a=ACTIONS[id];if(!a)return 'Unknown action.';const c=actor.system.combat,s=item?.system;
@@ -35,16 +35,9 @@ export function actionReason(actor,id,item,{reaction=false}={}) {
 }
 export async function spend(actor,cost){if(game.combat?.started&&combatantFor(actor)){if(!isActive(actor)||actor.system.combat.actionsRemaining<cost)throw Error('Action allowance or activation changed.');await actor.update({'system.combat.actionsRemaining':actor.system.combat.actionsRemaining-cost,'system.combat.moveRemaining':0,'system.combat.moveMode':''});}}
 export async function ready(actor,item,{pay=true}={}) {
-  if(!item)throw Error('Select equipment to Ready or Stow.');const s=item.system;if(!equippable(item))throw Error('This item cannot be equipped.');if(s.broken)throw Error('Broken equipment cannot be readied.');if(item.type==='grenade'&&(s.quantity??0)<=0)throw Error('No grenade remains.');if(!s.slot&&['firearm','melee','shield','launcher'].includes(item.type))throw Error('Assign an accessible loadout slot first.');
-  if(s.deployed)throw Error('Pickup the deployed weapon first.');
-  const updates=[];
-  if(!s.readied){
-    let remaining=2-equipmentCost(item);const current=equippedItems(actor).filter(currentItem=>currentItem.id!==item.id);const toStow=[];
-    for(const currentItem of current){if(remaining>=equipmentCost(currentItem)){remaining-=equipmentCost(currentItem);continue;}toStow.push(currentItem);}
-    if(toStow.some(currentItem=>currentItem.system.deployed))throw Error('Pickup the deployed weapon first.');
-    for(const currentItem of toStow)updates.push({_id:currentItem.id,'system.readied':false});
-    updates.push({_id:item.id,'system.readied':true});
-  }else updates.push({_id:item.id,'system.readied':false});
+  const {stowed,blocked}=equipPreview(actor,item);if(blocked)throw Error(blocked);const s=item.system;
+  const updates=stowed.map(currentItem=>({_id:currentItem.id,'system.readied':false}));
+  updates.push({_id:item.id,'system.readied':!s.readied});
   if(pay)await spend(actor,1);
   await actor.updateEmbeddedDocuments('Item',updates);
   if(s.readied){if(actor.system.combat.overwatch.weapon===item.id)await actor.update({'system.combat.overwatch.active':false});return;}

@@ -5,7 +5,7 @@ const {CharacterData,EquipmentData,FdernActor}=await import('../scripts/models.m
 const {FdernCombat}=await import('../scripts/combat.mjs');
 const {execute}=await import('../scripts/service.mjs');
 const {actionReason,ready}=await import('../scripts/equipment.mjs');
-const {equipmentMode,equipmentCost,equippable,equippedItems,loadoutValid}=await import('../scripts/equipping.mjs');
+const {equipmentMode,equipmentCost,equippable,equippedItems,loadoutValid,equipPreview}=await import('../scripts/equipping.mjs');
 CONFIG.Item.dataModels=Object.fromEntries(['firearm','melee','shield','armour','magazine','grenade','launcher','gear','discipline','action'].map(type=>[type,EquipmentData]));
 function actor(){const a=new FdernActor({name:'Operator',type:'character',owner:'player'});a.system=new CharacterData({}, {parent:a});a.system.prepareDerivedData();token(a);return a;}
 async function encounter(a){const c=new FdernCombat(),cc=combatant(a,'A');c.combatants.set(cc.id,cc);game.combat=c;game.combats.set(c.id,c);await c.startCombat();await c.setFlag('fdern','drawnSide','A');await c.activate(cc.id);return c;}
@@ -22,6 +22,27 @@ test('Ready automatically stows incompatible items and enforces the two-point ma
   await ready(a,frag,{pay:false});assert.equal(main.system.readied,false);assert.equal(knife.system.readied,true);assert.equal(frag.system.readied,true);assert.equal(loadoutValid(a),true);
   await ready(a,secondFrag,{pay:false});assert.equal(knife.system.readied,true);assert.equal(frag.system.readied,false);assert.equal(secondFrag.system.readied,true);assert.equal(loadoutValid(a),true);
   await ready(a,main,{pay:false});assert.equal(main.system.readied,true);assert.equal(knife.system.readied,false);assert.equal(secondFrag.system.readied,false);assert.equal(loadoutValid(a),true);
+});
+
+test('equipPreview returns the exact documents that Ready will stow',async()=>{
+  const a=actor(),main=await create(a,'firearm','Rifle',{slot:'primary',readied:true}),knife=await create(a,'melee','Knife',{family:'knife',slot:'secondary',readied:true}),frag=await create(a,'grenade','Frag',{quantity:1});
+  const preview=equipPreview(a,frag);
+  assert.deepEqual(preview,{stowed:[main],blocked:''});
+  await ready(a,frag,{pay:false});
+  assert.equal(main.system.readied,false);assert.equal(knife.system.readied,true);assert.equal(frag.system.readied,true);
+  assert.deepEqual(equipPreview(a,knife),{stowed:[],blocked:''});
+  await ready(a,knife,{pay:false});assert.equal(knife.system.readied,false);assert.equal(frag.system.readied,true);
+});
+
+test('equipPreview explains blocked Ready states without changing the loadout',async()=>{
+  const a=actor(),vest=await create(a,'armour','Vest'),broken=await create(a,'gear','Broken Tool',{broken:true}),empty=await create(a,'grenade','Empty Frag',{quantity:0}),inaccessible=await create(a,'firearm','Packed Rifle'),main=await create(a,'firearm','Deployed Rifle',{slot:'primary',readied:true,deployed:true}),knife=await create(a,'melee','Knife',{family:'knife',slot:'secondary'});
+  assert.match(equipPreview(a,vest).blocked,/cannot be equipped/);
+  assert.match(equipPreview(a,broken).blocked,/broken/i);
+  assert.match(equipPreview(a,empty).blocked,/No grenade remains/);
+  assert.match(equipPreview(a,inaccessible).blocked,/accessible loadout slot/);
+  assert.match(equipPreview(a,knife).blocked,/Pickup the deployed weapon/);
+  assert.equal(main.system.readied,true);assert.equal(knife.system.readied,false);
+  assert.match(equipPreview(a,main).blocked,/Pickup the deployed weapon/);
 });
 
 test('deployed equipment blocks a Ready swap before Action spending or state changes',async()=>{

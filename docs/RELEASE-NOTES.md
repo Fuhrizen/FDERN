@@ -1,9 +1,9 @@
-FDERN v0.2.1: inventory cells and equipped items.
+FDERN v0.2.2: inventory actions and faster sheet interactions.
 
-The inventory now draws square cells behind item footprints, including unused space. Selection and outlines remain readable in Foundry’s native light and dark themes.
+Use an equipped item directly from its inventory inspector. Actions show their Action and Load costs, with reasons for unavailable actions. Every button uses the same ownership and rules checks as Combat and chat.
 
-Equip one main item or two off-hand items. Knives and grenades default to off-hand; choose Automatic, Main item or Off-hand in Edit item. Equipping a conflicting item puts the previous equipment away. Deployed equipment must be picked up first. Armour is worn separately and ammunition stays available as a reload source.
+Before equipping, the inspector names the items that will be put away. The preview and actual equip action share one plan, including deployed equipment restrictions.
 
-Item actions now require equipment to be equipped, including grenades, medical supplies, repairs, Quick Presentation and reloading. Inventory and chat controls use Equip / Unequip; existing ready macro commands remain compatible. Existing readied state is retained, with invalid old combinations blocked until corrected.
+Filter to equipped and worn items, clear searches with the X button or Escape, and navigate inventory selection with Left/Right, Home and End. Search clearing affects only the current tab; hidden inventory items remain intact. Colours, themes and controls remain native Foundry.
 
-Browser review uses production templates and native Foundry CSS. Live multiplayer and canvas behaviour still need a licensed Foundry runtime.
+Browser review uses production templates and native Foundry CSS. Live multiplayer and canvas behaviour still require a licensed Foundry runtime.

@@ -14,3 +14,21 @@ export function loadoutValid(actor){
   const equipped=equippedItems(actor),main=equipped.filter(item=>equipmentMode(item)==='main').length,offhand=equipped.length-main;
   return main<=1&&offhand<=2&&!(main&&offhand);
 }
+export function equipPreview(actor,item){
+  if(!item)return {stowed:[],blocked:'Select equipment to Ready or Stow.'};
+  const s=item.system;
+  if(!equippable(item))return {stowed:[],blocked:'This item cannot be equipped.'};
+  if(s.broken)return {stowed:[],blocked:'Broken equipment cannot be readied.'};
+  if(item.type==='grenade'&&(s.quantity??0)<=0)return {stowed:[],blocked:'No grenade remains.'};
+  if(!s.slot&&['firearm','melee','shield','launcher'].includes(item.type))return {stowed:[],blocked:'Assign an accessible loadout slot first.'};
+  if(s.deployed)return {stowed:[],blocked:'Pickup the deployed weapon first.'};
+  if(s.readied)return {stowed:[],blocked:''};
+  let remaining=2-equipmentCost(item);
+  const stowed=[];
+  for(const current of equippedItems(actor).filter(current=>current.id!==item.id)){
+    if(remaining>=equipmentCost(current))remaining-=equipmentCost(current);
+    else stowed.push(current);
+  }
+  if(stowed.some(current=>current.system.deployed))return {stowed:[],blocked:'Pickup the deployed weapon first.'};
+  return {stowed,blocked:''};
+}

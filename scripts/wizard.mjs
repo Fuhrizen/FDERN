@@ -10,7 +10,7 @@ function loadoutPreview(draft,id){
   if(item.type==='armour')profile=`Ballistic ${s.ballistic} · Melee ${s.meleeArmour}`;
   else if(['firearm','launcher'].includes(item.type))profile=`Effective ${s.effective} ft · Max ${s.maximum} ft · Harm ${s.harm} · Load ${s.maxLoad}`;
   else if(item.type==='melee')profile=`Harm ${s.harm} · Reach ${s.reach} ft`;
-  else if(item.type==='shield')profile=`Absorption ${s.absorption} · ${s.ballistic?'Ballistic protection':'Melee protection'}`;
+  else if(item.type==='shield')profile=`Absorption ${s.absorption} · ${s.traits?.includes('ballistic')?'Ballistic protection':'Melee protection'}`;
   else if(item.type==='grenade')profile=`${s.radius} ft radius · ${s.quantity} carried`;
   else if(item.id==='medical-kit')profile='Field dressing · advanced dressing · stabilise';
   else if(item.id==='engineering-tools')profile='Emergency equipment repair';

@@ -1,5 +1,19 @@
 # Native UI review
 
+## v0.2.4 — 22 October 2026
+
+Nine new icons distinguish native condition states, especially Down and Prone. The status IDs and derived condition set remain identical. Reconciliation refreshes only old stock artwork on system-managed effects; custom and manual effects remain intact.
+
+The wizard now previews each selected starting item, then repeats the artwork and concise profile in Review. Loadout changes save and refresh the preview while retaining keyboard focus. Text-only saves do not rerender. Review also caught a shield profile using an armour rating instead of its ballistic trait; the profile and regression assertion were corrected.
+
+85 automated tests cover condition identity, idempotent artwork refresh, custom-art preservation and wizard reactivity. The browser harness passes 81 checks across four viewport widths, including live selection changes and review artwork. All 32 icons were inspected at 24, 32 and 48 pixels in native themes, along with wizard Loadout and Review.
+
+![Condition and equipment artwork](ui/condition-assets-dark.png)
+
+![Selected starting equipment](ui/wizard-loadout-dark.png)
+
+Live native token-HUD, multiplayer and canvas behavior still require verification in a licensed Foundry runtime.
+
 ## v0.2.3 — 22 October 2026
 
 Three agent workstreams produced 23 original equipment/action SVG icons and the artwork resolver. Item profiles, inventory, chat, compendiums and new item hotbar macros share the same category artwork. Existing custom images and native character/NPC token defaults are preserved. All 162 compendium document IDs are unchanged.

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.6
+
+- Repair obsolete FDERN stylesheet links at world startup using the installed manifest, including missing or disabled current stylesheets.
+- Wait for the replacement stylesheet to load before removing old system styles; retain Foundry, module and custom themes.
+- Exercise the actual startup hook in browser regressions instead of manually replacing stylesheets.
+- Derive preview application classes from production sheet options so missing classes cannot be hidden by the test fixture.
+
 ## 0.2.5
 
 - Give the layout stylesheet a content-specific URL so cached v0.1 styling cannot be reused with current templates.

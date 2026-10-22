@@ -4,7 +4,7 @@
 
 Run `npm ci`, `npm test`, `npm run check`, `npm run build:packs`, and `npm run build`.
 
-`npm run test:ui` renders the actual Handlebars templates and stylesheet with representative document data in Chromium. It checks desktop and narrow sheet/wizard/encounter layouts, navigation handlers, fields, and horizontal overflow. The harness is not a licensed Foundry runtime.
+`npm run test:ui` renders the actual Handlebars templates and stylesheet with representative document data in Chromium. It checks desktop and narrow sheet/wizard/encounter layouts, navigation handlers, fields, and horizontal overflow. The harness is not a licensed Foundry runtime. It derives application classes from production options and invokes the real stylesheet bootstrap hook against stale, disabled and missing stylesheet scenarios; it does not manually repair the links.
 
 ## Licensed Foundry v14 multiplayer checklist
 

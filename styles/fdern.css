@@ -165,7 +165,7 @@
 .fdern .inventory-footer {display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:16px;}
 @container(max-width:720px) {
   .fdern .inventory-layout {grid-template-columns:1fr; gap:8px;}
-  .fdern .inventory-inspector {display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:12px 20px;}
+  .fdern .inventory-inspector {display:grid; grid-template-columns:minmax(0,1fr); gap:12px;}
   .fdern .inventory-inspector header, .fdern .inventory-inspector .inventory-description {grid-column:1 / -1;}
   .fdern .inspector-actions {margin-top:0;}
 }

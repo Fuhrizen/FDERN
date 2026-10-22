@@ -146,7 +146,7 @@
 .fdern .inventory-board {container-type:inline-size;}
 .fdern .inventory-grid {--inventory-columns:6; --inventory-cell:calc(100cqw / var(--inventory-columns)); display:grid; grid-template-columns:repeat(var(--inventory-columns),minmax(0,1fr)); grid-auto-rows:var(--inventory-cell); min-height:calc(var(--inventory-cell) * 3); border:1px solid color-mix(in srgb,currentColor 28%,transparent); background-image:linear-gradient(to right,color-mix(in srgb,currentColor 28%,transparent) 1px,transparent 1px),linear-gradient(to bottom,color-mix(in srgb,currentColor 28%,transparent) 1px,transparent 1px); background-size:var(--inventory-cell) var(--inventory-cell); align-content:start;}
 .fdern .inventory-grid > .hint {grid-column:1 / -1; margin:12px;}
-.fdern .inventory-tile {display:flex; position:relative; flex-direction:column; align-items:center; justify-content:center; gap:3px; width:calc(100% - 6px); height:calc(100% - 6px); margin:3px; min-width:0; padding:8px 5px; white-space:normal; border:1px solid var(--button-border-color,currentColor); border-radius:4px; background:var(--button-background-color,transparent);}
+.fdern .inventory-tile {display:flex; position:relative; flex-direction:column; align-items:center; justify-content:center; gap:3px; width:calc(100% - 6px); height:calc(100% - 6px); margin:3px; min-width:0; padding:8px 5px; white-space:normal; border:1px solid var(--button-border-color,currentColor); border-radius:4px;}
 .fdern .inventory-tile[aria-pressed=true] {outline:2px solid currentColor; outline-offset:-3px;}
 .fdern .inventory-tile img {width:24px; height:24px; object-fit:contain; flex-shrink:0;}
 .fdern .inventory-tile.tier-3 img, .fdern .inventory-tile.tier-5 img {width:48px; height:48px;}

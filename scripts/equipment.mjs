@@ -11,9 +11,8 @@ export function actionReason(actor,id,item,{reaction=false}={}) {
   if(game.combat?.started&&combatantFor(actor)&&!reaction){if(!isActive(actor))return 'Await this character’s activation.';if(c.actionsRemaining<cost)return 'Not enough Actions.';}
   if(!UNIVERSAL.includes(id)&&!(!item&&UNARMED.includes(id))&&(!s?.actions?.includes(id)))return 'The item does not supply this action.';
   const itemAction=item&&(!UNIVERSAL.includes(id)||id==='aim')&&id!=='ready';
-  if(s?.broken)return 'Item is broken.';if(itemAction&&!s.readied)return 'Equip this item first.';
+  if(s?.broken)return 'Item is broken.';if(item?.type==='grenade'&&(s.quantity??0)<=0)return 'No grenade remains.';if(itemAction&&!s.readied)return 'Equip this item first.';
   if(itemAction&&s.readied&&!loadoutValid(actor))return 'Resolve the equipped loadout before using equipment.';
-  if(item?.type==='grenade'&&(s.quantity??0)<=0)return 'No grenade remains.';
   if(s?.traits.includes('static')&&!s.deployed&&['fire','burst','suppress','sustained','overwatch'].includes(id))return 'Deploy the static weapon first.';
   const skill=a.kind==='medical'?'medicine':id==='patch'?'engineering':s&&['melee','shield'].includes(item.type)||!item&&UNARMED.includes(id)?'melee':'marksmanship';
   if(a.rank&&(actor.system.skills[skill]??0)<a.rank)return `${SKILLS[skill]} ${a.rank} required.`;

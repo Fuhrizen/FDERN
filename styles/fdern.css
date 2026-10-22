@@ -137,6 +137,7 @@
 .fdern .creation-prompt, .fdern .equipment-heading {display:flex; align-items:center; justify-content:space-between; gap:12px;}
 .fdern .equipment-heading {margin:16px 0 10px; flex-wrap:wrap;}
 .fdern .equipment-heading h3, .fdern .creation-prompt p {margin:0;}
+.fdern .equipped-summary {display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; margin-top:16px;}
 .fdern .loadout-slot {display:flex; flex-direction:column; align-items:start; gap:6px; min-width:0; padding:8px 0;}
 .fdern .loadout-slot .item-name {min-width:0; text-align:start;}
 .fdern .inventory-workspace {container-type:inline-size;}

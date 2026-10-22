@@ -41,7 +41,7 @@
     </section>
     <section class="tab {{#if isEquipment}}active{{/if}}" data-group="sheet" data-tab="equipment">
       <div class="sheet-toolbar"><search><input type="search" data-sheet-search="inventory" value="{{inventoryQuery}}" placeholder="Find equipment…" aria-label="Find equipment"></search><button type="button" data-action="dispatch" data-command="browse"><i class="fa-solid fa-book-open" inert></i> Equipment compendium</button>{{#if editable}}<button type="button" class="icon" data-action="dispatch" data-command="item-create" aria-label="Create equipment"><i class="fa-solid fa-plus" inert></i></button>{{/if}}</div>
-      <div class="equipment-heading"><h3>Equipped</h3><span class="hint">{{heldNames}}</span></div>
+      <div class="equipped-summary"><strong>Equipped</strong><span>{{heldNames}}</span></div>
       <p class="hint">One main item or two off-hand items. Equip an item before using it.</p>
       <div class="equipment-heading"><h3>Accessible loadout</h3></div><div class="loadout-grid">{{#each loadoutSlots}}<div class="loadout-slot"><strong>{{label}}</strong>{{#if item}}<button type="button" class="plain item-name" data-action="dispatch" data-command="select-item" data-id="{{item._id}}">{{item.name}}</button><span class="hint">{{#if item.system.readied}}Equipped{{else}}Stowed{{/if}}</span>{{else}}<span class="hint">Empty</span>{{/if}}{{#if ../canManageInventory}}<button type="button" class="plain inline-control" data-action="dispatch" data-command="assign-slot" data-slot="{{id}}">{{#if item}}Change{{else}}Assign{{/if}}</button>{{/if}}</div>{{/each}}</div>
       <div class="inventory-workspace"><div class="inventory-layout">

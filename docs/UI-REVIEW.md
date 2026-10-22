@@ -1,5 +1,17 @@
 # Native UI review
 
+## v0.2.3 — 22 October 2026
+
+Three agent workstreams produced 23 original equipment/action SVG icons and the artwork resolver. Item profiles, inventory, chat, compendiums and new item hotbar macros share the same category artwork. Existing custom images and native character/NPC token defaults are preserved. All 162 compendium document IDs are unchanged.
+
+82 automated tests cover asset mappings, XML validity, custom-art preservation and integration with item sheets and inventory. The 79 browser checks include loading every SVG in both native themes; contact sheets render each icon at 24, 32 and 48 pixels. Inventory and chat cards were inspected with the new artwork. The first visual pass prompted clearer firearm outlines and a native application background for the light-theme contact sheet. Inventory inspection also exposed a tile background override suppressing Foundry’s hover background; removing it restored the native hover contrast.
+
+![Asset contact sheet, native dark theme](ui/asset-gallery-dark.png)
+
+![Asset contact sheet, native light theme](ui/asset-gallery-light.png)
+
+These checks use production templates and native Foundry CSS. Live multiplayer and canvas verification still require a licensed server.
+
 ## v0.2.2 — 22 October 2026
 
 Equipped items can be used directly in the inventory inspector, with Action/Load costs and disabled-action explanations. Equip previews name the items that will be put away and share the execution plan with the backend. The equipped/worn filter, Escape and clear buttons, and Left/Right/Home/End selection reduce navigation. Accessible loadout preparation uses a native disclosure, keeping combat inventory compact.

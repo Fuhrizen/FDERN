@@ -1,7 +1,7 @@
 {
   "name": "General-purpose MG",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "support",
     "cartridge": "7.62x51",
@@ -31,7 +31,8 @@
       "pickup",
       "sustained"
     ],
-    "description": "General-purpose MG. Effective range 180 ft; maximum range 420 ft."
+    "description": "General-purpose MG. Effective range 180 ft; maximum range 420 ft.",
+    "inventorySize": 5
   },
   "_id": "d566138531a61853",
   "_key": "!items!d566138531a61853",

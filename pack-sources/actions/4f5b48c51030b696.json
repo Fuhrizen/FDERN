@@ -1,7 +1,7 @@
 {
   "name": "Disengage",
   "type": "action",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "actionId": "disengage",
     "hands": 0,

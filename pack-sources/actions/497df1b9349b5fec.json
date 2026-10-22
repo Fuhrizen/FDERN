@@ -1,7 +1,7 @@
 {
   "name": "Suppress",
   "type": "action",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "actionId": "suppress",
     "hands": 0,

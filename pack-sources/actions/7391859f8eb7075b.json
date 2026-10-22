@@ -1,7 +1,7 @@
 {
   "name": "Quick Presentation",
   "type": "action",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "actionId": "quick",
     "hands": 0,

@@ -1,7 +1,7 @@
 {
   "name": "Fighting knife",
   "type": "melee",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "knife",
     "harm": 2,
@@ -17,7 +17,8 @@
       "shove",
       "disarm",
       "takedown"
-    ]
+    ],
+    "inventorySize": 2
   },
   "_id": "9fbe772a3767c48d",
   "_key": "!items!9fbe772a3767c48d",

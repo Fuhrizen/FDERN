@@ -1,7 +1,7 @@
 {
   "name": "Light machine gun",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "support",
     "cartridge": "5.56",
@@ -31,7 +31,8 @@
       "pickup",
       "sustained"
     ],
-    "description": "Light machine gun. Effective range 150 ft; maximum range 360 ft."
+    "description": "Light machine gun. Effective range 150 ft; maximum range 360 ft.",
+    "inventorySize": 5
   },
   "_id": "2247a47ab5d9138e",
   "_key": "!items!2247a47ab5d9138e",

@@ -1,7 +1,7 @@
 {
   "name": "Short sword",
   "type": "melee",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "short-sword",
     "harm": 3,
@@ -20,7 +20,8 @@
       "disarm",
       "takedown",
       "lunge"
-    ]
+    ],
+    "inventorySize": 2
   },
   "_id": "ebdcdc593bcfe8d4",
   "_key": "!items!ebdcdc593bcfe8d4",

@@ -1,7 +1,7 @@
 {
   "name": "Submachine gun",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "smg",
     "cartridge": "9x19",
@@ -27,7 +27,8 @@
       "burst",
       "suppress"
     ],
-    "description": "Submachine gun. Effective range 60 ft; maximum range 150 ft."
+    "description": "Submachine gun. Effective range 60 ft; maximum range 150 ft.",
+    "inventorySize": 4
   },
   "_id": "2cc4c91d1d6e95d5",
   "_key": "!items!2cc4c91d1d6e95d5",

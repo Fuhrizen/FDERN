@@ -1,7 +1,7 @@
 {
   "name": "Grappling",
   "type": "discipline",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "disciplineId": "grappling",
     "advanced": false,

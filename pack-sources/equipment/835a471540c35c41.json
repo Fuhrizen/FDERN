@@ -1,12 +1,13 @@
 {
   "name": "Protective workwear",
   "type": "armour",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "ballistic": 0,
     "meleeArmour": 1,
     "hands": 0,
-    "description": "Use the best applicable worn rating. Armour ratings do not stack."
+    "description": "Use the best applicable worn rating. Armour ratings do not stack.",
+    "inventorySize": 5
   },
   "_id": "835a471540c35c41",
   "_key": "!items!835a471540c35c41",

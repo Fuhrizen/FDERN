@@ -1,7 +1,7 @@
 {
   "name": "Reinforced shield",
   "type": "shield",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "shield",
     "harm": 1,
@@ -16,7 +16,8 @@
       "strike",
       "cover-ally"
     ],
-    "description": "Shield Absorb uses a Reaction after a hit. Breaks after absorbing a hit with original Harm at least twice its Absorption. No shield HP."
+    "description": "Shield Absorb uses a Reaction after a hit. Breaks after absorbing a hit with original Harm at least twice its Absorption. No shield HP.",
+    "inventorySize": 3
   },
   "_id": "27d082e6b77b74af",
   "_key": "!items!27d082e6b77b74af",

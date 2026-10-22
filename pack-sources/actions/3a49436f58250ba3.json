@@ -1,7 +1,7 @@
 {
   "name": "Advanced Dressing",
   "type": "action",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "actionId": "advanced-dressing",
     "hands": 0,

@@ -2,7 +2,7 @@
   "_id": "789a994de3363f2f",
   "name": "Disarm",
   "type": "script",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "command": "try { const actor=game.fdern.selectedActor(); const item=actor.items.filter(i=>i.system.actions?.includes(\"disarm\")).sort((a,b)=>Number(b.system.readied)-Number(a.system.readied))[0]??null; await game.fdern.act(actor, \"disarm\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

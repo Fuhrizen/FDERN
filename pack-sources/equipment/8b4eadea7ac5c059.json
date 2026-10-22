@@ -1,7 +1,7 @@
 {
   "name": "Intermediate rifle",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "rifle",
     "cartridge": "7.62x39",
@@ -26,7 +26,8 @@
       "burst",
       "suppress"
     ],
-    "description": "Intermediate rifle. Effective range 110 ft; maximum range 300 ft."
+    "description": "Intermediate rifle. Effective range 110 ft; maximum range 300 ft.",
+    "inventorySize": 4
   },
   "_id": "8b4eadea7ac5c059",
   "_key": "!items!8b4eadea7ac5c059",

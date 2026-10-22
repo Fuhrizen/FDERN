@@ -1,7 +1,7 @@
 {
   "name": "Heavy pistol",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "pistol",
     "cartridge": ".45-acp",
@@ -25,7 +25,8 @@
       "overwatch",
       "quick"
     ],
-    "description": "Heavy pistol. Effective range 40 ft; maximum range 90 ft."
+    "description": "Heavy pistol. Effective range 40 ft; maximum range 90 ft.",
+    "inventorySize": 2
   },
   "_id": "31f0ba0e5d22fe31",
   "_key": "!items!31f0ba0e5d22fe31",

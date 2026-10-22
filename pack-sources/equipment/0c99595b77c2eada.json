@@ -1,12 +1,13 @@
 {
   "name": "Everyday clothing",
   "type": "armour",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "ballistic": 0,
     "meleeArmour": 0,
     "hands": 0,
-    "description": "Use the best applicable worn rating. Armour ratings do not stack."
+    "description": "Use the best applicable worn rating. Armour ratings do not stack.",
+    "inventorySize": 5
   },
   "_id": "0c99595b77c2eada",
   "_key": "!items!0c99595b77c2eada",

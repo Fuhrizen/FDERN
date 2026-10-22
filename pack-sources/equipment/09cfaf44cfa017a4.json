@@ -1,7 +1,7 @@
 {
   "name": "Baton",
   "type": "melee",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "baton",
     "harm": 2,
@@ -20,7 +20,8 @@
       "disarm",
       "takedown",
       "stagger"
-    ]
+    ],
+    "inventorySize": 2
   },
   "_id": "09cfaf44cfa017a4",
   "_key": "!items!09cfaf44cfa017a4",

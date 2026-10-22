@@ -2,7 +2,7 @@
   "_id": "45138cfb4c1c4c53",
   "name": "GM: Correct Token Position",
   "type": "script",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "command": "try { if (!game.user.isGM) throw Error(\"GM only.\"); const token=canvas.tokens.controlled[0]?.document; if(!token)throw Error(\"Select a token first.\"); const point=await game.fdern.pickPoint(); if(point)await token.move(point,{fdernOverride:true}); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

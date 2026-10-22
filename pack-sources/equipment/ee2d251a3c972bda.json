@@ -1,7 +1,7 @@
 {
   "name": "Precision semi-auto",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "precision",
     "cartridge": "7.62x51",
@@ -27,7 +27,8 @@
       "precision",
       "observe"
     ],
-    "description": "Precision semi-auto. Effective range 180 ft; maximum range 420 ft."
+    "description": "Precision semi-auto. Effective range 180 ft; maximum range 420 ft.",
+    "inventorySize": 4
   },
   "_id": "ee2d251a3c972bda",
   "_key": "!items!ee2d251a3c972bda",

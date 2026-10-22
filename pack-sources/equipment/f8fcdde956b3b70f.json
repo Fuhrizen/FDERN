@@ -1,12 +1,13 @@
 {
   "name": "Plate carrier",
   "type": "armour",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "ballistic": 4,
     "meleeArmour": 1,
     "hands": 0,
-    "description": "Use the best applicable worn rating. Armour ratings do not stack."
+    "description": "Use the best applicable worn rating. Armour ratings do not stack.",
+    "inventorySize": 5
   },
   "_id": "f8fcdde956b3b70f",
   "_key": "!items!f8fcdde956b3b70f",

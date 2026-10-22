@@ -1,7 +1,7 @@
 {
   "name": "Single-shot grenade launcher",
   "type": "launcher",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "launcher",
     "cartridge": "grenade-40mm",
@@ -23,7 +23,8 @@
     "actions": [
       "launch",
       "reload"
-    ]
+    ],
+    "inventorySize": 5
   },
   "_id": "561684c2910447ab",
   "_key": "!items!561684c2910447ab",

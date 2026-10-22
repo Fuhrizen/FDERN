@@ -1,7 +1,7 @@
 {
   "name": "Spear",
   "type": "melee",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "spear",
     "harm": 3,
@@ -19,7 +19,8 @@
       "takedown",
       "intercept",
       "lunge"
-    ]
+    ],
+    "inventorySize": 4
   },
   "_id": "a3c14f9ddecc329b",
   "_key": "!items!a3c14f9ddecc329b",

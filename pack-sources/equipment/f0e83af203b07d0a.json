@@ -1,7 +1,7 @@
 {
   "name": "Long sword",
   "type": "melee",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "long-sword",
     "harm": 3,
@@ -20,7 +20,8 @@
       "disarm",
       "takedown",
       "lunge"
-    ]
+    ],
+    "inventorySize": 4
   },
   "_id": "f0e83af203b07d0a",
   "_key": "!items!f0e83af203b07d0a",

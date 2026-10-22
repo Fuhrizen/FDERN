@@ -1,7 +1,7 @@
 {
   "name": "Staff",
   "type": "melee",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "staff",
     "harm": 2,
@@ -21,7 +21,8 @@
       "takedown",
       "intercept",
       "stagger"
-    ]
+    ],
+    "inventorySize": 4
   },
   "_id": "52e9cdd1a91abe05",
   "_key": "!items!52e9cdd1a91abe05",

@@ -1,7 +1,7 @@
 {
   "name": "Smoke grenade",
   "type": "grenade",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "payload": "smoke",
     "radius": 15,
@@ -11,7 +11,8 @@
     "actions": [
       "throw"
     ],
-    "description": "Throw 2 A, 45 ft maximum. One delivery Test at DC 7/9/11 by range. Full or half effect at declared centre, no scatter."
+    "description": "Throw 2 A, 45 ft maximum. One delivery Test at DC 7/9/11 by range. Full or half effect at declared centre, no scatter.",
+    "inventorySize": 2
   },
   "_id": "a85fa0c654e679b2",
   "_key": "!items!a85fa0c654e679b2",

@@ -1,7 +1,7 @@
 {
   "name": "Ready / Stow",
   "type": "action",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "actionId": "ready",
     "hands": 0,

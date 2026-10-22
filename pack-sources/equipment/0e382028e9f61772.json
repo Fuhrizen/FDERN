@@ -1,7 +1,7 @@
 {
   "name": "Hand axe",
   "type": "melee",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "hand-axe",
     "harm": 4,
@@ -18,7 +18,8 @@
       "disarm",
       "takedown",
       "heavy-strike"
-    ]
+    ],
+    "inventorySize": 2
   },
   "_id": "0e382028e9f61772",
   "_key": "!items!0e382028e9f61772",

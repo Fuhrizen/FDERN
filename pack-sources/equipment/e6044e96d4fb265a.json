@@ -1,7 +1,7 @@
 {
   "name": "High explosive grenade",
   "type": "grenade",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "payload": "he",
     "radius": 10,
@@ -11,7 +11,8 @@
     "actions": [
       "throw"
     ],
-    "description": "Throw 2 A, 45 ft maximum. One delivery Test at DC 7/9/11 by range. Full or half effect at declared centre, no scatter."
+    "description": "Throw 2 A, 45 ft maximum. One delivery Test at DC 7/9/11 by range. Full or half effect at declared centre, no scatter.",
+    "inventorySize": 2
   },
   "_id": "e6044e96d4fb265a",
   "_key": "!items!e6044e96d4fb265a",

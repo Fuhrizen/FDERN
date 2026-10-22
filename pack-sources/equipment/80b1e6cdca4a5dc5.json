@@ -1,7 +1,7 @@
 {
   "name": "Shoulder rocket launcher (HE)",
   "type": "launcher",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "launcher",
     "cartridge": "rocket-he",
@@ -25,7 +25,8 @@
     "actions": [
       "launch",
       "reload"
-    ]
+    ],
+    "inventorySize": 5
   },
   "_id": "80b1e6cdca4a5dc5",
   "_key": "!items!80b1e6cdca4a5dc5",

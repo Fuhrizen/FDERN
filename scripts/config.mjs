@@ -14,7 +14,8 @@ export const ACTIONS = {
 };
 export const UNIVERSAL = ['move','disengage','step','take-cover','prone','stand','aim','rally','ready','interact','assist','observe','escape'];
 export const UNARMED = ['strike','grapple','shove','disarm','takedown'];
-export const ICON = 'systems/fdern/assets/fdern.svg';
+export const ICON = 'icons/svg/mystery-man.svg';
+export const defaultArtwork = img => !img||img==='systems/fdern/assets/fdern.svg'?ICON:img;
 
 /** Player-facing benefits include family training and passive effects as well as explicit actions. */
 export function disciplineBenefits(id){

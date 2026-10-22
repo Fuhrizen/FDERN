@@ -1,7 +1,7 @@
 {
   "name": "Service rifle",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "rifle",
     "cartridge": "5.56",
@@ -26,7 +26,8 @@
       "burst",
       "suppress"
     ],
-    "description": "Service rifle. Effective range 150 ft; maximum range 330 ft."
+    "description": "Service rifle. Effective range 150 ft; maximum range 330 ft.",
+    "inventorySize": 4
   },
   "_id": "6a91c649097a28cd",
   "_key": "!items!6a91c649097a28cd",

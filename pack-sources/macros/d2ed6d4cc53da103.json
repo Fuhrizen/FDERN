@@ -2,7 +2,7 @@
   "_id": "d2ed6d4cc53da103",
   "name": "Quick Presentation",
   "type": "script",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "command": "try { const actor=game.fdern.selectedActor(); const item=actor.items.filter(i=>i.system.actions?.includes(\"quick\")).sort((a,b)=>Number(b.system.readied)-Number(a.system.readied))[0]??null; await game.fdern.act(actor, \"quick\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

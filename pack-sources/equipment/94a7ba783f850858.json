@@ -1,12 +1,13 @@
 {
   "name": "Soft ballistic vest",
   "type": "armour",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "ballistic": 2,
     "meleeArmour": 0,
     "hands": 0,
-    "description": "Use the best applicable worn rating. Armour ratings do not stack."
+    "description": "Use the best applicable worn rating. Armour ratings do not stack.",
+    "inventorySize": 5
   },
   "_id": "94a7ba783f850858",
   "_key": "!items!94a7ba783f850858",

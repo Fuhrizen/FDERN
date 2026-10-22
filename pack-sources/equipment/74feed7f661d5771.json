@@ -1,12 +1,13 @@
 {
   "name": "Heavy specialist armour",
   "type": "armour",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "ballistic": 5,
     "meleeArmour": 2,
     "hands": 0,
-    "description": "Use the best applicable worn rating. Armour ratings do not stack."
+    "description": "Use the best applicable worn rating. Armour ratings do not stack.",
+    "inventorySize": 5
   },
   "_id": "74feed7f661d5771",
   "_key": "!items!74feed7f661d5771",

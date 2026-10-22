@@ -1,7 +1,7 @@
 {
   "name": "Machine pistol",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "machine-pistol",
     "cartridge": "9x19",
@@ -28,7 +28,8 @@
       "suppress",
       "quick"
     ],
-    "description": "Machine pistol. Effective range 50 ft; maximum range 120 ft."
+    "description": "Machine pistol. Effective range 50 ft; maximum range 120 ft.",
+    "inventorySize": 2
   },
   "_id": "7e7a10794d73e2e3",
   "_key": "!items!7e7a10794d73e2e3",

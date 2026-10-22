@@ -1,7 +1,7 @@
 {
   "name": "War hammer",
   "type": "melee",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "war-hammer",
     "harm": 4,
@@ -19,7 +19,8 @@
       "takedown",
       "heavy-strike",
       "stagger"
-    ]
+    ],
+    "inventorySize": 4
   },
   "_id": "150347ea0729f701",
   "_key": "!items!150347ea0729f701",

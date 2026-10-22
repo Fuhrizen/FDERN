@@ -1,5 +1,6 @@
+import {resolveInventorySize} from './inventory-view.mjs';
 import {SKILLS,DISCIPLINES,ICON,ACTIONS,disciplineBenefits} from './config.mjs';
-const entry=(id,name,type,system)=>({id,name,type,img:ICON,system});
+const entry=(id,name,type,system)=>({id,name,type,img:ICON,system:{...system,inventorySize:resolveInventorySize({type,system:{...system,inventorySize:id==='medical-kit'?3:0}}).tier}});
 const firearms=[
  ['service-pistol','Service pistol','pistol','9x19',1,1,40,90,4,1,['assault'],1,0],
  ['heavy-pistol','Heavy pistol','pistol','.45-acp',0,2,40,90,3,1,['assault'],2,0],

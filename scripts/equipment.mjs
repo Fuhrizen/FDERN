@@ -1,6 +1,7 @@
 import {ACTIONS,UNIVERSAL,UNARMED,SKILLS,DISCIPLINES} from './config.mjs';
 import {burstDiscipline,qualifies,repack,advancementCost} from './rules.mjs';
 import {learned,readied,has,isActive,combatantFor,choose,chat,escapeHTML} from './utils.mjs';
+import {sortedInventoryItems} from './inventory-view.mjs';
 export const ammoFor = (actor,item) => item?.system.magazineId?actor.items.get(item.system.magazineId):item;
 export function actionReason(actor,id,item,{reaction=false}={}) {
   const a=ACTIONS[id];if(!a)return 'Unknown action.';const c=actor.system.combat,s=item?.system;
@@ -50,9 +51,20 @@ export async function reload(actor,item){
   await chat(actor,'Reload',`<p>${escapeHTML(item.name)} loaded from ${escapeHTML(source.name)}. Removed magazine retained with its remaining Load.</p>`);
 }
 export async function repackActor(actor){if(game.combat?.started&&combatantFor(actor))throw Error('Repacking is only available outside encounters.');const mags=actor.items.filter(i=>i.type==='magazine').map(i=>({id:i.id,...i.system.toObject()}));await actor.updateEmbeddedDocuments('Item',repack(mags).map(m=>({_id:m.id,'system.currentLoad':m.currentLoad})));return chat(actor,'Magazines repacked','<p>Total remaining Load conserved within each compatible source type.</p>');}
-export async function inventory(actor,{command,item:itemId,slot,delta}={}){
-  if(!['wear','slot','quantity'].includes(command))throw Error('Unknown inventory command.');
+export async function inventory(actor,{command,item:itemId,slot,delta,target,before}={}){
+  if(!['wear','slot','quantity','reorder'].includes(command))throw Error('Unknown inventory command.');
   const item=actor.items.get(itemId);if(!item)throw Error('Inventory item no longer exists.');
+  if(command==='reorder'){
+    if(game.combat?.started&&combatantFor(actor))throw Error('Finish the encounter before rearranging inventory.');
+    const targetItem=actor.items.get(target);
+    if(!targetItem)throw Error('Target inventory item no longer exists.');
+    if(item.id===targetItem.id)throw Error('Choose a different item as the reorder target.');
+    if(typeof before!=='boolean')throw Error('Choose whether to place the item before or after its target.');
+    const siblings=sortedInventoryItems(actor);
+    if(!siblings.includes(item)||!siblings.includes(targetItem)||item.actor!==actor||targetItem.actor!==actor)throw Error('Reordering requires two equipment items on the same Actor.');
+    const sorted=foundry.utils.performIntegerSort(item,{target:targetItem,siblings,sortBefore:before});
+    return actor.updateEmbeddedDocuments('Item',sorted.map(({target,update})=>({_id:target.id,...update})));
+  }
   if(command==='wear'){
     if(game.combat?.started&&combatantFor(actor))throw Error('Finish the encounter before changing worn armour.');
     if(item.type!=='armour')throw Error('Only armour can be worn.');

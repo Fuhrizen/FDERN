@@ -1,7 +1,7 @@
 {
   "name": "Mounted general-purpose MG",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "support",
     "cartridge": "7.62x51",
@@ -32,7 +32,8 @@
       "pickup",
       "sustained"
     ],
-    "description": "A static mount is equipment, not an extra combatant. Setup/Pickup 1 A; deployed firing position required. GM establishes firing arc; rotate beyond it with Interact."
+    "description": "A static mount is equipment, not an extra combatant. Setup/Pickup 1 A; deployed firing position required. GM establishes firing arc; rotate beyond it with Interact.",
+    "inventorySize": 5
   },
   "_id": "1ed1ca19e73f0ae4",
   "_key": "!items!1ed1ca19e73f0ae4",

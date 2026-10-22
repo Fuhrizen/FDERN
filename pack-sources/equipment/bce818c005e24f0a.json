@@ -1,7 +1,7 @@
 {
   "name": "Service pistol",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "pistol",
     "cartridge": "9x19",
@@ -25,7 +25,8 @@
       "overwatch",
       "quick"
     ],
-    "description": "Service pistol. Effective range 40 ft; maximum range 90 ft."
+    "description": "Service pistol. Effective range 40 ft; maximum range 90 ft.",
+    "inventorySize": 2
   },
   "_id": "bce818c005e24f0a",
   "_key": "!items!bce818c005e24f0a",

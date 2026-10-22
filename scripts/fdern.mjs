@@ -11,7 +11,7 @@ import {terrainEditor,distanceBetween} from './terrain.mjs';
 import {pickPoint,resolveHazards,expireAreas} from './areas.mjs';
 import {undoDamage} from './damage.mjs';
 import {attack} from './attacks.mjs';
-import {guard,readied,controllerInput,combatantFor} from './utils.mjs';
+import {guard,readied,controllerInput,combatantFor,bindChatActions} from './utils.mjs';
 import {UNIVERSAL,ICON} from './config.mjs';
 Hooks.once('init',()=>{
   CONFIG.Actor.documentClass=FdernActor;CONFIG.Item.documentClass=FdernItem;CONFIG.Combat.documentClass=FdernCombat;
@@ -48,5 +48,5 @@ for(const hook of ['updateItem','createItem','deleteItem'])Hooks.on(hook,item=>{
 Hooks.on('updateActor',async actor=>{refresh();refreshItemSheets(actor);if(game.users.activeGM?.id!==game.user.id)return;await syncConditions(actor);});
 Hooks.on('renderCombatTracker',(app,html)=>{if(html.querySelector('[data-fdern-encounter]'))return;const button=document.createElement('button');button.type='button';button.dataset.fdernEncounter='';button.innerHTML='<i class="fas fa-dice"></i> FDERN Encounter';button.addEventListener('click',()=>game.fdern.encounter.render({force:true}));html.prepend(button);});
 Hooks.on('getSceneControlButtons',controls=>{if(!game.user.isGM)return;const region=controls.regions;if(region)region.tools.fdernTerrain={name:'fdernTerrain',title:'FDERN: Cover & Difficult Terrain',icon:'fas fa-shield-halved',button:true,onChange:guard(()=>terrainEditor())};});
-Hooks.on('renderChatMessageHTML',(message,html)=>{const command=message.getFlag('fdern','command');if(command){html.hidden=true;return;}const button=html.querySelector('[data-fdern-undo]');if(button){button.hidden=!game.user.isGM;button.addEventListener('click',guard(()=>undoDamage(message)));}});
+Hooks.on('renderChatMessageHTML',(message,html)=>{const command=message.getFlag('fdern','command');if(command){html.hidden=true;return;}bindChatActions(html);const button=html.querySelector('[data-fdern-undo]');if(button){button.hidden=!game.user.isGM;button.addEventListener('click',guard(()=>undoDamage(message)));}});
 Hooks.on('hotbarDrop',(bar,data,slot)=>{if(data.type!=='Item')return;guard(async()=>{const item=await fromUuid(data.uuid);if(!item?.actor)return;const command=`const item = await fromUuid(${JSON.stringify(item.uuid)}); if (!item?.actor) return ui.notifications.warn("Item no longer exists."); await game.fdern.act(item.actor, ${JSON.stringify(item.system.actions[0]??'ready')}, item);`;let macro=game.macros.find(m=>m.command===command);if(!macro)macro=await foundry.documents.Macro.create({name:item.name,type:'script',img:item.img,command});await game.user.assignHotbarMacro(macro,slot);})();return false;});

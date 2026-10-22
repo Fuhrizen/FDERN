@@ -2,7 +2,7 @@
   "_id": "024d532efc9d13fc",
   "name": "Step into Cover",
   "type": "script",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "command": "try { const actor=game.fdern.selectedActor(); const item=null; await game.fdern.act(actor, \"step\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

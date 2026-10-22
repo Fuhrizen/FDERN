@@ -1,7 +1,7 @@
 {
   "name": "Observe / Spot",
   "type": "action",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "actionId": "observe",
     "hands": 0,

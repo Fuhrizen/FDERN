@@ -1,7 +1,7 @@
 {
   "name": "Reload",
   "type": "action",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "actionId": "reload",
     "hands": 0,

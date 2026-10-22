@@ -1,7 +1,7 @@
 {
   "name": "Combat Medicine",
   "type": "discipline",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "disciplineId": "combat-medicine",
     "advanced": false,

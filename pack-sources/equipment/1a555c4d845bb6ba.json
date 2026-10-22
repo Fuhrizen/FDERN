@@ -1,7 +1,7 @@
 {
   "name": "Heavy ballistic shield",
   "type": "shield",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "shield",
     "harm": 1,
@@ -18,7 +18,8 @@
       "strike",
       "cover-ally"
     ],
-    "description": "Shield Absorb uses a Reaction after a hit. Breaks after absorbing a hit with original Harm at least twice its Absorption. No shield HP."
+    "description": "Shield Absorb uses a Reaction after a hit. Breaks after absorbing a hit with original Harm at least twice its Absorption. No shield HP.",
+    "inventorySize": 3
   },
   "_id": "1a555c4d845bb6ba",
   "_key": "!items!1a555c4d845bb6ba",

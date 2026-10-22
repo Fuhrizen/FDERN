@@ -2,7 +2,7 @@
   "_id": "edb165ffe0eab6d3",
   "name": "Ready / Stow",
   "type": "script",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "command": "try { const actor=game.fdern.selectedActor(); const item=actor.items.find(i=>i.system.slot)??null; await game.fdern.act(actor, \"ready\", item); } catch(error) { ui.notifications.error(error.message); }",
   "ownership": {
     "default": 0

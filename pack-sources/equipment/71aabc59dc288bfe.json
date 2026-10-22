@@ -1,7 +1,7 @@
 {
   "name": "Battle rifle",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "rifle",
     "cartridge": "7.62x51",
@@ -26,7 +26,8 @@
       "burst",
       "suppress"
     ],
-    "description": "Battle rifle. Effective range 150 ft; maximum range 360 ft."
+    "description": "Battle rifle. Effective range 150 ft; maximum range 360 ft.",
+    "inventorySize": 4
   },
   "_id": "71aabc59dc288bfe",
   "_key": "!items!71aabc59dc288bfe",

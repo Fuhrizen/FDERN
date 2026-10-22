@@ -1,7 +1,7 @@
 {
   "name": "Grapple",
   "type": "action",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "actionId": "grapple",
     "hands": 0,

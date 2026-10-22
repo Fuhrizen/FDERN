@@ -1,7 +1,7 @@
 {
   "name": "Short carbine",
   "type": "firearm",
-  "img": "systems/fdern/assets/fdern.svg",
+  "img": "icons/svg/mystery-man.svg",
   "system": {
     "family": "rifle",
     "cartridge": "5.56",
@@ -27,7 +27,8 @@
       "burst",
       "suppress"
     ],
-    "description": "Short carbine. Effective range 120 ft; maximum range 300 ft."
+    "description": "Short carbine. Effective range 120 ft; maximum range 300 ft.",
+    "inventorySize": 4
   },
   "_id": "fba9eeb43c500de1",
   "_key": "!items!fba9eeb43c500de1",

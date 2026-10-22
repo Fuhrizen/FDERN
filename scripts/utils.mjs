@@ -34,7 +34,7 @@ export function dialogContent(content){
     label.htmlFor=controls[0].id;
     if(controls.some(el=>el.tagName==='TEXTAREA'))group.classList.add('stacked');
   }
-  return template.innerHTML;
+  return `<div class="standard-form">${template.innerHTML}</div>`;
 }
 export async function input(title,content,label='Continue') {return foundry.applications.api.DialogV2.prompt({classes:['fdern','standard-form'],window:{title},content:dialogContent(content),ok:{label,callback:(_event,button)=>Object.fromEntries(new FormData(button.form))},rejectClose:false});}
 export async function choose(title,options,field='choice') {const r=await input(title,`<label>${escapeHTML(title)}<select name="${field}">${options.map(o=>`<option value="${escapeHTML(o.value)}">${escapeHTML(o.label)}</option>`).join('')}</select></label>`);return r?.[field];}
@@ -44,3 +44,12 @@ export async function controllerInput(actor,title,content) {
   return foundry.applications.api.DialogV2.query(user,'input',{classes:['fdern','standard-form'],window:{title},content:dialogContent(content),rejectClose:false});
 }
 export function guard(fn){return async(...args)=>{try{return await fn(...args);}catch(e){console.error('FDERN',e);ui.notifications.error(e.message);}};}
+
+// Preserve native disclosure state across document-driven sheet renders.
+export function wireDisclosures(application){
+  application._disclosures??=new Set();
+  for(const element of application.element.querySelectorAll('details[data-disclosure]')){
+    const key=element.dataset.disclosure;element.open=application._disclosures.has(key);
+    element.addEventListener('toggle',()=>{if(element.open)application._disclosures.add(key);else application._disclosures.delete(key);});
+  }
+}

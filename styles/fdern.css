@@ -80,3 +80,6 @@
   .fdern .combatant-row {grid-template-columns: 28px minmax(0, 1fr);}
   .fdern .combatant-resources {grid-column: 2; justify-content: start;}
 }
+
+.fdern .combatant-row > div {min-width: 0;}
+.fdern .combatant-name, .fdern .item-name {max-width: 100%; white-space: normal; height: auto;}

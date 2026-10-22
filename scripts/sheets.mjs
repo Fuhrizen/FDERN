@@ -2,7 +2,7 @@ import {ATTRIBUTES,SKILLS,PAIRINGS,STUN,ACTIONS,UNIVERSAL,UNARMED,DISCIPLINES} f
 import {actionReason,ammoFor} from './equipment.mjs';
 import {qualifies,advancementCost} from './rules.mjs';
 import {memoryRows,enrichMemory,parseTags,serializeTags} from './memory.mjs';
-import {input,learned,escapeHTML,guard,rollTest,tokenFor} from './utils.mjs';
+import {input,learned,escapeHTML,guard,rollTest,tokenFor,wireDisclosures} from './utils.mjs';
 const {HandlebarsApplicationMixin}=foundry.applications.api;
 export class FdernActorSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
   static DEFAULT_OPTIONS={classes:['fdern','standard-form','actor-sheet'],position:{width:920,height:740},window:{resizable:true,icon:'fas fa-crosshairs'},form:{submitOnChange:true,closeOnSubmit:false},actions:{dispatch:FdernActorSheet.dispatch}};
@@ -22,7 +22,7 @@ export class FdernActorSheet extends HandlebarsApplicationMixin(foundry.applicat
       universal:UNIVERSAL.filter(id=>!['ready','aim'].includes(id)).map(id=>actionRow(id)),unarmed:UNARMED.map(id=>actionRow(id)),weapons,combatWeapons:[...weapons].sort((a,b)=>Number(b.system.readied)-Number(a.system.readied)),magazines:actor.items.filter(i=>i.type==='magazine').map(i=>i.toObject()),armour:actor.items.filter(i=>i.type==='armour').map(i=>i.toObject()),disciplines:actor.items.filter(i=>i.type==='discipline').map(i=>i.toObject()),stunLabel:STUN[s.combat.stunEffect],
       availableDisciplines:Object.entries(DISCIPLINES).map(([id,d])=>({...d,id,cost:d.advanced?7:4,learned:learnedIds.includes(id),eligible:qualifies(id,s.skills,learnedIds),skillLabel:SKILLS[d.skill],disabled:!editable||learnedIds.includes(id)||!qualifies(id,s.skills,learnedIds)||s.tactical.availableVP<(d.advanced?7:4)})),notes,search:this._search};
   }
-  _onRender(context,options){super._onRender(context,options);const search=this.element.querySelector('[data-memory-search]');search?.addEventListener('change',()=>{this._search=search.value;this.render();});
+  _onRender(context,options){super._onRender(context,options);wireDisclosures(this);const search=this.element.querySelector('[data-memory-search]');search?.addEventListener('change',()=>{this._search=search.value;this.render();});
     this.element.querySelectorAll('[data-drag-item]').forEach(el=>{el.draggable=true;el.addEventListener('dragstart',event=>{const item=this.actor.items.get(el.dataset.dragItem);event.dataTransfer.setData('text/plain',JSON.stringify(item.toDragData()));});});
   }
   static async dispatch(event,target){await guard(async()=>{const cmd=target.dataset.command,id=target.dataset.id,item=this.actor.items.get(id);if(cmd==='edit-item')return item?.sheet.render({force:true});
@@ -58,5 +58,6 @@ export class FdernItemSheet extends HandlebarsApplicationMixin(foundry.applicati
     const sources=item.actor?.items.filter(i=>i.type==='magazine'&&i.system.cartridge===s.cartridge&&i.system.compatibility===s.compatibility).map(i=>({id:i.id,name:`${i.name} (${i.system.currentLoad}/${i.system.maxLoad})`,selected:i.id===s.magazineId}))??[];
     return {...ctx,item:item.toObject(),system:s,editable,sheetId:this.id??item.id,weapon,firearm,protection,device,resource,weaponFields,resourceFields,protectionFields,checks,sources,embedded:!!item.actor,discipline:item.type==='discipline',traitText:s.traits.join(', '),actionText:s.actions.join(', '),actions:Object.entries(ACTIONS).map(([id,a])=>({id,...a,selected:s.actions.includes(id)}))};
   }
+  _onRender(context,options){super._onRender(context,options);wireDisclosures(this);}
   _processFormData(event,form,formData){const data=super._processFormData(event,form,formData);if(data.actionChoices!==undefined){data.system??={};data.system.actions=Object.entries(data.actionChoices).filter(([id,selected])=>ACTIONS[id]&&selected).map(([id])=>id);delete data.actionChoices;}if(data.traitText!==undefined){data.system??={};data.system.traits=String(data.traitText).split(',').map(t=>t.trim()).filter(Boolean);delete data.traitText;}if(data.actionText!==undefined){data.system??={};data.system.actions=String(data.actionText).split(',').map(t=>t.trim()).filter(t=>ACTIONS[t]);delete data.actionText;}return data;}
 }

@@ -1,5 +1,17 @@
 # Native UI review
 
+## v0.2.2 — 22 October 2026
+
+Equipped items can be used directly in the inventory inspector, with Action/Load costs and disabled-action explanations. Equip previews name the items that will be put away and share the execution plan with the backend. The equipped/worn filter, Escape and clear buttons, and Left/Right/Home/End selection reduce navigation. Accessible loadout preparation uses a native disclosure, keeping combat inventory compact.
+
+77 automated tests verify rules, ownership, preview/execution parity, state transitions and sheet context. The browser harness checks 75 interactions and responsive cases at 1100, 760, 600 and 460 px, including direct inventory actions, keyboard focus, search reset and disclosure persistence. Visual inspection uses production templates and native light/dark Foundry CSS.
+
+Review caught the disclosure handler overriding the initial open state and an equipment refactor reading state after mutation. Both were corrected before release, with regression coverage. A licensed Foundry instance is still required for live multiplayer and canvas verification.
+
+![Inventory item actions, native dark theme](ui/inventory-actions-dark.png)
+
+![Inventory item actions, native light theme](ui/inventory-actions-light.png)
+
 ## v0.2.1 — 22 October 2026
 
 Inventory cells are square, with theme-derived grid lines, empty cells and individually outlined footprints. An initial render exposed unresolved legacy border variables; deriving lines from the native text colour corrected both themes. Equipped equipment is listed separately from the three accessible storage slots. The item inspector offers Equip / Unequip for weapons, grenades and tools, and shows Main item or Off-hand. The editor provides a category override.

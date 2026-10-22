@@ -91,9 +91,9 @@ export function guard(fn){return async(...args)=>{try{return await fn(...args);}
 
 // Preserve native disclosure state across document-driven sheet renders.
 export function wireDisclosures(application){
-  application._disclosures??=new Set();
+  application._disclosures??=new Set();application._disclosureDefaultsSeen??=new Set();
   for(const element of application.element.querySelectorAll('details[data-disclosure]')){
-    const key=element.dataset.disclosure;element.open=application._disclosures.has(key);
+    const key=element.dataset.disclosure;if(!application._disclosureDefaultsSeen.has(key)){application._disclosureDefaultsSeen.add(key);if(element.open)application._disclosures.add(key);}element.open=application._disclosures.has(key);
     element.addEventListener('toggle',()=>{if(element.open)application._disclosures.add(key);else application._disclosures.delete(key);});
   }
 }

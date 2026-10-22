@@ -22,7 +22,7 @@ The active GM serializes action commands. Player requests are native ChatMessage
 
 - 2d6 Tests; selectable Attribute/Skill approach; personal contribution capped at +6; inspectable modifiers.
 - Non-stacking 3/2/0 Action allowance fixed at activation start, one Reaction per round, weighted side bag, first-round ambush limit, Down eligibility and forfeiture.
-- Readied item actions and Discipline prerequisites; two hands; three accessible slots; Load costs; Manual cycling; deployment and Heavy restrictions.
+- Equipped item actions and Discipline prerequisites; one main item or two off-hand items; three accessible storage slots; Load costs; Manual cycling; deployment and Heavy restrictions.
 - Move/Disengage/covered Step, Aim, Rally, Take Cover, prone/stand, assistance, Observe/Spot, and ordinary interaction spending.
 - Fire, Burst, Precision, Quick Presentation, Close Blast, Suppress, Sustained Suppression, accumulated Recoil/Strain, range/Assault/Pressure/engagement modifiers.
 - Evade, Parry, Dive, Overwatch, opportunity attacks, Intercept, Riposte, Shield Absorb and Cover Ally. Reaction attacks cannot be answered by Reactions.

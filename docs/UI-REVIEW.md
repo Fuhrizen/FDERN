@@ -1,5 +1,15 @@
 # Native UI review
 
+## v0.2.1 — 22 October 2026
+
+Inventory cells are square, with theme-derived grid lines, empty cells and individually outlined footprints. An initial render exposed unresolved legacy border variables; deriving lines from the native text colour corrected both themes. Equipped equipment is listed separately from the three accessible storage slots. The item inspector offers Equip / Unequip for weapons, grenades and tools, and shows Main item or Off-hand. The editor provides a category override.
+
+72 automated tests cover loadout capacity, swaps, ownership, action prerequisites and depleted grenades. 70 browser checks at 1100, 760, 600 and 460 px verify square cells and visible grid backgrounds alongside responsive layout and native sheet interactions. Production templates are rendered with native Foundry CSS; a licensed server remains necessary for multiplayer and canvas verification.
+
+![Inventory cells in the native dark theme](ui/inventory-cells-dark.png)
+
+![Inventory cells in the native light theme](ui/inventory-cells-light.png)
+
 ## v0.2.0 — 22 October 2026
 
 The implementation replaces the dashboard summary with a character record: portrait and name, Attributes, character history, training and journal entries. The Equipment tab uses five item footprints and a selected-item detail panel. Foundry supplies the colours, themes, typography and controls. The default artwork is Foundry's token icon; custom artwork remains unchanged.

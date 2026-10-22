@@ -59,6 +59,7 @@ await game.fdern.act(actor, "fire"); // Uses a readied compatible item and curre
 await game.fdern.act(actor, "reload", actor.items.get(weaponId));
 game.fdern.encounter.render({force: true});
 await game.fdern.terrainEditor();
+await game.fdern.shareEquipment(actor);
 await game.fdern.request({type: "repack", actor: actor.uuid});
 ```
 

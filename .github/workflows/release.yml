@@ -21,8 +21,9 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm test
       - run: npm run check
-      - run: npx playwright install --with-deps chromium
       - run: npm run test:ui
+        env:
+          FDERN_CHROMIUM: /usr/bin/google-chrome
       - uses: actions/upload-artifact@v4
         with:
           name: fdern-ui-checks

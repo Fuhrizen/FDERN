@@ -53,6 +53,6 @@ test('postItem shares a safe concise profile with item-bound actions and validat
 
 test('share equipment utility posts only the selected owned item and supports cancellation',async()=>{
   const a=actor();const [first,second]=await a.createEmbeddedDocuments('Item',[{name:'First',type:'gear',system:{}},{name:'Second',type:'gear',system:{}}]);
-  dialogResponses.push({choice:second.id});await shareEquipment(a);assert.match(messages.at(-1).content,/Item · Second/);assert.doesNotMatch(messages.at(-1).content,/Item · First/);
+  dialogResponses.push({choice:second.id});await shareEquipment(a);assert.match(messages.at(-1).content,/<header><strong>Second<\/strong>/);assert.doesNotMatch(messages.at(-1).content,/<header><strong>First<\/strong>/);
   const count=messages.length;dialogResponses.push(null);await shareEquipment(a);assert.equal(messages.length,count);
 });

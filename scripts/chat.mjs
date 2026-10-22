@@ -12,6 +12,7 @@ function breakdown(actor,item){
   if(number(s.penetration)!==null&&['firearm','launcher','melee'].includes(item.type))rows.push(['Penetration',s.penetration]);
   if(number(s.effective)!==null&&number(s.maximum)!==null&&['firearm','launcher'].includes(item.type))rows.push(['Range',`${s.effective} / ${s.maximum} ft`]);
   if(number(s.reach)!==null&&['melee','shield'].includes(item.type))rows.push(['Reach',`${s.reach} ft`]);
+  if(['grenade','launcher'].includes(item.type)){if(s.payload)rows.push(['Payload',s.payload]);if(s.radius)rows.push(['Radius',`${s.radius} ft`]);if(s.duration)rows.push(['Duration',`${s.duration} rounds`]);}
   if(item.type==='armour'){rows.push(['Ballistic',s.ballistic??0],['Melee',s.meleeArmour??0],['Worn',s.worn?'Yes':'No']);}
   if(item.type==='shield'&&number(s.absorption)!==null)rows.push(['Absorption',s.absorption]);
   if(['firearm','launcher','magazine'].includes(item.type)){
@@ -31,7 +32,8 @@ export async function postItem(actor,item){
   const image=`<img src="${escapeHTML(defaultArtwork(item.img))}" alt="">`;
   const playerDescription=String(s.description??'').replace(/Actions: [^.]+\. Training prerequisites are checked when used\./,'');
   const description=playerDescription?`<p>${escapeHTML(playerDescription)}</p>`:'';
-  const body=`<section class="item-card-profile">${image}<div><p><strong>${escapeHTML(item.name)}</strong>${item.type?` · ${escapeHTML(item.type)}`:''}</p>${description}<dl class="fdern-chat-breakdown">${values}</dl></div></section>`;
+  const typeLabel=({firearm:'Firearm',melee:'Melee weapon',shield:'Shield',armour:'Armour',magazine:'Ammunition',grenade:'Grenade',launcher:'Launcher',gear:'Equipment'})[item.type]??'Item';
+  const body=`<section class="item-card-profile">${image}<div><p class="hint">${typeLabel}</p>${description}<dl class="fdern-chat-breakdown">${values}</dl></div></section>`;
   const actions=[{type:'open-item',item:item.id,label:'Details'}];
   if(accessibleTypes.has(item.type)&&(s.slot||s.readied))actions.push({type:'act',command:'ready',item:item.id,label:'Ready / Stow'});
   if(['firearm','launcher'].includes(item.type)&&s.actions?.includes('reload'))actions.push({type:'act',command:'reload',item:item.id,label:`Reload · ${number(s.reloadCost)??ACTIONS.reload.cost} A`});
@@ -40,7 +42,7 @@ export async function postItem(actor,item){
     return {type:'act',command:id,item:item.id,label:`${action.name}${cost||load?` · ${[cost,load].filter(Boolean).join(' · ')}`:''}`};
   });
   actions.push(...supplied);
-  return chat(actor,`Item · ${item.name}`,body,[],{},actions);
+  return chat(actor,item.name,body,[],{},actions);
 }
 
 export async function shareEquipment(actor){

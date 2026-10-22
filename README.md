@@ -31,10 +31,10 @@ Grenades choose a point on the map and resolve full or half effect there without
 
 ## Character sheets
 
-The sheet opens on **Character**, with your background, description, motivation, connections, strongest Skills and recent journal entries. **Edit character** updates the profile; unfinished characters can resume the saved wizard.
+The sheet opens on **Character**, with attributes, background, description, motivation, connections, training and journal entries. **Edit character** updates the profile; unfinished characters can resume the saved wizard.
 
 - **Skills:** search by Skill or Attribute, filter trained Skills, and roll the displayed bonus. The roll dialog allows a different Attribute and situational modifiers.
-- **Equipment:** browse the compendium and drag items onto the sheet. Choose accessible loadout slots, ready or stow weapons, wear armour, track supplies, and inspect compatible ammunition. Loadout reorganization is locked for characters in a running encounter.
+- **Equipment:** browse the compendium and drag items onto the sheet. The inventory grid uses five item footprints: Pocket (1×1), Small (2×1), Medium (2×2), Long (3×1), and Bulky (3×2). Select a tile to inspect and use its equipment. Drag tiles or use the ordering buttons to reorganize them. Edit item → Inventory size changes the footprint. Size is a visual arrangement, not a carrying limit. Accessible loadout slots, armour, supply counters, and ammunition remain native Item data. Reorganization is locked during an encounter.
 - **Journal:** add entries, read previews, expand notes, and click a tag to filter related entries. This ports FUS's plain-text notebook helpers: quoted tags, tag colours, ranked search and Foundry `@UUID` links. Search `tag:"field notes"` to filter by a tag.
 - **Advance:** see available VP, improvement costs, prerequisites and reasons a purchase is unavailable. Purchases ask for confirmation before spending.
 - **Combat:** readied equipment appears first; general actions expand when needed. Resources and action availability update with native document changes.
@@ -47,7 +47,9 @@ VP spending enforces costs, prerequisites, Skill/Attribute caps, and the single 
 
 The system includes equipment grouped by weapon/cartridge/family, basic and advanced Disciplines, action references, and hotbar-ready macros. Firearms use independently tracked compatible magazines, tubes, belts, or launcher sources. Reload preserves partial sources. Heavy reload progress persists across activations. Repacking outside combat conserves total Load.
 
-The macro compendium includes all 41 rules actions and six utility macros, with visible error messages for missing tokens, items, or permissions. **GM: Correct Token Position** provides an explicit movement correction.
+Use **Send to chat** on an inventory item, or the **Send Equipment to Chat** macro, to post its profile and relevant actions. Chat buttons open documents, ready/stow equipment, reload, or use item actions through the same ownership and rules checks as the sheet. Skill cards provide a repeat roll; injury cards keep the GM undo control. Cards show the roll, modifiers, costs and outcome using the current Foundry theme.
+
+The macro compendium includes all 41 rules actions and seven utility macros, with visible error messages for missing tokens, items, or permissions. **GM: Correct Token Position** provides an explicit movement correction.
 
 ## API
 

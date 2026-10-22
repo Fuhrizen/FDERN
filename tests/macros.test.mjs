@@ -12,5 +12,5 @@ test('macro compendium exposes every rules action with guarded execution', async
     assert.match(doc.command,new RegExp(`game\\.fdern\\.act\\(actor, ${JSON.stringify(id).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}`));
     assert.match(doc.command,/catch\(error\)/,`${id} should show action failures to the user`);
   }
-  assert.equal(docs.length,Object.keys(ACTIONS).length+6,'action macros plus six utility macros');
+  assert.equal(docs.length,Object.keys(ACTIONS).length+7,'action macros plus seven utility macros');
 });

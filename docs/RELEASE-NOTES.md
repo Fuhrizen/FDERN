@@ -1,7 +1,9 @@
-FDERN v0.1.3: character-first sheets and everyday quality of life.
+FDERN v0.2.0: shaped inventory, character layout and actionable chat.
 
-The sheet opens on Character with a readable profile, strongest Skill rolls, loadout summary and recent journal entries. Skills show their paired Attribute and total bonus, with search and a trained-only filter. The Equipment tab groups weapons, supplies, armour and ammunition, offers accessible slot selection and compendium browsing, and provides one-click armour and supply controls outside encounters. Slot changes safely displace and stow the previous item; ownership and encounter locks are enforced by the GM service.
+Character sheets now read as a character record: portrait and name, Attributes, background, description, motivation, connections, training and journal entries. Dashboard summary boxes and generic promotional prompts have been removed. Foundry supplies the default token icon, colours, typography and themes.
 
-Journal entries have previews, clickable tag filters and direct opening from Character. Advance explains VP costs, rank limits, training prerequisites and level progress, then confirms the exact purchase before spending. Items open with readable profiles and actions; Edit item exposes configuration separately. Compendium descriptions use player-facing names.
+The Equipment tab uses a responsive inventory grid with five item footprints: Pocket 1×1, Small 2×1, Medium 2×2, Long 3×1 and Bulky 3×2. Selecting an item opens its controls in a detail panel. Drag items to reorder, or use the ordering buttons. Foundry's native Item sort order is retained. Item size is configurable in Edit item; it changes the footprint without adding weight or capacity rules. Existing equipment gets a type-based automatic size.
 
-All controls retain Foundry's native light/dark styling. No schema migration or additional module is required. Existing actors, item identities, notebook contents and hotbar macros are preserved. The visual review covers every tab, preparation and encounter states, item reading/editing, narrow layouts and wizard steps. Live multiplayer and canvas verification still require a licensed Foundry server.
+Send to chat posts an item profile with usable equipment actions. Skill cards offer another roll of the same Skill; attack cards offer details and reload controls for the relevant weapon; injury cards retain GM-only undo. Action buttons validate ownership and the current game state through the existing system API. The macro compendium now includes Send Equipment to Chat.
+
+Existing character data, equipment identities, journal entries and macros remain intact. Live multiplayer and canvas behavior still require a licensed Foundry runtime.

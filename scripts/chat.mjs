@@ -1,5 +1,6 @@
+import {sortedInventoryItems} from './inventory-view.mjs';
 import {ACTIONS,defaultArtwork} from './config.mjs';
-import {chat,escapeHTML} from './utils.mjs';
+import {chat,escapeHTML,choose} from './utils.mjs';
 import {ammoFor} from './equipment.mjs';
 
 const accessibleTypes=new Set(['firearm','melee','shield','launcher','grenade','gear']);
@@ -32,7 +33,7 @@ export async function postItem(actor,item){
   const description=playerDescription?`<p>${escapeHTML(playerDescription)}</p>`:'';
   const body=`<section class="item-card-profile">${image}<div><p><strong>${escapeHTML(item.name)}</strong>${item.type?` · ${escapeHTML(item.type)}`:''}</p>${description}<dl class="fdern-chat-breakdown">${values}</dl></div></section>`;
   const actions=[{type:'open-item',item:item.id,label:'Details'}];
-  if(accessibleTypes.has(item.type)&&(s.slot||s.readied))actions.push({type:'act',command:'ready',item:item.id,label:s.readied?'Stow':'Ready'});
+  if(accessibleTypes.has(item.type)&&(s.slot||s.readied))actions.push({type:'act',command:'ready',item:item.id,label:'Ready / Stow'});
   if(['firearm','launcher'].includes(item.type)&&s.actions?.includes('reload'))actions.push({type:'act',command:'reload',item:item.id,label:`Reload · ${number(s.reloadCost)??ACTIONS.reload.cost} A`});
   const supplied=(s.actions??[]).filter(id=>Object.hasOwn(ACTIONS,id)&&id!=='reload').slice(0,3).map(id=>{
     const action=ACTIONS[id],actionCost=id==='launch'?number(s.fireCost)??action.cost:action.cost,cost=actionCost?`${actionCost} A`:'';const load=action.load?`${action.load} Load`:'';
@@ -40,4 +41,11 @@ export async function postItem(actor,item){
   });
   actions.push(...supplied);
   return chat(actor,`Item · ${item.name}`,body,[],{},actions);
+}
+
+export async function shareEquipment(actor){
+  if(!actor?.testUserPermission(game.user,'OWNER'))throw Error('You do not own this Actor.');
+  const items=sortedInventoryItems(actor);if(!items.length)throw Error('This character has no equipment.');
+  const id=await choose('Send equipment to chat',items.map(item=>({value:item.id,label:item.name})));
+  if(id)return postItem(actor,actor.items.get(id));
 }

@@ -1,3 +1,4 @@
+import {postItem,shareEquipment} from './chat.mjs';
 import {syncConditions} from './conditions.mjs';
 import {CharacterData,EquipmentData,FdernActor,FdernItem} from './models.mjs';
 import {FdernActorSheet,FdernItemSheet} from './sheets.mjs';
@@ -22,7 +23,7 @@ Hooks.once('init',()=>{
   CONFIG.statusEffects=[{id:'dead',name:'Dead',img:'icons/svg/skull.svg'},{id:'down',name:'Down',img:'icons/svg/falling.svg'},{id:'impaired',name:'Impaired',img:'icons/svg/blood.svg'},{id:'threatened',name:'Threatened',img:'icons/svg/target.svg'},{id:'pinned',name:'Pinned',img:'icons/svg/net.svg'},{id:'overwhelmed',name:'Overwhelmed',img:'icons/svg/terror.svg'},{id:'prone',name:'Prone',img:'icons/svg/falling.svg'},{id:'take-cover',name:'Take Cover',img:'icons/svg/shield.svg'},{id:'grappled',name:'Grappled',img:'icons/svg/anchor.svg'},{id:'stunned',name:'Temporary Stun',img:'icons/svg/daze.svg'},{id:'overwatch',name:'Reserved Reaction',img:'icons/svg/eye.svg'}];
   game.settings.register('fdern','enforceMovement',{name:'Enforce paid movement',hint:'Movement in combat requires a paid Move, Disengage, or reaction allowance. GM correction macros can bypass this.',scope:'world',config:true,type:Boolean,default:true});
   game.settings.register('fdern','schemaVersion',{scope:'world',config:false,type:String,default:'0.1.0'});
-  game.fdern={CharacterWizard,EncounterManager,terrainEditor,distanceBetween,resolveHazards,expireAreas,interruptMovement,pickPoint,selectedActor(){const actor=canvas.tokens.controlled[0]?.actor??game.user.character;if(!actor)throw Error('Select an owned token or assign a character.');return actor;}};
+  game.fdern={postItem,shareEquipment,CharacterWizard,EncounterManager,terrainEditor,distanceBetween,resolveHazards,expireAreas,interruptMovement,pickPoint,selectedActor(){const actor=canvas.tokens.controlled[0]?.actor??game.user.character;if(!actor)throw Error('Select an owned token or assign a character.');return actor;}};
 });
 Hooks.once('ready',()=>{
   game.fdern.request=registerSocket(execute);game.fdern.encounter=new EncounterManager();

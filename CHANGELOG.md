@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0
+
+- Character record layout with native headings and fields; removed dashboard summary boxes.
+- Five item-size footprints, responsive inventory grid, selected-item controls and native drag/keyboard ordering.
+- Configurable inventory size, default Foundry token artwork and preserved custom portraits.
+- Structured chat cards with item actions, repeat Skill rolls and GM injury undo.
+- Send Equipment to Chat utility macro; live action validation remains authoritative.
+
+## 0.1.3
+
+- Character-first sheet, searchable Skills, grouped equipment controls, journal previews and guided VP spending.
+- Readable item profiles with a separate editing mode; open item profiles refresh with combat and resource changes.
+
 ## 0.1.2
 
 - Corrected a truncated screenshot in the packaged UI review evidence. Runtime behavior matches 0.1.1.

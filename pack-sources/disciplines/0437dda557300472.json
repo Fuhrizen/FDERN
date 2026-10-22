@@ -6,7 +6,7 @@
     "disciplineId": "automatic-fire",
     "advanced": false,
     "hands": 0,
-    "description": "Requires Marksmanship 2. Basic Discipline."
+    "description": "Requires Marksmanship 2. Basic Discipline. Suppress, Burst Fire with support weapons."
   },
   "_id": "0437dda557300472",
   "_key": "!items!0437dda557300472",

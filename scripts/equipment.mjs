@@ -1,4 +1,4 @@
-import {ACTIONS,UNIVERSAL,UNARMED} from './config.mjs';
+import {ACTIONS,UNIVERSAL,UNARMED,SKILLS,DISCIPLINES} from './config.mjs';
 import {burstDiscipline,qualifies,repack,advancementCost} from './rules.mjs';
 import {learned,readied,has,isActive,combatantFor,choose,chat,escapeHTML} from './utils.mjs';
 export const ammoFor = (actor,item) => item?.system.magazineId?actor.items.get(item.system.magazineId):item;
@@ -10,9 +10,9 @@ export function actionReason(actor,id,item,{reaction=false}={}) {
   if(s?.broken)return 'Item is broken.';if(s?.readied&&readied(actor).reduce((n,i)=>n+i.system.hands,0)>2)return 'Readied equipment exceeds two hands.';if(s?.traits.includes('static')&&!s.deployed&&['fire','burst','suppress','sustained','overwatch'].includes(id))return 'Deploy the static weapon first.';
   if(s&&!['quick','ready','reload','throw','field-dressing','advanced-dressing','stabilise','patch'].includes(id)&&!s.readied)return 'Ready this item first.';
   const skill=a.kind==='medical'?'medicine':id==='patch'?'engineering':s&&['melee','shield'].includes(item.type)||!item&&UNARMED.includes(id)?'melee':'marksmanship';
-  if(a.rank&&(actor.system.skills[skill]??0)<a.rank)return `${skill} ${a.rank} required.`;
-  const disciplines=learned(actor);if(a.discipline&&!disciplines.includes(a.discipline))return 'Required Discipline is not learned.';
-  if(id==='burst'&&!disciplines.includes(burstDiscipline(s.family)))return 'Learn the family’s Burst Discipline.';
+  if(a.rank&&(actor.system.skills[skill]??0)<a.rank)return `${SKILLS[skill]} ${a.rank} required.`;
+  const disciplines=learned(actor);if(a.discipline&&!disciplines.includes(a.discipline))return `Learn ${DISCIPLINES[a.discipline]?.name??'the required Discipline'} first.`;
+  if(id==='burst'&&!disciplines.includes(burstDiscipline(s.family)))return `Learn ${DISCIPLINES[burstDiscipline(s.family)]?.name??'the required Burst Discipline'} first.`;
   if(id==='lunge'&&!disciplines.some(d=>['bladework','polearm-training'].includes(d)))return 'Bladework or Polearm Training required.';
   if(['burst','suppress'].includes(id)&&!has(item,'automatic'))return 'Automatic weapon required.';
   if(id==='sustained'&&(!has(item,'support')||!s.deployed))return 'Deploy a Support weapon first.';

@@ -15,3 +15,9 @@ export const ACTIONS = {
 export const UNIVERSAL = ['move','disengage','step','take-cover','prone','stand','aim','rally','ready','interact','assist','observe','escape'];
 export const UNARMED = ['strike','grapple','shove','disarm','takedown'];
 export const ICON = 'systems/fdern/assets/fdern.svg';
+
+/** Player-facing benefits include family training and passive effects as well as explicit actions. */
+export function disciplineBenefits(id){
+  const extra={riflecraft:['Burst Fire with rifles'],'smg-handling':['Burst Fire with SMGs and machine pistols'],'automatic-fire':['Burst Fire with support weapons'],bladework:['Lunge','Riposte after a successful Parry'],'polearm-training':['Lunge'],'close-quarters-control':['+1 to one Disarm or Escape per activation'],'tactical-observer':['Longer Spot duration']};
+  return [...new Set([...Object.values(ACTIONS).filter(action=>action.discipline===id).map(action=>action.name),...(extra[id]??[])])].join(', ');
+}

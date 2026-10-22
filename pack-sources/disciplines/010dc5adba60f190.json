@@ -6,7 +6,7 @@
     "disciplineId": "tactical-observer",
     "advanced": true,
     "hands": 0,
-    "description": "Requires Reconnaissance 3 and any basic Discipline. Advanced Discipline."
+    "description": "Requires Reconnaissance 3 and any basic Discipline. Advanced Discipline. Longer Spot duration."
   },
   "_id": "010dc5adba60f190",
   "_key": "!items!010dc5adba60f190",

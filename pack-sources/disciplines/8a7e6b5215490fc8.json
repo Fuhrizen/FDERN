@@ -6,7 +6,7 @@
     "disciplineId": "close-quarters-control",
     "advanced": true,
     "hands": 0,
-    "description": "Requires Melee 3 and Grappling. Advanced Discipline."
+    "description": "Requires Melee 3 and Grappling. Advanced Discipline. +1 to one Disarm or Escape per activation."
   },
   "_id": "8a7e6b5215490fc8",
   "_key": "!items!8a7e6b5215490fc8",

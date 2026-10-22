@@ -39,11 +39,13 @@ Hooks.once('ready',()=>{
   if(game.users.activeGM?.id===game.user.id)for(const actor of game.actors)guard(()=>syncConditions(actor))();
 });
 function refresh(){game.fdern?.encounter?.rendered&&game.fdern.encounter.render();}
-function refreshActorSheets(){for(const sheet of FdernActorSheet.instances())if(sheet.rendered)sheet.render();}
+function refreshItemSheets(actor){for(const sheet of FdernItemSheet.instances())if(sheet.rendered&&sheet.item?.actor&&(!actor||sheet.item.actor.uuid===actor.uuid))sheet.render();}
+function refreshActorSheets(){for(const sheet of FdernActorSheet.instances())if(sheet.rendered)sheet.render();refreshItemSheets();}
 for(const hook of ['updateCombat','createCombatant','deleteCombatant','updateCombatant','deleteCombat'])Hooks.on(hook,refreshActorSheets);
 Hooks.on('canvasReady',()=>{if(game.users.activeGM?.id===game.user.id)for(const token of canvas.tokens.placeables)if(token.actor)guard(()=>syncConditions(token.actor))();});
 for(const hook of ['updateCombat','createCombatant','deleteCombatant','updateCombatant','updateItem','createItem','deleteItem'])Hooks.on(hook,refresh);
-Hooks.on('updateActor',async actor=>{refresh();if(game.users.activeGM?.id!==game.user.id)return;await syncConditions(actor);});
+for(const hook of ['updateItem','createItem','deleteItem'])Hooks.on(hook,item=>{if(item.actor)refreshItemSheets(item.actor);});
+Hooks.on('updateActor',async actor=>{refresh();refreshItemSheets(actor);if(game.users.activeGM?.id!==game.user.id)return;await syncConditions(actor);});
 Hooks.on('renderCombatTracker',(app,html)=>{if(html.querySelector('[data-fdern-encounter]'))return;const button=document.createElement('button');button.type='button';button.dataset.fdernEncounter='';button.innerHTML='<i class="fas fa-dice"></i> FDERN Encounter';button.addEventListener('click',()=>game.fdern.encounter.render({force:true}));html.prepend(button);});
 Hooks.on('getSceneControlButtons',controls=>{if(!game.user.isGM)return;const region=controls.regions;if(region)region.tools.fdernTerrain={name:'fdernTerrain',title:'FDERN: Cover & Difficult Terrain',icon:'fas fa-shield-halved',button:true,onChange:guard(()=>terrainEditor())};});
 Hooks.on('renderChatMessageHTML',(message,html)=>{const command=message.getFlag('fdern','command');if(command){html.hidden=true;return;}const button=html.querySelector('[data-fdern-undo]');if(button){button.hidden=!game.user.isGM;button.addEventListener('click',guard(()=>undoDamage(message)));}});

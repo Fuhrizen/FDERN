@@ -33,6 +33,7 @@ test('loads the manifest stylesheet before removing the stale cached FDERN link'
   const old=new FakeLink('stylesheet','https://foundry.test/systems/fdern/styles/fdern.css?cache=old');
   const theme=new FakeLink('stylesheet','https://foundry.test/modules/dark-theme/theme.css');
   const document=fakeDocument([old,theme]),{fetcher,calls}=manifestFetcher([current]);
+  old.remove=()=>{assert.ok(document.links.find(link=>link!==old&&link!==theme)?.sheet,'old styles must stay until replacement load');old.removed=true;};
   const result=await refreshSystemStylesheets({document,manifestURL,fetcher});
   assert.deepEqual(calls,[[manifestURL,{cache:'no-store'}]]);
   assert.equal(old.removed,true);assert.equal(theme.removed,false);

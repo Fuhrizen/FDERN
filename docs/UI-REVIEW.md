@@ -1,5 +1,17 @@
 # Native UI review
 
+## v0.2.6 — runtime stylesheet repair
+
+The subsequent runtime screenshot still contained the old palette and stacked layout after the filename change. A filename change alone does not remove an obsolete stylesheet that is already active. The new standalone startup module reads the installed manifest without browser cache, loads the declared stylesheet, then removes obsolete or duplicate FDERN stylesheet links. Native and third-party themes are preserved. Missing or disabled current links are repaired; failed replacements retain the old active stylesheet and log the error.
+
+Three agents covered delivery, regressions and an independent v14 API/packaging audit. The audit confirmed current sheet classes and registration are compatible with v14. It also caught the missing inherited `sheet` class in previews; previews now include it and derive system classes from production options.
+
+92 unit tests and 85 Chromium layout/interaction checks passed. The browser test imports the production bootstrap through the system URL and invokes its actual init callback, rather than manually removing legacy styles. It checks both a disabled current link and a missing current link, obsolete canonical/hashed links, and repeated initialization. The repaired Character page was visually inspected in both native themes, with portrait/name side by side, horizontal Attributes and the two-column record.
+
+![Character page after production startup repair](ui/character-stylesheet-repaired-dark.png)
+
+This is a production-template browser regression with public Foundry CSS, not a licensed Foundry session or direct verification of the installed world. The user must install the release and reload the world page for its new startup code to run.
+
 ## v0.2.5 — stylesheet delivery correction
 
 The user’s runtime screenshot showed current templates under the original v0.1 CSS: the exact #14201d/#1c2a26 palette, old button styles and 128px portrait. Previous screenshots manually linked the current canonical CSS, so they did not catch a retained old stylesheet at that unchanged URL. Those earlier renders were template previews, not evidence of the user’s installed stylesheet.

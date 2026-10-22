@@ -1,5 +1,19 @@
 # Native UI review
 
+## v0.2.5 — stylesheet delivery correction
+
+The user’s runtime screenshot showed current templates under the original v0.1 CSS: the exact #14201d/#1c2a26 palette, old button styles and 128px portrait. Previous screenshots manually linked the current canonical CSS, so they did not catch a retained old stylesheet at that unchanged URL. Those earlier renders were template previews, not evidence of the user’s installed stylesheet.
+
+The manifest now names a content-specific CSS file generated from styles/fdern.css. Validation and packaging verify the filename digest and byte equality. Native themes and working interactions are unchanged. After an update, reload the world page to load the new manifest stylesheet path.
+
+The browser harness reads the manifest stylesheet, primes the previous URL with the original CSS, and verifies the header, portrait, inventory grid and icon dimensions. A separate before/after test applies the original CSS to the same current template, reproduces the reported green layout, removes that old stylesheet, then loads the manifest-declared layout.
+
+![Reproduced old stylesheet on current templates](ui/legacy-layout-reproduction.png)
+
+![Manifest-declared current stylesheet](ui/stylesheet-delivery-fixed.png)
+
+The browser checks still use a document/ApplicationV2 harness. This correction validates stylesheet delivery and layout; it does not claim direct access to the user’s Foundry instance.
+
 ## v0.2.4 — 22 October 2026
 
 Nine new icons distinguish native condition states, especially Down and Prone. The status IDs and derived condition set remain identical. Reconciliation refreshes only old stock artwork on system-managed effects; custom and manual effects remain intact.
